@@ -1,0 +1,29 @@
+html {
+  background-color: hsl(0,0%,98%);
+}
+
+* {
+  /*-webkit-backface-visibility: hidden;*/
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: hsl(0,0%,96%);
+}
+
+article {
+  background-color: hsl(0,0%,100%);
+  box-shadow: 0 1px 1px hsla(0,0%,0%,.1);
+}
+
+footer {
+  background-color: hsl(0,0%,90%);
+}
+
+nav a {
+  display:block;
+  float: left;
+}
