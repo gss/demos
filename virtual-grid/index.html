@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GSS</title>
+    <meta name="description" content="GSS demo of per-element responsiveness and source order independence.">
+    <link rel="stylesheet" type="text/css" href="texture.css">
+    <script src="bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
+    
+  </head>
+  
+    <div id="box" class="box foo" onclick="this.classList.toggle('bar'); this.classList.toggle('foo');"></div>
+    
+    <style type="text/gss">
+      
+      [col-gap] == 16;
+      
+      @h |("col-1...8")-[col-gap]-...| in(::window) !require {
+        width: == [col-width] !require;
+      }
+      
+      .box {        
+        @v |(&)| in(::window);
+        &.bar {
+          @h |(&)| in("col-6");
+        }
+        &.foo {
+          @h |(&)| in("col-3");
+        }
+      }
+      
+    </style>
+    
+    <script>
+      window.engine = GSS(document);
+    </script>
+    
+  </body>
+</html>

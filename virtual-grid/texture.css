@@ -1,0 +1,19 @@
+html {
+  background-color: white;
+}
+
+* {
+  /*-webkit-backface-visibility: hidden;*/
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+}
+
+.box {
+  background-color: red;
+  -webkit-transition: all .5s;
+}
+
+.box.foo {
+  background-color: blue;
+}
