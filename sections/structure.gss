@@ -1,0 +1,29 @@
+
+[md] == 72 !require;
+[md-small] == 36 !require;
+[base] == 8 !require;
+[md-gap] == 36 !require;
+[md-gap2] == 18 !require;  
+
+
+/* BUG
+[winwidth] == ::window[width]
+@if ::window[width] > 720 {
+  [md] == 72 !require;
+  [md-small] == 36 !require;
+  [base] == 8 !require;
+  [md-gap] == 36 !require;
+  [md-gap2] == 18 !require;  
+}
+@else {
+  [md] == 56 !require;
+  [md-small] == 24 !require;
+  [base] == 8 !require;
+  [md-gap] == 24 !require;
+  [md-gap2] == 16 !require;  
+}
+*/
+
+@v |(section)...| in(::window) {
+  @h |(&)| in(::window);
+}

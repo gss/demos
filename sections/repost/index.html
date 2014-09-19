@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Repost-2</title>
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="../texture.css">
+    <script src="../bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
+    
+    <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
+        
+  </head>
+  <body>
+    
+    <section class="repost-2 variation-layout-1 variation-zone-1">
+      
+      <article class="post post-1 wo-media">
+        <div class="avatar"></div>
+        <div class="author">Francesca Carabin</div>
+        <blockquote class="quote">
+          Thank God! I was getting so sick of Wordpress! #TGFM #221
+        </blockquote>
+        <p class="meta">
+          from <a class="meta-source">twitter</a>
+        </p>
+      </article>
+      
+      <article class="post post-2 w-media">
+        <div class="media"></div>
+        <div class="avatar"></div>
+        <div class="author">Francesca Carabin</div>
+        <blockquote class="quote">
+          Thank God! I was getting so sick of Wordpress! #TGFM #221
+        </blockquote>
+        <p class="meta">
+          from <a class="meta-source">twitter</a>
+        </p>
+      </article>
+    
+      
+    </section>
+    
+    
+    <style type="text/gss">
+    
+    
+    [md] == 72 !require;
+    [md2] == 144 !require;
+    [md-gap] == 36 !require;
+    [md-gap2] == 18 !require;
+    
+    @v |(section)...| in(::window) {
+      @h |(&)| in(::window);
+    }
+    
+    
+    
+    
+    </style>
+    
+    <style type="text/gss">
+    
+      
+      section.repost-2 {      
+        
+        /* BUG: &"zone1" breaks */
+        
+        &[-zone-gap-h] >= 0;
+        
+        
+        @v |("zone1","zone2")| in(&) {
+          width: == [md] * 9;
+        }
+        
+        &.variation-zone-1 {
+          @h |~-~("zone1")("zone2")~-~| in(&) gap(&[-zone-gap-h]);
+        }
+        &.variation-zone-2 {
+          @h |~-~("zone2")("zone1")~-~| in(&) gap(&[-zone-gap-h]);
+        }
+        
+        .avatar {
+          &[width] == [md] == &[height];
+        }
+        
+        .author {
+          height: == [md];
+          line-height: == [md];
+          width: == &[intrinsic-width];
+        }
+        
+        
+        
+        &.variation-layout-1 {
+          
+          .post-1[center-y] == "zone1"[center-y];
+          
+          @h |-[md2]-(.post-1)-[md]-| gap([md] * 2) in("zone1"); 
+          
+          
+          
+          .post-1 {            
+            height: == [md] * 6;
+            
+            /* & */          
+            (.post-1 .avatar)[center-x] == &[x];
+            (.post-1 .avatar)[center-y] == &[y];
+            @v |(.post-1 .author) in(.post-1 .avatar);
+            @h (.post-1 .avatar)(.post-1 .author);
+            
+            @h |-16-(.post-1 .quote)-16-| in(&);
+            (.post-1 .quote)[center-y] == &[center-y];
+            .quote {
+              height: == &[intrinsic-height];
+            }
+            
+            @h |-16-(.post-1 .meta)-16-| in(&);
+            @v      (.post-1 .meta)-16-| in(&);
+            .meta {
+              height: == &[intrinsic-height];
+            }
+            
+            @v  (.post-1 .quote)~16~(.post-1 .meta);            
+          }
+          
+          @h |-[md]-(.post-2)| in("zone2");
+          @v |-[md]-(.post-2)  in("zone2");          
+          .post-2 {
+            @v |(.post-2 .media)|  in(&)
+            @h |(.post-2 .media)| in(&) {
+              height: == ::[width] / 1.6;
+            }
+            (.post-2 .avatar)[center-x] == &[left] + [md];
+            (.post-2 .avatar)[center-y] == &[bottom];
+            @v |(.post-2 .author) in(.post-2 .avatar);
+            @h (.post-2 .avatar)(.post-2 .author);
+            
+            @v (.post-2 .author)-[md]-(.post-2 .quote);
+            @h (.post-2 .avatar)(.post-2 .quote);
+          }
+          
+        }
+        
+        &.layout-right {
+          
+        }
+        
+        
+    
+      }
+    
+      
+    </style>
+    
+    <style>
+      * {
+        -webkit-transition: all .5s;
+      }
+      .repost-2 {
+        background-color: hsl(0,0%,100%);
+      }
+      .repost-2 .post-1 {
+        background-color: red;
+      }
+      .repost-2 .author {
+        background-color: yellow;
+        padding:  0 16px;
+      }
+      .repost-2 .wo-media .quote {
+        font-size: 48px;
+        line-height: 56px;
+        text-align: center;
+        font-family: 'National Light';
+      }
+      .repost-2 .wo-media .meta {
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+      }
+      .repost-2 .w-media .quote {
+        font-size: 32px;
+        line-height: 40px;
+        text-align: left;
+        font-family: 'National Bold';
+      }
+      .repost-2 .w-media .meta {
+        font-size: 16px;
+        line-height: 24px;
+        text-align: left;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+      }
+      .repost-2 .avatar {
+        background-color: blue;
+      }
+      .repost-2 .media {
+        background-color: gray;
+      }
+      .top-cta svg.logo {
+        fill: hsl(42, 84%, 69%);
+      }
+      .top-cta .title {
+        text-align: center;
+        color: #fcfbfd;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-family: 'National Thin';
+      }
+      .top-cta .subtitle {
+        text-align: center;
+        color: #fcfbfd;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-family: 'National Light';
+      }
+      .top-cta .cta {   
+        background-color: transparent;     
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-family: 'National Medium';
+        padding: 0 24px;        
+      }
+    </style>
+    
+    <script>
+      window.engine = GSS(document);
+    </script>
+    
+  </body>
+</html>
