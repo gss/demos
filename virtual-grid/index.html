@@ -2,13 +2,13 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GSS</title>
-    <meta name="description" content="GSS demo of per-element responsiveness and source order independence.">
+    <title>GSS Virtual Grid</title>
+    <meta name="description" content=".">
     <link rel="stylesheet" type="text/css" href="texture.css">
     <script src="bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
     
   </head>
-  
+  <body>
     <div id="box" class="box foo" onclick="this.classList.toggle('bar'); this.classList.toggle('foo');"></div>
     
     <style type="text/gss">
@@ -19,12 +19,6 @@
         &[width] == [width] !require;
       }
       
-      "col-1"[awesome] == 1000;
-      "col-1"[awesome-sauce] == 1000;      
-      .box[awesome] == "col-1"[awesome];
-      .box {
-        awesome-sauce: == "col-1"[awesome-sauce];
-      }
       
       .box {        
         @v |(&)| in(::window);

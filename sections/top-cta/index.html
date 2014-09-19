@@ -2,15 +2,15 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GSS</title>
+    <title>Top CTA</title>
     <meta name="description" content="GSS demo of per-element responsiveness and source order independence.">
-    <link rel="stylesheet" type="text/css" href="texture.css">
+    <link rel="stylesheet" type="text/css" href="../texture.css">
     <script src="../bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
     
     <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
-    
-    
+        
   </head>
+  <body>
     
     <section class="top-cta">
       
@@ -22,9 +22,12 @@
          		46,11 	"/>
       </svg>
       
-      <button class="cta">Preorder now</button>
+      <button class="cta">Become founding member #2,432</button>
       
-      <button class="play">Show me</button>
+      <!--button class="play">
+        <span class="play-label">Show me</span>
+        <span class="play-icon">Show me</span>
+      </button-->
       
       <h2 class="title">Join The Evolution</h2>
       
@@ -33,10 +36,16 @@
     </section>
     
     
+    <!-- BUG -->
+    <!--link href="../structure.gss" type="text/gss"-->
+    
+    
     <style type="text/gss">
+    
     
     [md] == 72 !require;
     [md-gap] == 36 !require;
+    [md-gap2] == 18 !require;
     
     @v |(section)...| in(::window) {
       @h |(&)| in(::window);
@@ -48,6 +57,7 @@
     
       
       .top-cta {
+        
         
         @h |(.bg)| in(&);
         @v |(.bg)| in(&);
@@ -68,19 +78,33 @@
         @v  |-("area")-| in(&) gap([md]);                
         
         @h  |(.title)| in("area") {
-              height: == [md];
-              line-height: == [md];
-              font-size: == [md];
+              height: == &[intrinsic-height];
+              @if &[width] <= 600 {
+                line-height: == [md] / 2;
+                font-size: == [md] / 2;
+              }
+              @else {
+                line-height: == [md];
+                font-size: == [md];
+              }
+              
               center-y: == "area"[center-y];
             }
         
-        @v  (.subtitle) 
+        @v  (.subtitle)
+            -18-
             <.title[top]>;
         
-        @h |(.subtitle)| in("area") {
-              height: == [md];
-              line-height: == [md];
-              font-size: == 24;          
+        @h |(.subtitle)| in("area") {              
+              height: == &[intrinsic-height];
+              @if &[width] <= 600 {
+                line-height: == 24;
+                font-size: == 16;
+              }
+              @else {      
+                line-height: == 36;
+                font-size: == 24;
+              }
             }
         
         @v  <.title[bottom]> 
@@ -94,6 +118,8 @@
           width: == ::[intrinsic-width];            
           center-x: == "area"[center-x];
         }
+        
+        
     
       }
     
@@ -125,7 +151,7 @@
         color: #fcfbfd;
         text-transform: uppercase;
         letter-spacing: 0.16em;
-        font-family: 'National Regular';
+        font-family: 'National Light';
       }
       .top-cta .cta {   
         background-color: transparent;     
@@ -141,4 +167,4 @@
     </script>
     
   </body>
-</html>0
+</html>
