@@ -16,16 +16,25 @@
       [col-gap] == 16;
       
       @h |("col-1...8")-[col-gap]-...| in(::window) !require {
-        width: == [col-width] !require;
+        &[width] == [width] !require;
+      }
+      
+      "col-1"[awesome] == 1000;
+      "col-1"[awesome-sauce] == 1000;      
+      .box[awesome] == "col-1"[awesome];
+      .box {
+        awesome-sauce: == "col-1"[awesome-sauce];
       }
       
       .box {        
         @v |(&)| in(::window);
         &.bar {
-          @h |(&)| in("col-6");
+          @h |(&) in("col-3");
+          @h (&)| in("col-6");
         }
         &.foo {
-          @h |(&)| in("col-3");
+          @h |(&) in("col-4");
+          @h (&)| in("col-5");
         }
       }
       

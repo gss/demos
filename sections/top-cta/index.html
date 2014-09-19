@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GSS</title>
+    <meta name="description" content="GSS demo of per-element responsiveness and source order independence.">
+    <link rel="stylesheet" type="text/css" href="texture.css">
+    <script src="../bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
+    
+    <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    
+    
+  </head>
+    
+    <section class="top-cta">
+      
+      <div class="bg media" style="background-size: cover; background-image:url('../_assets/phone.gif');"></div>
+      <div class="bg overlay" style=""></div>
+      
+      <svg version="1.1" class="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 46 46" enable-background="new 0 0 46 46" xml:space="preserve">
+         	<polygon points="46,46 0,46 0,0 46,0 46,2 2,2 2,44 44,44 44,13 13,13 13,33 33,33 33,24 22,24 22,22 35,22 35,35 11,35 11,11 
+         		46,11 	"/>
+      </svg>
+      
+      <button class="cta">Preorder now</button>
+      
+      <button class="play">Show me</button>
+      
+      <h2 class="title">Join The Evolution</h2>
+      
+      <h1 class="subtitle">AI Websites That Design Themselves</h1>
+      
+    </section>
+    
+    
+    <style type="text/gss">
+    
+    [md] == 72 !require;
+    [md-gap] == 36 !require;
+    
+    @v |(section)...| in(::window) {
+      @h |(&)| in(::window);
+    }
+    
+    </style>
+    
+    <style type="text/gss">
+    
+      
+      .top-cta {
+        
+        @h |(.bg)| in(&);
+        @v |(.bg)| in(&);
+        
+        @v  |
+            ("logo") 
+            in("area") {
+              &[height] == [md] == &[width];
+              center-x: == "area"[center-x];
+            }
+        
+        .logo {
+          &[height] == 46 == &[width];
+          center: == "logo"[center];
+        }
+        
+        @h  |-("area")-| in(&) gap([md]);
+        @v  |-("area")-| in(&) gap([md]);                
+        
+        @h  |(.title)| in("area") {
+              height: == [md];
+              line-height: == [md];
+              font-size: == [md];
+              center-y: == "area"[center-y];
+            }
+        
+        @v  (.subtitle) 
+            <.title[top]>;
+        
+        @h |(.subtitle)| in("area") {
+              height: == [md];
+              line-height: == [md];
+              font-size: == 24;          
+            }
+        
+        @v  <.title[bottom]> 
+            -[md-gap]-
+            (.cta);
+        
+        .cta {
+          height: == [md];
+          line-height: == [md];
+          font-size: == 20;
+          width: == ::[intrinsic-width];            
+          center-x: == "area"[center-x];
+        }
+    
+      }
+    
+      
+    </style>
+    
+    <style>
+      .top-cta {
+        background-color: hsl(0,0%,0%);
+      }
+      .top-cta .bg.media {
+        /*-webkit-filter: blur(2px);*/
+      }
+      .top-cta .bg.overlay {
+        background-color: hsla(0,0%,0%,.5);
+      }
+      .top-cta svg.logo {
+        fill: hsl(42, 84%, 69%);
+      }
+      .top-cta .title {
+        text-align: center;
+        color: #fcfbfd;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-family: 'National Thin';
+      }
+      .top-cta .subtitle {
+        text-align: center;
+        color: #fcfbfd;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-family: 'National Regular';
+      }
+      .top-cta .cta {   
+        background-color: transparent;     
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-family: 'National Medium';
+        padding: 0 24px;        
+      }
+    </style>
+    
+    <script>
+      window.engine = GSS(document);
+    </script>
+    
+  </body>
+</html>0
