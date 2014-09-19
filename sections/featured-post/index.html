@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GSS</title>
+    <meta name="description" content="GSS demo of per-element responsiveness and source order independence.">
+    <link rel="stylesheet" type="text/css" href="texture.css">
+    <script src="../bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
+
+
+  </head>
+  <body>
+    <section class="featured-post image-left">
+      <div class="image"></div>
+      <h1 class="title">Create on the go</h1>
+      <h2 class="subtitle">Let the AI do the hard work</h2>
+      <p>Drag-n-drop builders don't work with fingers on phones. Finding and twiddling with plugins to make blog systems anything but a blog is too tedious even for tablets. What's possible when an AI does all the hard work? You can get things done even on the go.</p>
+    </section>
+
+
+    <style type="text/gss">
+
+    [md] == 72 !require;
+    [md-gap] == 36 !require;
+
+    @v |(section)...| in(::window) {
+      @h |(&)| in(::window);
+    }
+
+    </style>
+
+    <style type="text/gss">
+
+      .featured-post.image-left {
+        @h |("zone1")("zone2")| in(&);
+      }
+
+      .featured-post.image-right {
+        @h |("zone2")("zone1")| in(&);
+      }
+
+      .featured-post {
+        "zone1"[width] == "zone2"[width] == &[width];
+        @v |("zone1")| in(&);
+        @v |("zone2")| in(&);
+
+        @h |(.image)| in("zone1");
+        @v |(.image)| in("zone1");
+      }
+
+
+    </style>
+
+    <style>
+      .featured-post .image {
+        background-image: url('image.jpg');
+        background-size: cover;
+        background-position: center;
+      }
+    </style>
+
+    <script>
+      window.engine = GSS(document);
+    </script>
+
+  </body>
+</html>
