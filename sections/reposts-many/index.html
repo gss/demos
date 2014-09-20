@@ -12,7 +12,7 @@
   </head>
   <body>
     
-    <section class="duality reposts v-aspect-1 variation-layout-1 v-zone-1">
+    <section class="quadratic reposts v-aspect-1 variation-layout-1 v-zone-1">
       
       <article class="repost repost-1 wo-media quote">
         <div class="media">
@@ -22,7 +22,7 @@
           <blockquote class="title">
             Thank God! I was getting so sick of Wordpress! #TGFM #221
           </blockquote>
-          <p class="meta">
+          <p class="meta top">
             from <a class="meta-source">twitter</a>
           </p>
         </div>
@@ -32,7 +32,7 @@
         </div>        
       </article>
       
-      <article class="repost repost-2 w-media wide-media article">
+      <article class="repost repost-2 w-media wide-media quote">
         <div class="media">
           <div class="play-btn"></div>
         </div>
@@ -43,7 +43,7 @@
           <p class="desc">
             Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. 
           </p>
-          <p class="meta">
+          <p class="meta top">
             from <a class="meta-source">twitter</a>
           </p>
         </div>
@@ -59,6 +59,8 @@
     
     
     <style type="text/gss">
+    
+    [-md] == -72 !require;
     
     [md-2] == 36 !require;
     [md] == 72 !require;
@@ -130,60 +132,30 @@
         left: 72px;
         right: 72px;
       }
+      .repost .meta.top {
+        top: 24px;
+        bottom: initial;
+      }
       
     </style>
     
     <style type="text/gss">
     
+
       
-      section.singular {
+      section.quadratic {      
         
-        @h |("zone1")| in(&) !require;
-        @v |("zone1")| in(&) !require;
+        @h |(.repost-2)| in("zone1");
+        @v |(.repost-2)| in("zone1");
         
-        @h |(.repost.wide-media)| in("zone1");
-        @v |(.repost.wide-media)| in("zone1");
-        
-        .repost.wide-media {
-          
-          opacity: 1;
-          
-          &[--text-gap] >= [md];
-          
-          @h |(.wide-media .media) - < &[center-x] >
-            gap([md]) in(&);
-            
-          @v |-(.wide-media .media)-| 
-            gap([md]) in(&) 
-            {
-              height: == 1000;
-            }
-          
-          (.wide-media .text)[left] == (.wide-media .media)[right] - [md];
-          (.wide-media .text)[width] == [md] * 8;
-          
-          (.wide-media .text)[center-y] == &[center-y];
-          
-          (.wide-media .from)[center-y] == (.wide-media .text)[bottom];
-              
-          (.wide-media .from)[right] + [md-2] == (.wide-media .text)[right];
-        }
-        
-      }
-      
-      section.duality {      
-        
-        @h |(.repost-1)| in("zone1");
-        @v |(.repost-1)| in("zone1");
-        
-        @h |(.repost-2)| in("zone2");
-        @v |(.repost-2)| in("zone2");
+        @h |(.repost-1)| in("zone2");
+        @v |(.repost-1)| in("zone2");
         
         /* BUG: &"zone1" breaks */
 
         &.v-aspect-1 {
         
-          @v |("zone1","zone2")| in(&) {
+          @v |("zone2")-("zone1")| in(&) gap([md] * -3) {
             width: == [md] * 9;
           }
         
@@ -239,7 +211,7 @@
             
             /* author to text */
             @h |-(.wo-media .from) in(.wo-media .text) gap(-[md-2]);
-            (.wo-media .from)[center-y] == (.wo-media .text)[y];
+            (.wo-media .from)[center-y] == (.wo-media .text)[bottom];
             
             
           }
@@ -250,24 +222,36 @@
             
             &[--text-gap] >= [md];
             
-            @h |-[md]-(.wide-media .media)| in(&);
-            @v |-[md]-(.wide-media .media)  in(&) {
-              height: == ::[width] / 1.6;
+            @h |-[md]-(.wide-media .text)-[md]-| in(&);
+            @v |-[md]-(.wide-media .text)  in(&) {
+              
             
-              /* .from positioned to .media */
-              @h |-(.wide-media .from) in(&) gap([md-2]);
+              /* .from positioned to .text */
+              (.wide-media .from)[center-x] == &[center-x];
               (.wide-media .from)[center-y] == &[bottom];
             }
             
-            @v  (.wide-media .media)
-                (.wide-media .text)
+            @v  (.wide-media .text)
+                -[-md]-
+                (.wide-media .media)
                 ~-~| 
                 gap(&[--text-gap])
                 in(&);
                 
-            @h  <(.wide-media .from)[left] + [md-2]> 
-                (.wide-media .text)
-                <(.wide-media .media)[right]>;
+            @h  <&[center-x]> 
+                (.wide-media .media)
+                <&[right] + [md-2]>;
+            
+            .text {
+              z-index: == 1;
+            }
+            .from {
+              z-index: == 3;
+            }
+            .media {
+              z-index: == 2;
+              height: == &[width];
+            }
           }
           
         }
