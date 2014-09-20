@@ -12,9 +12,9 @@
 
   </head>
   <body>
-    <section class="featured-post media-right">
+    <section class="featured-post media-left if">
       <div class="media"></div>
-      <div class="content">
+      <div class="content" id="content">
         <h1 class="title">Create on the go</h1>
         <h2 class="subtitle">Let the AI do the hard work</h2>
         <p class="text">
@@ -57,7 +57,6 @@
       }
 
       .featured-post {
-        "zone1"[width] == "zone2"[width] == &[width];
         @v |("zone1")| in(&);
         @v |("zone2")| in(&);
 
@@ -66,11 +65,44 @@
 
         .content {
           center-y: == "zone2"[center-y];
-          width: == [md] * 10;
-          height: == &[intrinsic-height];
-          padding: == [md] * 1.5;
 
           @v |~(&)~| in("zone2");
+        }
+
+        [large-screen-content-width] ==  [md] * 10;
+        [large-screen-content-padding] == [md] * 3/2;
+      }
+
+      /*@if &[width] < ([large-screen-content-width] + [large-screen-content-padding]) {*/
+      .if {
+        @h |("zone1")("zone2")| in(&);
+
+        @h |(&) in("zone2") !weak;
+        @h (&)~| in("zone2") !strong;
+
+        "zone1"[width] == &[width] * 2/3;
+
+        .content[left] == &[center-x];
+
+        .content {
+          padding: == [md] * 2/3;
+          width: == &[intrinsic-width];
+          /*width: == 400;*/
+
+          @v |-(&) in("zone2") gap([md] * 1/3);
+          @v (&)-| in("zone2") gap([md] * 1/2);
+        }
+      }
+
+      /*@else {*/
+      .else {
+        "zone1"[width] == "zone2"[width];
+
+        .content {
+          width: == [large-screen-content-width];
+          height: == &[intrinsic-height];
+          /*height: == [md] * 6;*/
+          padding: == [large-screen-content-padding];
 
           .detail {
             width: == [md] / 2;
@@ -91,7 +123,7 @@
 
       .featured-post,
       .featured-post .content {
-        background-color: hsl(20, 4%, 14%);
+          background-color: hsl(20, 4%, 14%);
       }
 
       .featured-post .media {
@@ -135,6 +167,22 @@
         position: absolute;
         left: 0;
         top: 14px;
+      }
+
+
+      .featured-post.if .title {
+        text-align: center;
+      }
+
+      .featured-post.if .subtitle {
+        font-size: 14px;
+        text-align: center;
+      }
+
+      .featured-post.if .content {
+        -webkit-columns: 180px;
+        -moz-columns: 180px;
+        columns: 180px;
       }
     </style>
 
