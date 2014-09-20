@@ -8,8 +8,6 @@
     <script src="../bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
 
     <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
-
-
   </head>
   <body>
     <section class="featured-post media-left if">
@@ -38,53 +36,64 @@
 
     <style type="text/gss">
 
-      .featured-post.media-left {
-        @h |("zone1")("zone2")| in(&);
-      }
-
-      .featured-post.media-left .content {
-        @h |(&) in("zone2") !weak;
-        @h (&)~| in("zone2") !strong;
-      }
-
-      .featured-post.media-right {
-        @h |("zone2")("zone1")| in(&);
-      }
-
-      .featured-post.media-right .content {
-        @h |~(&) in("zone2") !strong;
-        @h (&)| in("zone2") !weak;
-      }
-
       .featured-post {
-        @v |("zone1")| in(&);
-        @v |("zone2")| in(&);
-
         @h |(.media)| in("zone1");
         @v |(.media)| in("zone1");
-
-        .content {
-          center-y: == "zone2"[center-y];
-
-          @v |~(&)~| in("zone2");
-        }
 
         [large-screen-content-width] ==  [md] * 10;
         [large-screen-content-padding] == [md] * 3/2;
       }
 
-      /*@if &[width] < ([large-screen-content-width] + [large-screen-content-padding]) {*/
+      /*@if ? {*/
       .if {
+        @h |("zone1")| in(&);
+        @v |("zone1")| in(&);
+
+        "zone2"[height] == &[height];
+        @h |("zone2")| in(&);
+        @v ("zone1")("zone2");
+
+        .content[width] == &[width];
+
+        @h |-(.text)-| in("zone2") gap([md] / 2);
+        @v |-(.text)-| in("zone2") gap([md] / 2);
+
+        .content {
+          @v |(&) in("zone1");
+          @v (&)| in("zone2");
+        }
+
+        "cover" {
+          center: == "zone1"[center];
+          width: == "zone1"[width];
+
+          @v |(.title)(.subtitle)| in(&) {
+            height: == &[intrinsic-height];
+            @h |-(&)-| in("cover") gap([md] / 2);
+          }
+        }
+      }
+
+      /*@elseif &[width] < ([large-screen-content-width] + [large-screen-content-padding]) {*/
+      .elseif {
+        .content {
+          center-y: == "zone2"[center-y];
+          @v |~(&)~| in("zone2");
+        }
+
         @h |("zone1")("zone2")| in(&);
 
-        @h |(&) in("zone2") !weak;
-        @h (&)~| in("zone2") !strong;
+        @v |("zone1")| in(&);
+        @v |("zone2")| in(&);
 
         "zone1"[width] == &[width] * 2/3;
 
         .content[left] == &[center-x];
 
         .content {
+          @h |(&) in("zone2") !weak;
+          @h (&)~| in("zone2") !strong;
+
           @v |-(&) in("zone2") gap([md] * 1/3);
           @v (&)-| in("zone2") gap([md] * 1/2);
 
@@ -112,7 +121,15 @@
 
       /*@else {*/
       .else {
+        .content {
+          center-y: == "zone2"[center-y];
+          @v |~(&)~| in("zone2");
+        }
+
         "zone1"[width] == "zone2"[width];
+
+        @v |("zone1")| in(&);
+        @v |("zone2")| in(&);
 
         .content {
           width: == [large-screen-content-width];
@@ -130,6 +147,24 @@
           }
         }
       }
+
+      .else.media-left {
+        @h |("zone1")("zone2")| in(&);
+      }
+
+      .else.media-left .content {
+        @h |(&) in("zone2") !weak;
+        @h (&)~| in("zone2") !strong;
+      }
+
+      .else.media-right {
+        @h |("zone2")("zone1")| in(&);
+      }
+
+      .else.media-right .content {
+        @h |~(&) in("zone2") !strong;
+        @h (&)| in("zone2") !weak;
+      }
     </style>
 
     <style type="text/css">
@@ -138,8 +173,7 @@
         overflow-x: scroll;
       }
 
-      .featured-post,
-      .featured-post .content {
+      .featured-post {
           background-color: hsl(20, 4%, 14%);
       }
 
@@ -162,7 +196,6 @@
 
       .featured-post .subtitle {
         font-family: 'National Regular';
-        font-size: 19px;
         margin-top: 12px;
       }
 
@@ -172,7 +205,6 @@
 
       .featured-post .text {
         font-family: 'National Light';
-        font-size: 18px;
         letter-spacing: 0.06em;
         line-height: 28px;
         position: relative;
@@ -186,16 +218,41 @@
       }
 
 
+      .featured-post.if .content {
+        background-color: hsla(20, 4%, 14%, .8);
+        overflow-y: scroll;
+      }
+
       .featured-post.if .title {
         text-align: center;
       }
 
       .featured-post.if .subtitle {
-        font-size: 14px;
+        font-size: 20px;
         text-align: center;
       }
 
       .featured-post.if .text {
+        font-size: 16px;
+      }
+
+
+      .featured-post.elseif .content {
+        background-color: hsl(20, 4%, 14%);
+      }
+
+      .featured-post.elseif .title {
+        text-align: center;
+      }
+
+      .featured-post.elseif .subtitle {
+        font-size: 14px;
+        text-align: center;
+      }
+
+      .featured-post.elseif .text {
+        font-size: 18px;
+
         -webkit-columns: 216px;
         -moz-columns: 216px;
         columns: 216px;
@@ -206,7 +263,16 @@
       }
 
 
+      .featured-post.else .content {
+        background-color: hsl(20, 4%, 14%);
+      }
+
+      .featured-post.else .subtitle {
+        font-size: 20px;
+      }
+
       .featured-post.else .text {
+        font-size: 18px;
         margin-top: 12px;
       }
     </style>
