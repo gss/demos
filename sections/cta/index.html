@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <section class="cta else">
+    <section class="cta if">
 
       <h1 class="heading">What would you do with 10hrs extra a week?</h1>
 
@@ -42,39 +42,63 @@
       [md-sub] == 8;
 
       .cta {
-        aside {
-          size: == [md] * 5;
-          border-radius: == &[width] / 2;
-        }
-      }
-
-      .cta.if {
-
-      }
-
-      .cta.elseif {
-
-      }
-
-      .cta.else {
         .heading {
           height: == &[intrinsic-height];
         }
 
+        aside {
+          border-radius: == &[width] / 2;
+          size: == [aside-size];
+
+          .title[margin-top] == [aside-title-margin-top];
+
+          .button {
+            margin-top: == [aside-button-margin-top];
+            padding-top: == &[padding-bottom] == [aside-button-v-padding];
+            padding-left: == &[padding-right] == [aside-button-h-padding];
+          }
+        }
+      }
+
+      .cta.if {
+        @v |-(.heading)~-~(aside)-| in(&) gap([md-sub] * 3) outer-gap([md-sub] * 5);
+        @h |~-~(.heading)~-~| in(&) gap([md-sub] * 4);
+        @h |~-~(aside)~-~| in(&) gap([md-sub] * 4);
+        .heading[center-x] == aside[center-x] == (&)[center-x];
+
+        [aside-size] == [md] * 3;
+        [aside-title-margin-top] == ([md-sub] * 6) - 16;
+        [aside-button-margin-top] == [md-sub] * 2;
+        [aside-button-h-padding] == [md-sub] * 2;
+        [aside-button-v-padding] == [md-sub] * 2;
+      }
+
+      .cta.elseif {
+        @h |-(.heading)-(aside)-| in(&) gap([md-sub] * 4);
+        @v |~-~(.heading)~-~| in(&) gap([md-sub] * 3);
+        @v |~-~(aside)~-~| in(&) gap([md-sub] * 3);
+        .heading[center-y] == aside[center-y] == (&)[center-y];
+
+        [aside-size] == [md] * 3;
+        [aside-title-margin-top] == ([md-sub] * 6) - 16;
+        [aside-button-margin-top] == [md-sub] * 2;
+        [aside-button-h-padding] == [md-sub] * 2;
+        [aside-button-v-padding] == [md-sub] * 2;
+      }
+
+      .cta.else {
         @h |-(.heading)-(aside)-| in(&) gap([md] * 2);
         @v |~-~(.heading)~-~| in(&) gap([md]);
         @v |~-~(aside)~-~| in(&) gap([md]);
         .heading[center-y] == aside[center-y] == (&)[center-y];
 
+        [aside-size] == [md] * 5;
+        [aside-title-margin-top] == ([md-sub] * 10) - 32;
+        [aside-button-margin-top] == [md-sub] * 4;
+        [aside-button-h-padding] == [md-sub] * 3;
+        [aside-button-v-padding] == [md-sub] * 2;
+
         aside {
-          .title[margin-top] == ([md-sub] * 10) - 32;
-
-          .button {
-            margin-top: == [md-sub] * 4;
-            padding-top: == &[padding-bottom] == [md-sub] * 2;
-            padding-left: == &[padding-right] == [md-sub] * 3;
-          }
-
           (& .logo)[center-x] == &[center-x];
           @v (& .logo)-| in(&) gap([md-sub] * 7);
 
@@ -82,7 +106,6 @@
             width: == &[height] == 46;
           }
         }
-
       }
     </style>
 
@@ -111,6 +134,7 @@
 
       .cta aside {
         background-color: hsla(270, 4%, 9%, .9);
+        text-align: center;
       }
 
       .cta aside .title {
@@ -140,60 +164,60 @@
 
 
 
-      .cta.if {
-
+      .cta.if .heading {
+        font-size: 34px;
       }
 
-      .cta.if .heading {
-
+      .cta.if aside {
+        overflow: hidden;
       }
 
       .cta.if aside .title {
-
+        font-size: 32px;
       }
 
       .cta.if aside .subtitle {
-
+        font-size: 18px;
       }
 
       .cta.if aside .button {
+        font-size: 16px;
+      }
 
+      .cta.if aside svg.logo {
+        visibility: hidden;
       }
 
 
-
-      .cta.elseif {
-
-      }
 
       .cta.elseif .heading {
+        font-size: 34px;
+      }
 
+      .cta.elseif aside {
+        overflow: hidden;
       }
 
       .cta.elseif aside .title {
-
+        font-size: 32px;
       }
 
       .cta.elseif aside .subtitle {
-
+        font-size: 18px;
       }
 
       .cta.elseif aside .button {
+        font-size: 16px;
+      }
 
+      .cta.elseif aside svg.logo {
+        visibility: hidden;
       }
 
 
-
-      .cta.else {
-
-      }
 
       .cta.else .heading {
         font-size: 64px;
-      }
-
-      .cta.else aside {
-        text-align: center;
       }
 
       .cta.else aside .title {
@@ -206,6 +230,10 @@
 
       .cta.else aside .button {
         font-size: 20px;
+      }
+
+      .cta.else aside svg.logo {
+        visibility: visible;
       }
     </style>
 
