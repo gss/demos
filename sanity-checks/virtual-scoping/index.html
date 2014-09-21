@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Top CTA</title>
+    <meta name="description" content="GSS demo of per-element responsiveness and source order independence.">
+    <script src="../bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
+    
+        
+  </head>
+  <body>
+    
+    <header>
+      <h2>Clicking box should just change inner-box color </h2>
+      <h2>All boxes should have inner-box</h2>
+    </header>
+    
+    <div class="box wo-virtual" onclick="onboxclick.bind(this).call()">
+      <div class="innie"></div>
+    </div>
+    <div class="box w-virtual" onclick="onboxclick.bind(this).call()">
+      <div class="innie"></div>
+    </div>
+    <div class="box wo-virtual" onclick="onboxclick.bind(this).call()">
+      <div class="innie"></div>
+    </div>
+    <div class="box w-virtual" onclick="onboxclick.bind(this).call()">
+      <div class="innie"></div>
+    </div>
+    <div class="box wo-virtual" onclick="onboxclick.bind(this).call()">
+      <div class="innie"></div>
+    </div>
+    <div class="box w-virtual" onclick="onboxclick.bind(this).call()">
+      <div class="innie"></div>
+    </div>
+    <div class="box wo-virtual" onclick="onboxclick.bind(this).call()">
+      <div class="innie"></div>
+    </div>
+    <div class="box w-virtual" onclick="onboxclick.bind(this).call()">
+      <div class="innie"></div>
+    </div>
+    
+    
+    <script>
+    onboxclick = function () {
+      this.classList.toggle('wo-virtual');
+      this.classList.toggle('w-virtual');
+    }
+    </script>
+    
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    .box {
+      background-color: hsl(220,50%,50%);
+    }    
+    .wo-virtual .innie {
+      background-color: hsl(360,100%,50%);
+    }
+    .w-virtual .innie {
+      background-color: hsl(180,100%,50%);
+    }
+    .w-virtual:after {
+      content: 'W/ SCOPED VIRTUAL';
+      font-size: 40px;
+      top: 32px;
+      left: 32px;
+      position:absolute;
+    }
+    .wo-virtual:after {
+      content: 'W/O VIRTUAL';
+      font-size: 40px;
+      top: 32px;
+      left: 32px;
+      position:absolute;
+    }
+    
+    </style>
+    <style type="text/gss">
+    
+    /* BUGS
+    
+      - Nested css styles are ignored
+    
+    */
+    
+    
+    /* test 
+    -------------------------------------------- */
+    .box.w-virtual {
+      @h |-(&"zone")-| in(&) gap(20);
+      @v |-(&"zone")-| in(&) gap(20);
+      @h |(& .innie)| in(&"zone");
+      @v |(& .innie)| in(&"zone");
+    }
+    .box.wo-virtual {
+      @h |-(& .innie)-| in(&) gap(20);
+      @v |-(& .innie)-| in(&) gap(20);
+    }
+    
+    
+    /* structure 
+    -------------------------------------------- */
+    
+    
+    @v |-150-(.box)-50-... in(::window) {
+            
+      @h |~100~(&)~100~| in(::window);
+      
+      &[x] + 20 == &:next[x];
+      &[right] - 20 == &:next[right];
+      
+      height: == 300;
+      
+    }
+    
+
+    
+    </style>
+
+    
+
+    
+    <script>
+      window.engine = GSS(document);
+    </script>
+    
+  </body>
+</html>

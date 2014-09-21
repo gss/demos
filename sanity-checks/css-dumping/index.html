@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Top CTA</title>
+    <meta name="description" content="GSS demo of per-element responsiveness and source order independence.">
+    <script src="../bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
+    
+        
+  </head>
+  <body>
+    
+    <h1>CSS Dumping: Each box should have differed colored background & border </h1>
+    
+    <div class="box primary">
+    </div>
+    <div class="box secondary">
+    </div>
+    <div class="box">
+    </div>
+    
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+    </style>
+    <style type="text/gss">
+    
+    /* BUGS
+    
+      - Nested css styles are ignored
+    
+    */
+    
+    /* layout */
+    @v |-100-(.box)-50-...-100-| in(::window) {
+            
+      @h |-100-(&)-100-| in(::window);
+      
+      height: == [box-height]; // equal box heights            
+      
+    }
+    
+    .box { /* CSS Dumping */
+      background-color: hsl(220,10%,50%);
+      
+      &.primary {
+        background-color: hsl(220,100%,50%);
+      }
+      .secondary {
+        background-color: hsl(220,50%,50%);
+      }
+    }        
+    
+    [test] == 1;
+    
+    /* CSS Dumping */      
+    article {
+      @if [test] == 1 {                    
+        border: 2px solid red;
+      
+        &.primary {
+          border: 2px solid yellow;
+        }
+        .secondary {
+          border: 2px solid blue;
+        }
+      }
+      @else {
+        border: 2px solid purple;
+      
+        &.primary {
+          border: 2px solid orange;
+        }
+        .secondary {
+          border: 2px solid green;
+        }
+      }
+    }
+    
+    </style>
+
+    
+
+    
+    <script>
+      window.engine = GSS(document);
+    </script>
+    
+  </body>
+</html>

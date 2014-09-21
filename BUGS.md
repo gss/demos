@@ -1,6 +1,21 @@
+
+## Compiler Bugs
+
+- Unhelpful errors when ruleset missing closing brace
+
+- -webkit-column-width: 400px;
+
+- normal constraints after block:
+      @v |-(#a1)-| {
+             [x] == 1;
+           }
+           ::[x] == [z];
+
+## Engine Bugs
+
 - @if statements with ::window[width] breaks things...
   - binding width to var still breaks, but not as bad
-  
+
 - external stylesheets, not loaded in correct order w/ respect to inline
 
 - &"virtual"   ... virtuals scoped to this don't work the same when they should...
@@ -13,7 +28,7 @@
 
     .post-1"zone1" = &"zone1";
     .post-1[x] == &[x];
-    
+
 
 
 ///
