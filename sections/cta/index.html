@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GSS</title>
+    <meta name="description" content="GSS demo of per-element responsiveness and source order independence.">
+    <link rel="stylesheet" type="text/css" href="texture.css">
+    <script src="../bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <section class="cta else">
+
+      <h1 class="heading">What would you do with 10hrs extra a week?</h1>
+
+      <aside>
+        <h1 class="title">$96</h1>
+        <h2 class="subtitle">Per Year</h2>
+        <a class="button" href="FIXME">Pre-order now</a>
+        <svg version="1.1" class="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 46 46" enable-background="new 0 0 46 46" xml:space="preserve">
+             <polygon points="46,46 0,46 0,0 46,0 46,2 2,2 2,44 44,44 44,13 13,13 13,33 33,33 33,24 22,24 22,22 35,22 35,35 11,35 11,11
+               46,11 	"/>
+        </svg>
+      </aside>
+
+    </section>
+
+
+    <style type="text/gss">
+
+    [md] == 72 !require;
+    [md-gap] == 36 !require;
+
+    @v |(section)...| in(::window) {
+      @h |(&)| in(::window);
+    }
+
+    </style>
+
+    <style type="text/gss">
+      [md-sub] == 8;
+
+      .cta {
+        aside {
+          size: == [md] * 5;
+          border-radius: == &[width] / 2;
+        }
+      }
+
+      .cta.if {
+
+      }
+
+      .cta.elseif {
+
+      }
+
+      .cta.else {
+        .heading {
+          height: == &[intrinsic-height];
+        }
+
+        @h |-(.heading)-(aside)-| in(&) gap([md] * 2);
+        @v |~-~(.heading)~-~| in(&) gap([md]);
+        @v |~-~(aside)~-~| in(&) gap([md]);
+        .heading[center-y] == aside[center-y] == (&)[center-y];
+
+        aside {
+          .title[margin-top] == ([md-sub] * 10) - 32;
+
+          .button {
+            margin-top: == [md-sub] * 4;
+            padding-top: == &[padding-bottom] == [md-sub] * 2;
+            padding-left: == &[padding-right] == [md-sub] * 3;
+          }
+
+          (& .logo)[center-x] == &[center-x];
+          @v (& .logo)-| in(&) gap([md-sub] * 7);
+
+          .logo {
+            width: == &[height] == 46;
+          }
+        }
+
+      }
+    </style>
+
+    <style type="text/css">
+      .cta {
+        background-image: url('image.jpg');
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+
+      .cta:before {
+        content: "";
+        background: hsla(0, 0%, 0%, .3);
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+      }
+
+      .cta .heading {
+        color: hsl(270, 33%, 99%);
+        font-family: 'National Light';
+      }
+
+      .cta aside {
+        background-color: hsla(270, 4%, 9%, .9);
+      }
+
+      .cta aside .title {
+        color: hsl(43, 82%, 69%);
+        font-family: 'National Light';
+      }
+
+      .cta aside .subtitle {
+        color: hsl(195, 26%, 42%);
+        font-family: 'National Light';
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .cta aside .button {
+        background-color: hsl(195, 77%, 69%);
+        color: hsl(11, 31%, 13%);
+        display: inline-block;
+        font-family: 'National Regular';
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .cta aside svg.logo {
+        fill: hsl(195, 25%, 42%);
+      }
+
+
+
+      .cta.if {
+
+      }
+
+      .cta.if .heading {
+
+      }
+
+      .cta.if aside .title {
+
+      }
+
+      .cta.if aside .subtitle {
+
+      }
+
+      .cta.if aside .button {
+
+      }
+
+
+
+      .cta.elseif {
+
+      }
+
+      .cta.elseif .heading {
+
+      }
+
+      .cta.elseif aside .title {
+
+      }
+
+      .cta.elseif aside .subtitle {
+
+      }
+
+      .cta.elseif aside .button {
+
+      }
+
+
+
+      .cta.else {
+
+      }
+
+      .cta.else .heading {
+        font-size: 64px;
+      }
+
+      .cta.else aside {
+        text-align: center;
+      }
+
+      .cta.else aside .title {
+        font-size: 56px;
+      }
+
+      .cta.else aside .subtitle {
+        font-size: 20px;
+      }
+
+      .cta.else aside .button {
+        font-size: 20px;
+      }
+    </style>
+
+    <script>
+      window.engine = GSS(document);
+    </script>
+
+  </body>
+</html>
