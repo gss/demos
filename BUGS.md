@@ -35,6 +35,14 @@
     .post-1"zone1" = &"zone1";
     .post-1[x] == &[x];
 
+- 2d sugar not working as expected:
+
+  aside {
+    size: == 360; /* Works */
+    border-radius: == &[size] / 2; /* Doesn't work */
+    border-radius: == &[width] / 2; /* Works */
+  }
+
 
 
 ///
