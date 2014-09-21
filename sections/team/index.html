@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <section class="team">
+    <section class="team else">
 
-      <h1 class="title">The Team</h1>
+      <h1 class="heading title">The Team</h1>
 
       <article>
         <img id="image-one" src="images/henri-bergius.png">
@@ -52,8 +52,16 @@
     <style type="text/gss">
       [md-sub] == 8;
 
-      .team {
-        & > .title {
+      .team.if {
+
+      }
+
+      .team.elseif {
+
+      }
+
+      .team.else {
+        & .heading {
           margin-top: == [md-sub] * 10;
           padding-top: == [md-sub] * 5;
           padding-bottom: == [md-sub] * 10;
@@ -76,18 +84,74 @@
     <style type="text/css">
       .team {
         background-color: hsl(36, 33%, 94%);
-        text-align: center;
       }
 
-      .team > .title {
+      .team .heading {
+        color: hsla(255, 13%, 12%, .6);
         font-family: 'National Book';
         letter-spacing: 0.16em;
-        font-size: 34px;
-        position: relative;
         text-transform: uppercase;
       }
 
-      .team > .title:before {
+      .team article .title {
+        color: hsl(180, 5%, 12%);
+        font-family: 'National Light';
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .team article .subtitle {
+        color: hsl(41, 47%, 62%);
+        font-family: 'National Light';
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .team article .text {
+        color: hsl(180, 5%, 12%);
+        font-family: Roboto;
+      }
+
+
+
+      .team.else .heading {
+        font-size: 16px;
+      }
+
+      .team.else article .title {
+        font-size: 32px;
+      }
+
+      .team.else article .subtitle {
+        font-size: 16px;
+      }
+
+
+
+      .team.elseif .heading {
+        font-size: 16px;
+      }
+
+      .team.elseif article .title {
+        font-size: 32px;
+      }
+
+      .team.elseif article .subtitle {
+        font-size: 16px;
+      }
+
+
+
+      .team.else {
+        text-align: center;
+      }
+
+      .team.else .heading {
+        font-size: 34px;
+        position: relative;
+      }
+
+      .team.else .heading:before {
         background-color: hsl(65, 8%, 69%);
         content: "";
         display: block;
@@ -99,26 +163,16 @@
         top: 0;
       }
 
-      .team article .title {
-        color: hsl(180, 5%, 12%);
-        font-family: 'National Light';
-        letter-spacing: 0.16em;
+      .team.else article .title {
         font-size: 34px;
-        text-transform: uppercase;
       }
 
-      .team article .subtitle {
-        color: hsl(41, 47%, 62%);
-        font-family: 'National Light';
+      .team.else article .subtitle {
         font-size: 18px;
-        letter-spacing: 0.16em;
         margin-top: 20px;
-        text-transform: uppercase;
       }
 
-      .team article .text {
-        color: hsl(180, 5%, 12%);
-        font-family: Roboto;
+      .team.else article .text {
         font-size: 18px;
         line-height: 32px;
       }
