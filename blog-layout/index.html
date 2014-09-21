@@ -12,7 +12,7 @@
     <header>
     </header>
     
-    <article>
+    <article id="art1">
       <div class="media"></div>
       <h2 class="title">This Hacker News Comment About Ember Will Change Your View About Nothing</h2>
       <p class="desc">The kidnapping convictions of Everton Wagstaffe, right, and Reginald Connor were unanimously reversed by a panel of state appeals court judges.</p>
@@ -75,12 +75,16 @@
       }
     }
     
+    [article-gap] >= 72 !require;
+    
     article {
       
-      width: == 600;
-      center-x: == ::window[center-x];
+      width: <= 600;
       
-      /* following VFL infinite loops b/c of the (& ...) 
+      @h |-(&)-| 
+        gap([article-gap])
+        in(::window);
+      
       @v |
           -
           (& .title)
@@ -88,19 +92,21 @@
           (& .desc)
           -
           | 
-          in(&) gap(40) {
-            height: == ::[intrinsic-height];
-      }
+          in(&) gap(40) 
+          {
+            height: == &[intrinsic-height];            
+          }
       
       @h |-(& .title)-| in(&) gap(40);
       @h |-(& .desc)-|  in(&) gap(40);
-      */
-      /* temp hack... */
+      
+      /* temp hack... 
       height: >= 300; 
       padding: == 60;
       .title {
        margin-bottom: == 18; 
       }
+      */
       
     }
       
