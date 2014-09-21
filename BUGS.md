@@ -11,6 +11,12 @@
            }
            ::[x] == [z];
 
+- pure numbers in complex expressions on one side don't work
+
+  [foo] == 8 * 4; /* Works */
+  [bar] == (8 * 4) - 1; /* Doesn't work */
+
+
 ## Engine Bugs
 
 - @if statements with ::window[width] breaks things...
