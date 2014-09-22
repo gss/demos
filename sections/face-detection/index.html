@@ -11,8 +11,8 @@
   </head>
   <body>
     <!-- <section class="face-detection if"> -->
-    <!-- <section class="face-detection elseif"> -->
-    <section class="face-detection else">
+    <section class="face-detection elseif">
+    <!-- <section class="face-detection else"> -->
 
       <article>
         <h1 class="title">The right shot, everytime</h1>
@@ -39,7 +39,17 @@
       [md-sub] == 8;
 
       .face-detection {
+        article {
+          height: == &[intrinsic-height];
 
+          .subtitle {
+            margin-top: == [md-sub] * 2;
+          }
+        }
+
+        .media {
+          width: == &[height] * (1035 / 670) !require;
+        }
       }
 
       .face-detection.if {
@@ -47,15 +57,29 @@
       }
 
       .face-detection.elseif {
+        article {
+          width: == [md] * 3;
 
+          .text {
+            size: == 0;
+          }
+        }
+
+        @h |-(& article)~-~(.media) gap([md-sub] * 6) outer-gap([md-sub] * 4) in(&);
+
+        @v |~-~(& article)~-~| in(&) gap([md-sub] * 13);
+
+        @v |~-~(.media) in(&) gap([md-sub] * 8);
+        @v (.media)~-~| in(&) gap([md-sub] * 3);
+
+        (& article)[center-y] == (& .media)[center-y] == &[center-y];
+        (& .media)[right] == &[right] + (& .media)[width] / 5;
       }
 
       .face-detection.else {
         article {
           width: == [md] * 4;
-          height: == &[intrinsic-height];
 
-          .subtitle,
           .text {
             margin-top: == [md-sub] * 2;
           }
@@ -75,10 +99,6 @@
         @v (.media)~-~| in(&) gap([md] * 3);
 
         article[center-y] == .media[center-y] == "area"[center-y];
-
-        .media {
-          width: == &[height] * (1035 / 670) !require;
-        }
       }
     </style>
 
@@ -102,15 +122,17 @@
       }
 
       .face-detection .title {
-
+        font-family: 'National Book';
       }
 
       .face-detection .subtitle {
+        font-family: 'National Regular';
         color: hsl(353, 78%, 68%);
         text-transform: uppercase;
       }
 
       .face-detection .text {
+
       }
 
       .face-detection .media {
@@ -137,16 +159,23 @@
 
 
 
-      .face-detection.elseif .title {
+      .face-detection.elseif  {
+        overflow: hidden;
+      }
 
+      .face-detection.elseif .title {
+        font-size: 32px;
+        line-height: 36px;
       }
 
       .face-detection.elseif .subtitle {
-
+        font-size: 16px;
+        letter-spacing: 0.16em;
+        line-height: 20px;
       }
 
       .face-detection.elseif .text {
-
+        visibility: hidden;
       }
 
       .face-detection.elseif .media {
@@ -156,13 +185,11 @@
 
 
       .face-detection.else .title {
-        font-family: 'National Book';
         font-size: 40px;
         line-height: 46px;
       }
 
       .face-detection.else .subtitle {
-        font-family: 'National Book';
         font-size: 20px;
         letter-spacing: 0.16em;
         line-height: 24px;
