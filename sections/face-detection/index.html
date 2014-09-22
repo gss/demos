@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GSS</title>
+    <meta name="description" content="GSS demo of per-element responsiveness and source order independence.">
+    <link rel="stylesheet" type="text/css" href="texture.css">
+    <script src="../bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <!-- <section class="face-detection if"> -->
+    <!-- <section class="face-detection elseif"> -->
+    <section class="face-detection else">
+
+      <article>
+        <h1 class="title">The right shot, everytime</h1>
+        <h2 class="subtitle">Face detection & smart cropping</h2>
+        <p class="text">Intelligently recognises faces and dynamically crops images whatever the size, whatever the display. All you have to do is is find the right media.</p>
+      </article>
+      <img class="media" src="photo.jpg">
+
+    </section>
+
+
+    <style type="text/gss">
+
+    [md] == 72 !require;
+    [md-gap] == 36 !require;
+
+    @v |(section)...| in(::window) {
+      @h |(&)| in(::window);
+    }
+
+    </style>
+
+    <style type="text/gss">
+      [md-sub] == 8;
+
+      .face-detection {
+
+      }
+
+      .face-detection.if {
+
+      }
+
+      .face-detection.elseif {
+
+      }
+
+      .face-detection.else {
+        article {
+          width: == [md] * 4;
+          height: == &[intrinsic-height];
+
+          .subtitle,
+          .text {
+            margin-top: == [md-sub] * 2;
+          }
+        }
+
+        @h |~-~("area")~-~| in(&) gap([md] * 2);
+        @v |~-~("area") in(&) gap([md] * 3);
+        @v ("area")~-~| in(&) gap([md] * 4);
+        area[center-x] == &[center-x];
+
+        @h |-(& article)-(.media)-| gap([md] * 2) in("area");
+        article[center-y] == .media[center-y] == "area"[center-y];
+
+        .media {
+          width: == &[height] * (1035 / 670) !require;
+        }
+      }
+    </style>
+
+    <style type="text/css">
+      .face-detection {
+        background-color: hsl(36, 33%, 94%);
+        position: relative;
+      }
+
+      .face-detection:before {
+        background-image: url('http://imgflo.herokuapp.com/graph/gaussianblur?input=https://c2.staticflickr.com/4/3131/3117647161_c6be775075_z.jpg&std-dev-x=15&std-dev-y=15');
+        background-position: center;
+        background-size: cover;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity: .3;
+      }
+
+      .face-detection .title {
+
+      }
+
+      .face-detection .subtitle {
+        color: hsl(353, 78%, 68%);
+        text-transform: uppercase;
+      }
+
+      .face-detection .text {
+      }
+
+      .face-detection .media {
+
+      }
+
+
+
+      .face-detection.if .title {
+
+      }
+
+      .face-detection.if .subtitle {
+
+      }
+
+      .face-detection.if .text {
+
+      }
+
+      .face-detection.if .media {
+
+      }
+
+
+
+      .face-detection.elseif .title {
+
+      }
+
+      .face-detection.elseif .subtitle {
+
+      }
+
+      .face-detection.elseif .text {
+
+      }
+
+      .face-detection.elseif .media {
+
+      }
+
+
+
+      .face-detection.else .title {
+        font-family: 'National Book';
+        font-size: 40px;
+        line-height: 46px;
+      }
+
+      .face-detection.else .subtitle {
+        font-family: 'National Book';
+        font-size: 20px;
+        letter-spacing: 0.16em;
+        line-height: 24px;
+      }
+
+      .face-detection.else .text {
+        font-size: 20px;
+        line-height: 40px;
+      }
+
+      .face-detection.else .media {
+
+      }
+    </style>
+
+    <script>
+      window.engine = GSS(document);
+    </script>
+
+  </body>
+</html>
