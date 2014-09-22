@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GSS</title>
+    <meta name="description" content="GSS demo of per-element responsiveness and source order independence.">
+    <link rel="stylesheet" type="text/css" href="texture.css">
+    <script src="../bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="../../sections/_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <section class="cta">
+
+      <h1 id="small-screen">Small screen</h1>
+      <h1 id="large-screen">Large screen</h1>
+
+    </section>
+
+    <style type="text/gss">
+      @if ::window[width] < 1024 {
+        #small-screen[opacity] == 1;
+        #large-screen[opacity] == 0;
+      }
+      @else {
+        #small-screen[opacity] == 0;
+        #large-screen[opacity] == 1;
+      }
+    </style>
+
+    <script>
+      window.engine = GSS(document);
+    </script>
+
+  </body>
+</html>
