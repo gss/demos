@@ -19,7 +19,7 @@
         <h2 class="subtitle">Face detection & smart cropping</h2>
         <p class="text">Intelligently recognises faces and dynamically crops images whatever the size, whatever the display. All you have to do is is find the right media.</p>
       </article>
-      <img class="media" src="photo.jpg">
+      <img class="media" src="laptop.png">
 
     </section>
 
@@ -62,11 +62,18 @@
         }
 
         @h |~-~("area")~-~| in(&) gap([md] * 2);
-        @v |~-~("area") in(&) gap([md] * 3);
-        @v ("area")~-~| in(&) gap([md] * 4);
-        area[center-x] == &[center-x];
+        @v |("area") in(&);
+        @v ("area")| in(&);
+        "area"[center-x] == &[center-x];
 
-        @h |-(& article)-(.media)-| gap([md] * 2) in("area");
+        @h |(& article)-(.media)| gap([md] * 2) in("area");
+
+        @v |~-~(& article) in(&) gap([md] * 3);
+        @v (& article)~-~| in(&) gap([md] * 4);
+
+        @v |~-~(.media) in(&) gap([md] * 2);
+        @v (.media)~-~| in(&) gap([md] * 3);
+
         article[center-y] == .media[center-y] == "area"[center-y];
 
         .media {
