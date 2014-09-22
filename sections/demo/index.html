@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <!-- <section class="demo if"> -->
-    <section class="demo elseif">
+    <section class="demo if">
+    <!-- <section class="demo elseif"> -->
     <!-- <section class="demo else"> -->
 
       <h1 class="title">We've already broken ground on more than 30 layout filters.</h1>
@@ -40,7 +40,15 @@
       }
 
       .demo.if {
+        .title {
+          margin-top: == [md-sub] * 12;
+          margin-bottom: == [md-sub] * 6;
+          padding-left: == &[padding-right] == [md-sub] * 5;
+        }
 
+        .subtitle {
+          size: == 0;
+        }
       }
 
       .demo.elseif {
@@ -96,29 +104,37 @@
       }
 
       .demo .image {
-        width: 100%;
         height: auto;
       }
 
 
 
       .demo.if .title {
-
+        font-size: 24px;
+        line-height: 32px;
       }
 
       .demo.if .subtitle {
+        visibility: hidden;
+      }
 
+      .demo.if .image {
+        width: 133%;
       }
 
 
 
       .demo.elseif .title {
         font-size: 24px;
-        line-height:: 32px;
+        line-height: 32px;
       }
 
       .demo.elseif .subtitle {
         visibility: hidden;
+      }
+
+      .demo.elseif .image {
+        width: 100%;
       }
 
 
@@ -144,6 +160,10 @@
       .demo.else .subtitle {
         font-size: 20px;
         line-height: 30px;
+      }
+
+      .demo.else .image {
+        width: 100%;
       }
     </style>
 
