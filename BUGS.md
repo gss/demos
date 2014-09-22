@@ -43,6 +43,10 @@
     border-radius: == &[width] / 2; /* Works */
   }
 
+- Issue with intrinsics when loading custom fonts
+
+  See sanity-checks/font-face-intrinsic-scroll/index.html
+
 
 
 ///

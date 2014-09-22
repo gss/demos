@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GSS</title>
+    <meta name="description" content="GSS demo of per-element responsiveness and source order independence.">
+    <link rel="stylesheet" type="text/css" href="texture.css">
+    <script src="../bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="../../sections/_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <section class="cta">
+
+      <h1 class="heading">
+        Scroll the page and this text will jump, but only when using a custom font.
+        Refresh to see it snap back.
+      </h1>
+      <aside></aside>
+
+    </section>
+
+
+    <style type="text/gss">
+
+    [md] == 72 !require;
+    [md-gap] == 36 !require;
+
+    @v |(section)...| in(::window) {
+      @h |(&)| in(::window);
+    }
+
+    </style>
+
+    <style type="text/gss">
+      .cta {
+        .heading {
+          height: == &[intrinsic-height];
+        }
+
+        aside {
+          border-radius: == &[width] / 2;
+          size: == [md] * 5;
+        }
+      }
+
+      .cta {
+        @h |-(.heading)-(aside)-| in(&) gap([md] * 2);
+        @v |~-~(.heading)~-~| in(&) gap([md]);
+        @v |~-~(aside)~-~| in(&) gap([md]);
+        .heading[center-y] == aside[center-y] == (&)[center-y];
+      }
+    </style>
+
+    <style type="text/css">
+      .cta {
+        background: hsl(0, 0%, 100%);
+      }
+
+      .cta .heading {
+        color: hsl(0, 0%, 0%);
+        font-family: 'National Light'; /* Comment this out and the issue goes away */
+        font-size: 64px;
+      }
+
+      .cta aside {
+        background-color: hsla(270, 4%, 9%, .9);
+      }
+    </style>
+
+    <script>
+      window.engine = GSS(document);
+    </script>
+
+  </body>
+</html>
