@@ -53,11 +53,17 @@
         (& .media)[left] == &[left] - (& .media)[width] / 5;
 
         /* BUG: points not working as expected */
-        /*@v |~-~(& article)-<&[center-y]>-(& .media)~-~| in(&) gap([md-sub] * 2) outer-gap([md-sub] * 9);*/
+        @v |~-~(& article)-<&[center-y]>-(& .media)~-~| in(&) gap([md-sub] * 2) outer-gap([md-sub] * 9);
 
         /* Workaround */
         (& article)[bottom] + ([md-sub] * 2) == &[center-y];
         @v |~-~(& article)-(& .media)~-~| in(&) gap([md-sub] * 4) outer-gap([md-sub] * 9);
+
+        /* Better workaround */
+        /*
+        [center-point] == &[center-y];
+        @v |~-~(& article)-<[center-point]>-(& .media)~-~| in(&) gap([md-sub] * 2) outer-gap([md-sub] * 9);
+        */
       }
     </style>
 
