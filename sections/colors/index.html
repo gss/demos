@@ -20,9 +20,9 @@
         <p class="text">Expertly applies the right tone and color palette automatically to your site. Keeping your content consistent, unique and beautiful.</p>
       </article>
 
-      <img class="image" src="image01.jpg">
-      <img class="image selected" src="image02.jpg">
-      <img class="image" src="image03.jpg">
+      <img class="media" src="image01.jpg">
+      <img class="media selected" src="image02.jpg">
+      <img class="media" src="image03.jpg">
 
     </section>
 
@@ -51,7 +51,7 @@
           }
         }
 
-        .image {
+        .media {
           width: == &[height] * (1265 / 943) !require;
         }
       }
@@ -62,36 +62,36 @@
         @v |~-~("area")~-~| outer-gap([md-sub] * 14);
 
         @h |-(& article)-| gap([md-sub] * 4) in("area");
-        @h |(& .image.selected)~-~| gap([md-sub] * 4) in("area");
+        @h |(& .media.selected)~-~| gap([md-sub] * 4) in("area");
 
-        @v |(& article)-(& .image.selected)| gap([md-sub] * 4) in("area");
+        @v |(& article)-(& .media.selected)| gap([md-sub] * 4) in("area");
       }
 
       .colors.elseif {
-        @h |-(& article)~-~(& .image.selected) gap([md-sub] * 6) outer-gap([md-sub] * 4);
-        (& article)[center-y] == (& .image.selected)[center-y] == &[center-y];
+        @h |-(& article)~-~(& .media.selected) gap([md-sub] * 6) outer-gap([md-sub] * 4);
+        (& article)[center-y] == (& .media.selected)[center-y] == &[center-y];
 
         (& article)[width] == [md] * 4;
 
-        @v |~-~(& .image.selected)~-~| in(&) gap([md-sub] * 6);
+        @v |~-~(& .media.selected)~-~| in(&) gap([md-sub] * 6);
 
-        (& .image.selected)[right] == &[right] + ((& .image.selected)[width] / 4);
+        (& .media.selected)[right] == &[right] + ((& .media.selected)[width] / 4);
       }
 
       .colors.else {
-        "images"[width] == [md] * 10;
-        @h |("images")-(& article) in(&) gap([md] * 2);
-        @v |("images")| in(&);
+        "media"[width] == [md] * 10;
+        @h |("media")-(& article) in(&) gap([md] * 2);
+        @v |("media")| in(&);
 
 
-        @v (& .image)-... gap([md-sub] * 11) {
+        @v (& .media)-... gap([md-sub] * 11) {
           right: == [image-right];
         }
 
-        (& .image)[width] == [md] * 4 !weak;
+        (& .media)[width] == [md] * 4 !weak;
 
-        @h |(& .image.selected)| in("images") !strong;
-        (& .image.selected)[center-y] == "images"[center-y];
+        @h |(& .media.selected)| in("media") !strong;
+        (& .media.selected)[center-y] == "media"[center-y];
 
         article {
           width: == [md] * 5;
@@ -145,7 +145,7 @@
         font-family: 'National Light';
       }
 
-      .colors .image {
+      .colors .media {
         box-shadow: 5px 5px 15px hsla(0, 0%, 0%, .15);
       }
 
@@ -167,11 +167,11 @@
         display: none;
       }
 
-      .colors.if .image {
+      .colors.if .media {
         display: none;
       }
 
-      .colors.if .image.selected {
+      .colors.if .media.selected {
         display: block;
       }
 
@@ -191,11 +191,11 @@
         display: none;
       }
 
-      .colors.elseif .image {
+      .colors.elseif .media {
         display: none;
       }
 
-      .colors.elseif .image.selected {
+      .colors.elseif .media.selected {
         display: block;
       }
 
