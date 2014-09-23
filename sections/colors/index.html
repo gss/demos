@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <!-- <section class="colors if"> -->
-    <section class="colors elseif">
+    <section class="colors if">
+    <!-- <section class="colors elseif"> -->
     <!-- <section class="colors else"> -->
 
       <article>
@@ -39,7 +39,7 @@
     </style>
 
     <style type="text/gss">
-      [md-sub] == 8;
+      [md-sub] == 8 !require;
 
       .colors {
         article {
@@ -49,7 +49,6 @@
           .text {
             margin-top: == [md-sub];
           }
-
         }
 
         .image {
@@ -58,7 +57,11 @@
       }
 
       .colors.if {
+        @h |-(& article)-| gap([md-sub] * 4);
+        @h |(& .image.selected)~-~| gap([md-sub] * 4);
 
+        [center-point] == &[center-y];
+        @v |~-~(& article)-<[center-point]>-(& .image.selected)~-~| gap([md-sub] * 2) outer-gap([md-sub] * 14);
       }
 
       .colors.elseif {
@@ -141,6 +144,32 @@
 
       .colors .image {
         box-shadow: 5px 5px 15px hsla(0, 0%, 0%, .15);
+      }
+
+
+
+      .colors.if .title {
+        font-size: 32px;
+        line-height: 32px;
+        text-align: center;
+      }
+
+      .colors.if .subtitle {
+        font-size: 18px;
+        line-height: 24px;
+        text-align: center;
+      }
+
+      .colors.if .text {
+        display: none;
+      }
+
+      .colors.if .image {
+        display: none;
+      }
+
+      .colors.if .image.selected {
+        display: block;
       }
 
 
