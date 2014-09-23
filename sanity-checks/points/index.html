@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GSS</title>
+    <meta name="description" content="GSS demo of per-element responsiveness and source order independence.">
+    <link rel="stylesheet" type="text/css" href="texture.css">
+    <script src="../bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <section class="face-detection">
+
+      <article>
+        <h1 class="title">The right shot, everytime</h1>
+        <h2 class="subtitle">Face detection & smart cropping</h2>
+      </article>
+      <img class="media" src="../../sections/face-detection/laptop.png">
+
+    </section>
+
+
+    <style type="text/gss">
+
+    [md] == 72 !require;
+    [md-gap] == 36 !require;
+
+    @v |(section)...| in(::window) {
+      @h |(&)| in(::window);
+    }
+
+    </style>
+
+    <style type="text/gss">
+      [md-sub] == 8;
+
+      .face-detection {
+        article {
+          height: == &[intrinsic-height];
+
+          .subtitle {
+            margin-top: == [md-sub] * 2;
+          }
+        }
+
+        .media {
+          width: == &[height] * (1035 / 670) !require;
+        }
+      }
+
+      .face-detection {
+        @h |-(& article)-| gap([md-sub] * 4) in(&);
+
+        @h (& .media)~-~| gap([md-sub] * 3) in(&);
+        (& .media)[left] == &[left] - (& .media)[width] / 5;
+
+        /* BUG: points not working as expected */
+        /*@v |~-~(& article)-<&[center-y]>-(& .media)~-~| in(&) gap([md-sub] * 2) outer-gap([md-sub] * 9);*/
+
+        /* Workaround */
+        (& article)[bottom] + ([md-sub] * 2) == &[center-y];
+        @v |~-~(& article)-(& .media)~-~| in(&) gap([md-sub] * 4) outer-gap([md-sub] * 9);
+      }
+    </style>
+
+    <style type="text/css">
+      .face-detection {
+        background-color: hsl(36, 33%, 94%);
+        overflow: hidden;
+      }
+
+      .face-detection .title {
+        font-family: sans-serif;
+      }
+
+      .face-detection .subtitle {
+        font-family: sans-serif;
+        color: hsl(353, 78%, 68%);
+        text-transform: uppercase;
+      }
+    </style>
+
+    <script>
+      window.engine = GSS(document);
+    </script>
+
+  </body>
+</html>
