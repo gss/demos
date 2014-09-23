@@ -14,6 +14,12 @@
 - not pretty error : 
 (& .title)[margin-top]: == [md] / 2;
 
+- pure numbers in complex expressions on one side don't work
+
+  [foo] == 8 * 4; /* Works */
+  [bar] == (8 * 4) - 1; /* Doesn't work */
+
+
 ## Engine Bugs
 
 - Allow element to be modified w/o causing update pass
@@ -33,6 +39,18 @@
 
     .post-1"zone1" = &"zone1";
     .post-1[x] == &[x];
+
+- 2d sugar not working as expected:
+
+  aside {
+    size: == 360; /* Works */
+    border-radius: == &[size] / 2; /* Doesn't work */
+    border-radius: == &[width] / 2; /* Works */
+  }
+
+- Issue with intrinsics when loading custom fonts
+
+  See sanity-checks/font-face-intrinsic-scroll/index.html
 
 
 

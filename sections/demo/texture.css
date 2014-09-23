@@ -1,0 +1,16 @@
+html {
+  background-color: white;
+  font-family: 'National Regular';
+}
+
+a, p, h1, h2, h3, h4 {
+  font-weight: normal;
+}
+
+* {
+  /*-webkit-backface-visibility: hidden;*/
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  box-sizing: border-box;
+}

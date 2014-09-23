@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GSS</title>
+    <meta name="description" content="GSS demo of per-element responsiveness and source order independence.">
+    <link rel="stylesheet" type="text/css" href="texture.css">
+    <script src="../bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <section class="demo if">
+    <!-- <section class="demo elseif"> -->
+    <!-- <section class="demo else"> -->
+
+      <h1 class="title">We've already broken ground on more than 30 layout filters.</h1>
+      <h2 class="subtitle">Before we invest the hard work of making each bullet-proof, we need to know this is wanted & needed, become a founding member & help us help you!</h2>
+      <img class="image" src="image.png">
+
+    </section>
+
+
+    <style type="text/gss">
+
+    [md] == 72 !require;
+    [md-gap] == 36 !require;
+
+    @v |(section)...| in(::window) {
+      @h |(&)| in(::window);
+    }
+
+    </style>
+
+    <style type="text/gss">
+      [md-sub] == 8;
+
+      .demo {
+
+      }
+
+      .demo.if {
+        .title {
+          margin-top: == [md-sub] * 12;
+          margin-bottom: == [md-sub] * 6;
+          padding-left: == &[padding-right] == [md-sub] * 5;
+        }
+
+        .subtitle {
+          size: == 0;
+        }
+      }
+
+      .demo.elseif {
+        .title {
+          margin-top: == [md-sub] * 6;
+          margin-bottom: == [md-sub] * 2;
+          padding-left: == &[padding-right] == [md-sub] * 12;
+        }
+
+        .subtitle {
+          size: == 0;
+        }
+      }
+
+      .demo.else {
+        .title,
+        .subtitle {
+          width: == [md] * 10;
+        }
+
+        .title {
+          margin-top: == [md];
+          padding-top: == ([md-sub] * 6) - 8;
+        }
+
+        .subtitle {
+          padding-top: == ([md-sub] * 3) - 12;
+        }
+      }
+    </style>
+
+    <style type="text/css">
+      .demo {
+        background-color: hsl(36, 33%, 94%);
+        overflow: hidden;
+      }
+
+      .demo .title {
+        color: hsl(255, 13%, 12%);
+        font-family: 'National Light';
+        letter-spacing: 0.16em;
+        margin: 0 auto;
+        position: relative;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .demo .subtitle {
+        color: hsl(255, 13%, 12%);
+        font-family: 'National Light';
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .demo .image {
+        height: auto;
+      }
+
+
+
+      .demo.if .title {
+        font-size: 24px;
+        line-height: 32px;
+      }
+
+      .demo.if .subtitle {
+        visibility: hidden;
+      }
+
+      .demo.if .image {
+        width: 133%;
+      }
+
+
+
+      .demo.elseif .title {
+        font-size: 24px;
+        line-height: 32px;
+      }
+
+      .demo.elseif .subtitle {
+        visibility: hidden;
+      }
+
+      .demo.elseif .image {
+        width: 100%;
+      }
+
+
+
+      .demo.else .title {
+        font-size: 34px;
+        line-height: 40px;
+        position: relative;
+      }
+
+      .demo.else .title:before {
+        background-color: hsl(65, 8%, 69%);
+        content: "";
+        display: block;
+        width: 40px;
+        height: 2px;
+        margin-left: -20px;
+        position: absolute;
+        left: 50%;
+        top: 0;
+      }
+
+      .demo.else .subtitle {
+        font-size: 20px;
+        line-height: 30px;
+      }
+
+      .demo.else .image {
+        width: 100%;
+      }
+    </style>
+
+    <script>
+      window.engine = GSS(document);
+    </script>
+
+  </body>
+</html>
