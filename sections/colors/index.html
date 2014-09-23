@@ -60,8 +60,11 @@
         @h |-(& article)-| gap([md-sub] * 4);
         @h |(& .image.selected)~-~| gap([md-sub] * 4);
 
-        [center-point] == &[center-y];
-        @v |~-~(& article)-<[center-point]>-(& .image.selected)~-~| gap([md-sub] * 2) outer-gap([md-sub] * 14);
+        [center-point] == &[height] / 3;
+        /*@v |~-~(& article)-<[center-point]>-(& .image.selected)~-~| gap([md-sub] * 2) outer-gap([md-sub] * 14);*/
+        @v |~-~(& article) outer-gap([md-sub] * 14);
+        @v (& article)-<[center-point]>-(& .image.selected) gap([md-sub] * 2);
+        @v (& .image.selected)~-~| outer-gap([md-sub] * 14);
       }
 
       .colors.elseif {
