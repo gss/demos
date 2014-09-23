@@ -57,14 +57,14 @@
       }
 
       .colors.if {
-        @h |-(& article)-| gap([md-sub] * 4);
-        @h |(& .image.selected)~-~| gap([md-sub] * 4);
+        "area"[center-y] == &[center-y];
+        @h |("area")|;
+        @v |~-~("area")~-~| outer-gap([md-sub] * 14);
 
-        [center-point] == &[height] / 3;
-        /*@v |~-~(& article)-<[center-point]>-(& .image.selected)~-~| gap([md-sub] * 2) outer-gap([md-sub] * 14);*/
-        @v |~-~(& article) outer-gap([md-sub] * 14);
-        @v (& article)-<[center-point]>-(& .image.selected) gap([md-sub] * 2);
-        @v (& .image.selected)~-~| outer-gap([md-sub] * 14);
+        @h |-(& article)-| gap([md-sub] * 4) in("area");
+        @h |(& .image.selected)~-~| gap([md-sub] * 4) in("area");
+
+        @v |(& article)-(& .image.selected)| gap([md-sub] * 4) in("area");
       }
 
       .colors.elseif {
