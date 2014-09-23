@@ -116,19 +116,10 @@
         @v |-(& .content) in(&"zone2") gap([md] * 1/3);
         @v (& .content)-| in(&"zone2") gap([md] * 1/2);
 
-        /* BUG: scoped variables not working as expected */
-        /*@h |(&"cover")(& .text) in(& .content) {
-          height: == [cover-height];
-          top: == [cover-top];
-
-          height: == &[cover-height];
-          top: == &[cover-top];
-        }*/
-
-        /* Workaround */
-        @h |(&"cover")(& .text) in(& .content);
-        (& .text)[top] == &"cover"[top];
-        (& .text)[height] == &"cover"[height];
+        @h |(&"cover")(& .text) in(& .content) {
+          height: == &:next[height];
+          top: == &:next[top];
+        }
 
         @h (&"cover")-| in(&"zone2") gap([md] * 1/3);
 
