@@ -11,8 +11,8 @@
   </head>
   <body>
     <!-- <section class="colors if"> -->
-    <!-- <section class="colors elseif"> -->
-    <section class="colors else">
+    <section class="colors elseif">
+    <!-- <section class="colors else"> -->
 
       <article>
         <h1 class="title">Color consistency just got a lot easier</h1>
@@ -44,6 +44,16 @@
       .colors {
         article {
           height: == &[intrinsic-height];
+
+          .subtitle,
+          .text {
+            margin-top: == [md-sub];
+          }
+
+        }
+
+        .image {
+          width: == &[height] * (1265 / 943) !require;
         }
       }
 
@@ -52,7 +62,14 @@
       }
 
       .colors.elseif {
+        @h |-(& article)~-~(& .image.selected) gap([md-sub] * 6) outer-gap([md-sub] * 4);
+        (& article)[center-y] == (& .image.selected)[center-y] == &[center-y];
 
+        (& article)[width] == [md] * 4;
+
+        @v |~-~(& .image.selected)~-~| in(&) gap([md-sub] * 6);
+
+        (& .image.selected)[right] == &[right] + ((& .image.selected)[width] / 4);
       }
 
       .colors.else {
@@ -63,7 +80,6 @@
 
         @v (& .image)-... gap([md-sub] * 11) {
           right: == [image-right];
-          width: == &[height] * (1265 / 943) !require;
         }
 
         (& .image)[width] == [md] * 4 !weak;
@@ -76,12 +92,7 @@
           @v |~-~(&)~-~| gap([md] * 2);
         }
 
-        article[center-y] == &[center-y];
-
-        .subtitle,
-        .text {
-          margin-top: == [md-sub];
-        }
+        (& article)[center-y] == &[center-y];
       }
     </style>
 
@@ -113,11 +124,11 @@
 
       .colors .title {
         color: hsl(0, 0%, 100%);
-        font-family: 'National Thin';
+        font-family: 'National Light';
       }
 
       .colors .subtitle {
-        color: hsl(247, 10%, 17%);
+        color: hsl(27, 10%, 60%);
         font-family: 'National Light';
         letter-spacing: 0.16em;
         text-transform: uppercase;
@@ -130,6 +141,30 @@
 
       .colors .image {
         box-shadow: 5px 5px 15px hsla(0, 0%, 0%, .15);
+      }
+
+
+
+      .colors.elseif .title {
+        font-size: 32px;
+        line-height: 32px;
+      }
+
+      .colors.elseif .subtitle {
+        font-size: 18px;
+        line-height: 24px;
+      }
+
+      .colors.elseif .text {
+        display: none;
+      }
+
+      .colors.elseif .image {
+        display: none;
+      }
+
+      .colors.elseif .image.selected {
+        display: block;
       }
 
 
