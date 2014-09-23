@@ -10,8 +10,13 @@
              [x] == 1;
            }
            ::[x] == [z];
+           
+- not pretty error : 
+(& .title)[margin-top]: == [md] / 2;
 
 ## Engine Bugs
+
+- Allow element to be modified w/o causing update pass
 
 - @if statements with ::window[width] breaks things...
   - binding width to var still breaks, but not as bad
