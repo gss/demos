@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GSS</title>
+    <meta name="description" content="GSS demo of per-element responsiveness and source order independence.">
+    <link rel="stylesheet" type="text/css" href="texture.css">
+    <script src="../bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <!-- <section class="colors if"> -->
+    <!-- <section class="colors elseif"> -->
+    <section class="colors else">
+
+      <article>
+        <h1 class="title">Color consistency just got a lot easier</h1>
+        <h2 class="subtitle">Auto-Color correction</h2>
+        <p class="text">Expertly applies the right tone and color palette automatically to your site. Keeping your content consistent, unique and beautiful.</p>
+      </article>
+
+      <img class="image" src="image01.jpg">
+      <img class="image selected" src="image02.jpg">
+      <img class="image" src="image03.jpg">
+
+    </section>
+
+
+    <style type="text/gss">
+
+    [md] == 72 !require;
+    [md-gap] == 36 !require;
+
+    @v |(section)...| in(::window) {
+      @h |(&)| in(::window);
+    }
+
+    </style>
+
+    <style type="text/gss">
+      [md-sub] == 8;
+
+      .colors {
+        article {
+          height: == &[intrinsic-height];
+        }
+      }
+
+      .colors.if {
+
+      }
+
+      .colors.elseif {
+
+      }
+
+      .colors.else {
+        "images"[width] == [md] * 10;
+        @h |("images")-(& article) in(&) gap([md] * 2);
+        @v |("images")| in(&);
+
+
+        @v (& .image)-... gap([md-sub] * 11) {
+          right: == [image-right];
+          width: == &[height] * (1265 / 943) !require;
+        }
+
+        (& .image)[width] == [md] * 4 !weak;
+
+        @h |(& .image.selected)| in("images") !strong;
+        (& .image.selected)[center-y] == "images"[center-y];
+
+        article {
+        width: == [md] * 5;
+          @v |~-~(&)~-~| gap([md] * 2);
+        }
+
+        article[center-y] == &[center-y];
+
+        .subtitle,
+        .text {
+          margin-top: == [md-sub];
+        }
+      }
+    </style>
+
+    <style type="text/css">
+      .colors {
+        background-color: hsl(255, 11%, 15%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .colors:before {
+        background-image: url('image02.jpg');
+        background-size: cover;
+        background-position: center;
+
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        -webkit-filter: blur(40px);
+        -moz-filter: blur(40px);
+        filter: blur(40px);
+
+        opacity: .3;
+      }
+
+      .colors .title {
+        color: hsl(0, 0%, 100%);
+        font-family: 'National Thin';
+      }
+
+      .colors .subtitle {
+        color: hsl(247, 10%, 17%);
+        font-family: 'National Light';
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .colors .text {
+        color: hsl(0, 0%, 100%);
+        font-family: 'National Light';
+      }
+
+      .colors .image {
+        box-shadow: 5px 5px 15px hsla(0, 0%, 0%, .15);
+      }
+
+
+
+      .colors.else .title {
+        font-size: 40px;
+        line-height: 46px;
+      }
+
+      .colors.else .subtitle {
+        font-size: 20px;
+        line-height: 30px;
+      }
+
+      .colors.else .text {
+        font-size: 20px;
+        line-height: 30px;
+      }
+    </style>
+
+    <script>
+      window.engine = GSS(document);
+    </script>
+
+  </body>
+</html>
