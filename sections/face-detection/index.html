@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <!-- <section class="face-detection if"> -->
-    <section class="face-detection elseif">
+    <section class="face-detection if">
+    <!-- <section class="face-detection elseif"> -->
     <!-- <section class="face-detection else"> -->
 
       <article>
@@ -53,7 +53,24 @@
       }
 
       .face-detection.if {
+        article {
+          .text {
+            size: == 0;
+          }
+        }
 
+        @h |-(& article)-| gap([md-sub] * 4) in(&);
+        @h (& .media)~-~| gap([md-sub] * 3) in(&);
+
+        /* BUG: points not working as expected */
+        /*@v |~-~(& article)-<&[center-y]>-(& .media)~-~| in(&) gap([md-sub]) outer-gap([md-sub] * 6);*/
+        (& article)[bottom] + ([md-sub] * 4) == &[center-y];
+
+        @v |~-~(& article)-(& .media)~-~| in(&) gap([md-sub] * 4) outer-gap([md-sub] * 9);
+
+
+
+        (& .media)[left] == &[left] - (& .media)[width] / 5;
       }
 
       .face-detection.elseif {
@@ -69,8 +86,8 @@
 
         @v |~-~(& article)~-~| in(&) gap([md-sub] * 13);
 
-        @v |~-~(.media) in(&) gap([md-sub] * 8);
-        @v (.media)~-~| in(&) gap([md-sub] * 3);
+        @v |~-~(& .media) in(&) gap([md-sub] * 8);
+        @v (& .media)~-~| in(&) gap([md-sub] * 3);
 
         (& article)[center-y] == (& .media)[center-y] == &[center-y];
         (& .media)[right] == &[right] + (& .media)[width] / 5;
@@ -90,15 +107,15 @@
         @v ("area")| in(&);
         "area"[center-x] == &[center-x];
 
-        @h |(& article)-(.media)| gap([md] * 2) in("area");
+        @h |(& article)-(& .media)| gap([md] * 2) in("area");
 
         @v |~-~(& article) in(&) gap([md] * 3);
         @v (& article)~-~| in(&) gap([md] * 4);
 
-        @v |~-~(.media) in(&) gap([md] * 2);
-        @v (.media)~-~| in(&) gap([md] * 3);
+        @v |~-~(& .media) in(&) gap([md] * 2);
+        @v (& .media)~-~| in(&) gap([md] * 3);
 
-        article[center-y] == .media[center-y] == "area"[center-y];
+        (& article)[center-y] == (& .media)[center-y] == "area"[center-y];
       }
     </style>
 
@@ -126,35 +143,30 @@
       }
 
       .face-detection .subtitle {
-        font-family: 'National Regular';
+        font-family: 'National Light';
         color: hsl(353, 78%, 68%);
         text-transform: uppercase;
       }
 
-      .face-detection .text {
 
+
+      .face-detection.if {
+        overflow: hidden;
       }
-
-      .face-detection .media {
-
-      }
-
-
 
       .face-detection.if .title {
-
+        font-size: 32px;
+        line-height: 36px;
       }
 
       .face-detection.if .subtitle {
-
+        font-size: 20px;
+        letter-spacing: 0.16em;
+        line-height: 20px;
       }
 
       .face-detection.if .text {
-
-      }
-
-      .face-detection.if .media {
-
+        visibility: hidden;
       }
 
 
@@ -178,10 +190,6 @@
         visibility: hidden;
       }
 
-      .face-detection.elseif .media {
-
-      }
-
 
 
       .face-detection.else .title {
@@ -198,10 +206,6 @@
       .face-detection.else .text {
         font-size: 20px;
         line-height: 40px;
-      }
-
-      .face-detection.else .media {
-
       }
     </style>
 
