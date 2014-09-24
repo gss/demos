@@ -10,10 +10,26 @@
     <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <section class="colors if">
-    <!-- <section class="colors elseif"> -->
-    <!-- <section class="colors else"> -->
 
+    <!-- <section class="colors if media-left"> -->
+    <!-- <section class="colors elseif media-left"> -->
+    <section class="colors else media-left">
+      <article>
+        <h1 class="title">Color consistency just got a lot easier</h1>
+        <h2 class="subtitle">Auto-Color correction</h2>
+        <p class="text">Expertly applies the right tone and color palette automatically to your site. Keeping your content consistent, unique and beautiful.</p>
+      </article>
+
+      <img class="media" src="image01.jpg">
+      <img class="media selected" src="image02.jpg">
+      <img class="media" src="image03.jpg">
+
+    </section>
+
+
+    <!-- <section class="colors if media-right"> -->
+    <!-- <section class="colors elseif media-right"> -->
+    <section class="colors else media-right">
       <article>
         <h1 class="title">Color consistency just got a lot easier</h1>
         <h2 class="subtitle">Auto-Color correction</h2>
@@ -32,7 +48,7 @@
     [md] == 72 !require;
     [md-gap] == 36 !require;
 
-    @v |(section)...| in(::window) {
+    @v |(section)... in(::window) {
       @h |(&)| in(::window);
     }
 
@@ -57,41 +73,50 @@
       }
 
       .colors.if {
-        "area"[center-y] == &[center-y];
-        @h |("area")|;
-        @v |~-~("area")~-~| outer-gap([md-sub] * 14);
+        &"area"[center-y] == &[center-y];
+        @h |(&"area")|;
+        @v |~-~(&"area")~-~| outer-gap([md-sub] * 14);
 
-        @h |-(& article)-| gap([md-sub] * 4) in("area");
-        @h |(& .media.selected)~-~| gap([md-sub] * 4) in("area");
+        @h |-(& article)-| gap([md-sub] * 4) in(&"area");
+        @v |(& article)-(& .media.selected)| gap([md-sub] * 4) in(&"area");
 
-        @v |(& article)-(& .media.selected)| gap([md-sub] * 4) in("area");
+        &.media-left {
+          @h |(& .media.selected)~-~| gap([md-sub] * 4) in(&"area");
+        }
+
+        &.media-right {
+          @h |~-~(& .media.selected)| gap([md-sub] * 4) in(&"area");
+        }
       }
 
       .colors.elseif {
-        @h |-(& article)~-~(& .media.selected) gap([md-sub] * 6) outer-gap([md-sub] * 4);
         (& article)[center-y] == (& .media.selected)[center-y] == &[center-y];
 
         (& article)[width] == [md] * 4;
 
         @v |~-~(& .media.selected)~-~| in(&) gap([md-sub] * 6);
 
-        (& .media.selected)[right] == &[right] + ((& .media.selected)[width] / 4);
+        &.media-left {
+          @h (& .media.selected)~-~(& article)-| gap([md-sub] * 6) outer-gap([md-sub] * 4);
+          (& .media.selected)[left] == &[left] - ((& .media.selected)[width] / 4);
+        }
+
+        &.media-right {
+          @h |-(& article)~-~(& .media.selected) gap([md-sub] * 6) outer-gap([md-sub] * 4);
+          (& .media.selected)[right] == &[right] + ((& .media.selected)[width] / 4);
+        }
       }
 
       .colors.else {
-        "media"[width] == [md] * 10;
-        @h |("media")-(& article) in(&) gap([md] * 2);
-        @v |("media")| in(&);
+        height: == (& .media.selected)[height] * 2;
 
+        &"media"[width] == [md] * 10;
 
-        @v (& .media)-... gap([md-sub] * 11) {
-          right: == [image-right];
-        }
-
+        @v |(&"media")| in(&);
         (& .media)[width] == [md] * 4 !weak;
 
-        @h |(& .media.selected)| in("media") !strong;
-        (& .media.selected)[center-y] == "media"[center-y];
+        @h |(& .media.selected)| in(&"media") !strong;
+        (& .media.selected)[center-y] == &"media"[center-y];
 
         article {
           width: == [md] * 5;
@@ -99,6 +124,22 @@
         }
 
         (& article)[center-y] == &[center-y];
+
+        &.media-left {
+          @h |(&"media")-(& article) in(&) gap([md] * 2);
+
+          @v (& .media)-... gap([md-sub] * 11) in(&"media") {
+            right: == &:next[right];
+          }
+        }
+
+        &.media-right {
+          @h (& article)-(&"media")| in(&) gap([md] * 2);
+
+          @v (& .media)-... gap([md-sub] * 11) in(&"media") {
+            left: == &:next[left];
+          }
+        }
       }
     </style>
 
