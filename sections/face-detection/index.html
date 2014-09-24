@@ -10,17 +10,27 @@
     <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <section class="face-detection if">
-    <!-- <section class="face-detection elseif"> -->
-    <!-- <section class="face-detection else"> -->
 
+    <!-- <section class="face-detection if"> -->
+    <!-- <section class="face-detection elseif"> -->
+    <section class="face-detection else">
       <article>
         <h1 class="title">The right shot, everytime</h1>
         <h2 class="subtitle">Face detection & smart cropping</h2>
         <p class="text">Intelligently recognises faces and dynamically crops images whatever the size, whatever the display. All you have to do is is find the right media.</p>
       </article>
       <img class="media" src="laptop.png">
+    </section>
 
+    <!-- <section class="face-detection if"> -->
+    <!-- <section class="face-detection elseif"> -->
+    <section class="face-detection else">
+      <article>
+        <h1 class="title">The right shot, everytime</h1>
+        <h2 class="subtitle">Face detection & smart cropping</h2>
+        <p class="text">Intelligently recognises faces and dynamically crops images whatever the size, whatever the display. All you have to do is is find the right media.</p>
+      </article>
+      <img class="media" src="laptop.png">
     </section>
 
 
@@ -29,7 +39,7 @@
     [md] == 72 !require;
     [md-gap] == 36 !require;
 
-    @v |(section)...| in(::window) {
+    @v |(section)... in(::window) {
       @h |(&)| in(::window);
     }
 
@@ -53,11 +63,7 @@
       }
 
       .face-detection.if {
-        article {
-          .text {
-            size: == 0;
-          }
-        }
+        height: == ::window[height];
 
         @h |-(& article)-| gap([md-sub] * 4) in(&);
         @h (& .media)~-~| gap([md-sub] * 3) in(&);
@@ -74,15 +80,13 @@
       }
 
       .face-detection.elseif {
+        height: == ::window[height];
+
         article {
           width: == [md] * 3;
-
-          .text {
-            size: == 0;
-          }
         }
 
-        @h |-(& article)~-~(.media) gap([md-sub] * 6) outer-gap([md-sub] * 4) in(&);
+        @h |-(& article)~-~(& .media) gap([md-sub] * 6) outer-gap([md-sub] * 4) in(&);
 
         @v |~-~(& article)~-~| in(&) gap([md-sub] * 13);
 
@@ -102,12 +106,12 @@
           }
         }
 
-        @h |~-~("area")~-~| in(&) gap([md] * 2);
-        @v |("area") in(&);
-        @v ("area")| in(&);
-        "area"[center-x] == &[center-x];
+        @h |~-~(&"area")~-~| in(&) gap([md] * 2);
+        @v |(&"area") in(&);
+        @v (&"area")| in(&);
+        &"area"[center-x] == &[center-x];
 
-        @h |(& article)-(& .media)| gap([md] * 2) in("area");
+        @h |(& article)-(& .media)| gap([md] * 2) in(&"area");
 
         @v |~-~(& article) in(&) gap([md] * 3);
         @v (& article)~-~| in(&) gap([md] * 4);
@@ -115,7 +119,7 @@
         @v |~-~(& .media) in(&) gap([md] * 2);
         @v (& .media)~-~| in(&) gap([md] * 3);
 
-        (& article)[center-y] == (& .media)[center-y] == "area"[center-y];
+        (& article)[center-y] == (& .media)[center-y] == &"area"[center-y];
       }
     </style>
 
@@ -166,7 +170,7 @@
       }
 
       .face-detection.if .text {
-        visibility: hidden;
+        display: none;
       }
 
 
@@ -187,7 +191,7 @@
       }
 
       .face-detection.elseif .text {
-        visibility: hidden;
+        display: none;
       }
 
 
