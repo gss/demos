@@ -114,6 +114,7 @@
         /* BUG: splats in VFL generate &:next which causes unexpected layout */
         @h |-(& article)-...-| in(&) gap([article-gap]) outer-gap([article-outer-gap]) {
           width: == [md] * 4;
+          /*top: == &:next[top];*/
 
           (& img)[width] == &[width] - [md];
           (& .title)[margin-top] == ([md-sub] * 6) - 8;
