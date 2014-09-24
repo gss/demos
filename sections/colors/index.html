@@ -10,19 +10,35 @@
     <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <!-- <section class="colors if"> -->
-    <!-- <section class="colors elseif"> -->
-    <section class="colors else">
 
+    <!-- <section class="colors if media-left"> -->
+    <!-- <section class="colors elseif media-left"> -->
+    <section class="colors else media-left">
       <article>
         <h1 class="title">Color consistency just got a lot easier</h1>
         <h2 class="subtitle">Auto-Color correction</h2>
         <p class="text">Expertly applies the right tone and color palette automatically to your site. Keeping your content consistent, unique and beautiful.</p>
       </article>
 
-      <img class="image" src="image01.jpg">
-      <img class="image selected" src="image02.jpg">
-      <img class="image" src="image03.jpg">
+      <img class="media" src="image01.jpg">
+      <img class="media selected" src="image02.jpg">
+      <img class="media" src="image03.jpg">
+
+    </section>
+
+
+    <!-- <section class="colors if media-right"> -->
+    <!-- <section class="colors elseif media-right"> -->
+    <section class="colors else media-right">
+      <article>
+        <h1 class="title">Color consistency just got a lot easier</h1>
+        <h2 class="subtitle">Auto-Color correction</h2>
+        <p class="text">Expertly applies the right tone and color palette automatically to your site. Keeping your content consistent, unique and beautiful.</p>
+      </article>
+
+      <img class="media" src="image01.jpg">
+      <img class="media selected" src="image02.jpg">
+      <img class="media" src="image03.jpg">
 
     </section>
 
@@ -32,55 +48,97 @@
     [md] == 72 !require;
     [md-gap] == 36 !require;
 
-    @v |(section)...| in(::window) {
+    @v |(section)... in(::window) {
       @h |(&)| in(::window);
     }
 
     </style>
 
     <style type="text/gss">
-      [md-sub] == 8;
+      [md-sub] == 8 !require;
 
       .colors {
         article {
           height: == &[intrinsic-height];
+
+          .subtitle,
+          .text {
+            margin-top: == [md-sub];
+          }
+        }
+
+        .media {
+          width: == &[height] * (1265 / 943) !require;
         }
       }
 
       .colors.if {
+        &"area"[center-y] == &[center-y];
+        @h |(&"area")|;
+        @v |~-~(&"area")~-~| outer-gap([md-sub] * 14);
 
+        @h |-(& article)-| gap([md-sub] * 4) in(&"area");
+        @v |(& article)-(& .media.selected)| gap([md-sub] * 4) in(&"area");
+
+        &.media-left {
+          @h |(& .media.selected)~-~| gap([md-sub] * 4) in(&"area");
+        }
+
+        &.media-right {
+          @h |~-~(& .media.selected)| gap([md-sub] * 4) in(&"area");
+        }
       }
 
       .colors.elseif {
+        (& article)[center-y] == (& .media.selected)[center-y] == &[center-y];
 
+        (& article)[width] == [md] * 4;
+
+        @v |~-~(& .media.selected)~-~| in(&) gap([md-sub] * 6);
+
+        &.media-left {
+          @h (& .media.selected)~-~(& article)-| gap([md-sub] * 6) outer-gap([md-sub] * 4);
+          (& .media.selected)[left] == &[left] - ((& .media.selected)[width] / 4);
+        }
+
+        &.media-right {
+          @h |-(& article)~-~(& .media.selected) gap([md-sub] * 6) outer-gap([md-sub] * 4);
+          (& .media.selected)[right] == &[right] + ((& .media.selected)[width] / 4);
+        }
       }
 
       .colors.else {
-        "images"[width] == [md] * 10;
-        @h |("images")-(& article) in(&) gap([md] * 2);
-        @v |("images")| in(&);
+        height: == (& .media.selected)[height] * 2;
 
+        &"media"[width] == [md] * 10;
 
-        @v (& .image)-... gap([md-sub] * 11) {
-          right: == [image-right];
-          width: == &[height] * (1265 / 943) !require;
-        }
+        @v |(&"media")| in(&);
+        (& .media)[width] == [md] * 4 !weak;
 
-        (& .image)[width] == [md] * 4 !weak;
-
-        @h |(& .image.selected)| in("images") !strong;
-        (& .image.selected)[center-y] == "images"[center-y];
+        @h |(& .media.selected)| in(&"media") !strong;
+        (& .media.selected)[center-y] == &"media"[center-y];
 
         article {
-        width: == [md] * 5;
+          width: == [md] * 5;
           @v |~-~(&)~-~| gap([md] * 2);
         }
 
-        article[center-y] == &[center-y];
+        (& article)[center-y] == &[center-y];
 
-        .subtitle,
-        .text {
-          margin-top: == [md-sub];
+        &.media-left {
+          @h |(&"media")-(& article) in(&) gap([md] * 2);
+
+          @v (& .media)-... gap([md-sub] * 11) in(&"media") {
+            right: == &:next[right];
+          }
+        }
+
+        &.media-right {
+          @h (& article)-(&"media")| in(&) gap([md] * 2);
+
+          @v (& .media)-... gap([md-sub] * 11) in(&"media") {
+            left: == &:next[left];
+          }
         }
       }
     </style>
@@ -113,11 +171,11 @@
 
       .colors .title {
         color: hsl(0, 0%, 100%);
-        font-family: 'National Thin';
+        font-family: 'National Light';
       }
 
       .colors .subtitle {
-        color: hsl(247, 10%, 17%);
+        color: hsl(27, 10%, 60%);
         font-family: 'National Light';
         letter-spacing: 0.16em;
         text-transform: uppercase;
@@ -128,8 +186,58 @@
         font-family: 'National Light';
       }
 
-      .colors .image {
+      .colors .media {
         box-shadow: 5px 5px 15px hsla(0, 0%, 0%, .15);
+      }
+
+
+
+      .colors.if .title {
+        font-size: 32px;
+        line-height: 32px;
+        text-align: center;
+      }
+
+      .colors.if .subtitle {
+        font-size: 18px;
+        line-height: 24px;
+        text-align: center;
+      }
+
+      .colors.if .text {
+        display: none;
+      }
+
+      .colors.if .media {
+        display: none;
+      }
+
+      .colors.if .media.selected {
+        display: block;
+      }
+
+
+
+      .colors.elseif .title {
+        font-size: 32px;
+        line-height: 32px;
+      }
+
+      .colors.elseif .subtitle {
+        font-size: 18px;
+        line-height: 24px;
+      }
+
+      .colors.elseif .text {
+        display: none;
+      }
+
+      .colors.elseif .media {
+        display: none;
+      }
+
+      .colors.elseif .media.selected {
+        display: block;
       }
 
 

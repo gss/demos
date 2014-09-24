@@ -35,6 +35,9 @@
       
     </section>
     
+    <section class="static-feed">
+      
+    </section>
     
     <!-- BUG -->
     <!--link href="../structure.gss" type="text/gss"-->
@@ -47,17 +50,16 @@
     [md-gap] == 36 !require;
     [md-gap2] == 18 !require;
     
-    @v |(section)...| in(::window) {
+    @v |(section)... in(::window) {
       @h |(&)| in(::window);
     }
     
     </style>
     
     <style type="text/gss">
-    
-      
+
       .top-cta {
-        
+        height: == ::window[height];
         
         @h |(.bg)| in(&);
         @v |(.bg)| in(&);
@@ -118,13 +120,20 @@
           width: == ::[intrinsic-width];            
           center-x: == "area"[center-x];
         }
-        
-        
-    
       }
     
       
     </style>
+    
+    <style type="text/gss">
+    
+    section.static-feed {
+      background-image: url('../_assets/site-static-feed.jpg');
+      background-size: cover;
+      height: == &[width] * (16128 / 1368) !require;
+    }
+    
+    </style>    
     
     <style>
       .top-cta {

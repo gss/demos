@@ -10,7 +10,64 @@
     <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <section class="cta if">
+
+    <!-- <section class="cta if"> -->
+    <!-- <section class="cta elseif align-right"> -->
+    <section class="cta else align-right">
+
+      <h1 class="heading">What would you do with 10hrs extra a week?</h1>
+
+      <aside>
+        <h1 class="title">$96</h1>
+        <h2 class="subtitle">Per Year</h2>
+        <a class="button" href="FIXME">Pre-order now</a>
+        <svg version="1.1" class="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 46 46" enable-background="new 0 0 46 46" xml:space="preserve">
+             <polygon points="46,46 0,46 0,0 46,0 46,2 2,2 2,44 44,44 44,13 13,13 13,33 33,33 33,24 22,24 22,22 35,22 35,35 11,35 11,11
+               46,11 	"/>
+        </svg>
+      </aside>
+
+    </section>
+
+    <!-- <section class="cta if"> -->
+    <!-- <section class="cta elseif align-left"> -->
+    <section class="cta else align-left">
+
+      <h1 class="heading">What would you do with 10hrs extra a week?</h1>
+
+      <aside>
+        <h1 class="title">$96</h1>
+        <h2 class="subtitle">Per Year</h2>
+        <a class="button" href="FIXME">Pre-order now</a>
+        <svg version="1.1" class="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 46 46" enable-background="new 0 0 46 46" xml:space="preserve">
+             <polygon points="46,46 0,46 0,0 46,0 46,2 2,2 2,44 44,44 44,13 13,13 13,33 33,33 33,24 22,24 22,22 35,22 35,35 11,35 11,11
+               46,11 	"/>
+        </svg>
+      </aside>
+
+    </section>
+
+    <!-- <section class="cta if"> -->
+    <!-- <section class="cta elseif align-right"> -->
+    <section class="cta else align-right">
+
+      <h1 class="heading">What would you do with 10hrs extra a week?</h1>
+
+      <aside>
+        <h1 class="title">$96</h1>
+        <h2 class="subtitle">Per Year</h2>
+        <a class="button" href="FIXME">Pre-order now</a>
+        <svg version="1.1" class="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 46 46" enable-background="new 0 0 46 46" xml:space="preserve">
+             <polygon points="46,46 0,46 0,0 46,0 46,2 2,2 2,44 44,44 44,13 13,13 13,33 33,33 33,24 22,24 22,22 35,22 35,35 11,35 11,11
+               46,11 	"/>
+        </svg>
+      </aside>
+
+    </section>
+
+    <!-- <section class="cta if"> -->
+    <!-- <section class="cta elseif align-left"> -->
+    <section class="cta else align-left">
 
       <h1 class="heading">What would you do with 10hrs extra a week?</h1>
 
@@ -32,7 +89,7 @@
     [md] == 72 !require;
     [md-gap] == 36 !require;
 
-    @v |(section)...| in(::window) {
+    @v |(section)... in(::window) {
       @h |(&)| in(::window);
     }
 
@@ -61,10 +118,10 @@
       }
 
       .cta.if {
-        @v |-(.heading)~-~(aside)-| in(&) gap([md-sub] * 3) outer-gap([md-sub] * 5);
-        @h |~-~(.heading)~-~| in(&) gap([md-sub] * 4);
-        @h |~-~(aside)~-~| in(&) gap([md-sub] * 4);
-        .heading[center-x] == aside[center-x] == (&)[center-x];
+        @v |-(& .heading)~-~(& aside)-| in(&) gap([md-sub] * 3) outer-gap([md-sub] * 5);
+        @h |~-~(& .heading)~-~| in(&) gap([md-sub] * 4);
+        @h |~-~(& aside)~-~| in(&) gap([md-sub] * 4);
+        (& .heading)[center-x] == (& aside)[center-x] == (&)[center-x];
 
         [aside-size] == [md] * 3;
         [aside-title-margin-top] == ([md-sub] * 6) - 16;
@@ -74,23 +131,29 @@
       }
 
       .cta.elseif {
-        @h |-(.heading)-(aside)-| in(&) gap([md-sub] * 4);
-        @v |~-~(.heading)~-~| in(&) gap([md-sub] * 3);
-        @v |~-~(aside)~-~| in(&) gap([md-sub] * 3);
-        .heading[center-y] == aside[center-y] == (&)[center-y];
+        @v |~-~(& .heading)~-~| in(&) gap([md-sub] * 3);
+        @v |~-~(& aside)~-~| in(&) gap([md-sub] * 3);
+        (& .heading)[center-y] == (& aside)[center-y] == (&)[center-y];
 
         [aside-size] == [md] * 3;
         [aside-title-margin-top] == ([md-sub] * 6) - 16;
         [aside-button-margin-top] == [md-sub] * 2;
         [aside-button-h-padding] == [md-sub] * 2;
         [aside-button-v-padding] == [md-sub] * 2;
+
+        &.align-left {
+          @h |-(& aside)-(& .heading)-| in(&) gap([md-sub] * 4);
+        }
+
+        &.align-right {
+          @h |-(& .heading)-(& aside)-| in(&) gap([md-sub] * 4);
+        }
       }
 
       .cta.else {
-        @h |-(.heading)-(aside)-| in(&) gap([md] * 2);
-        @v |~-~(.heading)~-~| in(&) gap([md]);
-        @v |~-~(aside)~-~| in(&) gap([md]);
-        .heading[center-y] == aside[center-y] == (&)[center-y];
+        @v |~-~(& .heading)~-~| in(&) gap([md]);
+        @v |~-~(& aside)~-~| in(&) gap([md]);
+        (& .heading)[center-y] == (& aside)[center-y] == (&)[center-y];
 
         [aside-size] == [md] * 5;
         [aside-title-margin-top] == ([md-sub] * 10) - 32;
@@ -105,6 +168,14 @@
           .logo {
             width: == &[height] == 46;
           }
+        }
+
+        &.align-left {
+          @h |-(& aside)-(& .heading)-| in(&) gap([md] * 2);
+        }
+
+        &.align-right {
+          @h |-(& .heading)-(& aside)-| in(&) gap([md] * 2);
         }
       }
     </style>
@@ -212,6 +283,14 @@
 
       .cta.elseif aside svg.logo {
         visibility: hidden;
+      }
+
+      .cta.align-left.elseif {
+        text-align: right;
+      }
+
+      .cta.align-right.elseif {
+        text-align: left;
       }
 
 

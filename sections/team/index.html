@@ -10,29 +10,74 @@
     <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <section class="team else">
+    <!-- <section class="team if large"> -->
+    <!-- <section class="team elseif large"> -->
+    <section class="team else large">
 
       <h1 class="heading title">The Team</h1>
 
       <article>
-        <img id="image-one" src="images/henri-bergius.png">
+        <img src="images/henri-bergius.png">
         <h1 class="title">Henri Bergius</h1>
         <h2 class="subtitle">VP Engineering</h2>
+        <!-- TODO: use line clamper -->
         <p class="text">Henri is an open source content management pioneer, O'Reilly author, and a well-known technology conference speaker. He is the creator of the Create.js web editing interface and the NoFlo flow-based programming environment that powers TheGrid and Flowhub.</p>
       </article>
 
       <article>
-        <img id="image-two" src="images/dan-tocchini.png">
+        <img src="images/dan-tocchini.png">
         <h1 class="title">Dan Tocchini</h1>
         <h2 class="subtitle">Founder and CEO</h2>
+        <!-- TODO: use line clamper -->
         <p class="text">Creator of GSS (Grid Style Sheets) and Partner of D4 Interactive Agency. Producing interactive works for Audi, Microsoft and more.</p>
       </article>
 
       <article>
-        <img id="image-three" src="images/leigh-taylor.png">
+        <img src="images/leigh-taylor.png">
         <h1 class="title">Leigh Taylor</h1>
         <h2 class="subtitle">Creative Director</h2>
+        <!-- TODO: use line clamper -->
         <p class="text">Leigh was the first dedicated designer for Obvious Corp, designed arguably the best blog post editor on the web today, now known as Medium.</p>
+      </article>
+
+    </section>
+
+    <!-- <section class="team if small"> -->
+    <!-- <section class="team elseif small"> -->
+    <section class="team else small">
+
+      <h1 class="heading title">Investors</h1>
+
+      <article>
+        <img src="images/henri-bergius.png">
+        <h1 class="title">Henri Bergius</h1>
+        <h2 class="subtitle">VP Engineering</h2>
+        <!-- TODO: use line clamper -->
+        <p class="text">Henri is an open source content management pioneer, O'Reilly author, and a well-known technology conference speaker. He is the creator of the Create.js web editing interface and the NoFlo flow-based programming environment that powers TheGrid and Flowhub.</p>
+      </article>
+
+      <article>
+        <img src="images/dan-tocchini.png">
+        <h1 class="title">Dan Tocchini</h1>
+        <h2 class="subtitle">Founder and CEO</h2>
+        <!-- TODO: use line clamper -->
+        <p class="text">Creator of GSS (Grid Style Sheets) and Partner of D4 Interactive Agency. Producing interactive works for Audi, Microsoft and more.</p>
+      </article>
+
+      <article>
+        <img src="images/leigh-taylor.png">
+        <h1 class="title">Leigh Taylor</h1>
+        <h2 class="subtitle">Creative Director</h2>
+        <!-- TODO: use line clamper -->
+        <p class="text">Leigh was the first dedicated designer for Obvious Corp, designed arguably the best blog post editor on the web today, now known as Medium.</p>
+      </article>
+
+      <article>
+        <img src="images/henri-bergius.png">
+        <h1 class="title">Henri Bergius</h1>
+        <h2 class="subtitle">VP Engineering</h2>
+        <!-- TODO: use line clamper -->
+        <p class="text">Henri is an open source content management pioneer, O'Reilly author, and a well-known technology conference speaker. He is the creator of the Create.js web editing interface and the NoFlo flow-based programming environment that powers TheGrid and Flowhub.</p>
       </article>
 
     </section>
@@ -43,7 +88,7 @@
     [md] == 72 !require;
     [md-gap] == 36 !require;
 
-    @v |(section)...| in(::window) {
+    @v |(section)... in(::window) {
       @h |(&)| in(::window);
     }
 
@@ -61,22 +106,77 @@
       }
 
       .team.else {
-        & .heading {
-          margin-top: == [md-sub] * 10;
+        .heading {
+          height: == &[intrinsic-height];
           padding-top: == [md-sub] * 5;
-          padding-bottom: == [md-sub] * 10;
         }
+
 
         [article-gap] == [article-outer-gap] / 2;
         [article-gap] >= [md] !strong;
 
-        @h |-(article)-...-| in(&) gap([article-gap]) outer-gap([article-outer-gap]) {
-          width: == [md] * 4;
+        article {
+          height: == &[intrinsic-height];
+        }
+
+        @h |-(& .heading)-| gap([article-gap]);
+        @v |-(& .heading)-(& article)~-~| gap([md-sub] * 10);
+
+        @h |~-~(&"team")~-~| gap(0);
+        @v |~-~(&"team")~-~| gap(0);
+        &"team"[center-x] == &[center-x];
+
+        @h |-(& article)-...-| in(&"team") gap([article-gap]) outer-gap([article-outer-gap]) {
+          top: == &:next[top];
 
           (& img)[width] == &[width] - [md];
-          (& .title)[margin-top] == ([md-sub] * 6) - 8;
-          (& .subtitle)[margin-top] == ([md-sub] * 3) - 8;
-          (& .text)[margin-top] == ([md-sub] * 3) - 16;
+        }
+
+        &.large {
+          article {
+            width: == [md] * 4;
+
+            .title {
+              font-size: == 32;
+              margin-top: == ([md-sub] * 6) - 8;
+            }
+
+            .subtitle {
+              font-size: == 20;
+              margin-top: == ([md-sub] * 3) - 16;
+            }
+
+            .text {
+              font-size: == 18;
+              line-height: == 32;
+              margin-top: == ([md-sub] * 3) - 16;
+            }
+
+          }
+        }
+
+        &.small {
+          (& article)[width] == [md] * 3;
+
+          article {
+            width: == [md] * 3;
+
+            .title {
+              font-size: == 22;
+              margin-top: == ([md-sub] * 3) - 8;
+            }
+
+            .subtitle {
+              font-size: == 18;
+              margin-top: == ([md-sub] * 2) - 8;
+            }
+
+            .text {
+              font-size: == 16;
+              line-height: == 24;
+              margin-top: == ([md-sub] * 2) - 8;
+            }
+          }
         }
       }
     </style>
@@ -87,7 +187,7 @@
       }
 
       .team .heading {
-        color: hsla(255, 13%, 12%, .6);
+        color: hsl(255, 13%, 12%);
         font-family: 'National Book';
         letter-spacing: 0.16em;
         text-transform: uppercase;
@@ -114,34 +214,6 @@
 
 
 
-      .team.if .heading {
-        font-size: 16px;
-      }
-
-      .team.if article .title {
-        font-size: 32px;
-      }
-
-      .team.if article .subtitle {
-        font-size: 16px;
-      }
-
-
-
-      .team.elseif .heading {
-        font-size: 16px;
-      }
-
-      .team.elseif article .title {
-        font-size: 32px;
-      }
-
-      .team.elseif article .subtitle {
-        font-size: 16px;
-      }
-
-
-
       .team.else {
         text-align: center;
       }
@@ -161,20 +233,6 @@
         position: absolute;
         left: 50%;
         top: 0;
-      }
-
-      .team.else article .title {
-        font-size: 34px;
-      }
-
-      .team.else article .subtitle {
-        font-size: 18px;
-        margin-top: 20px;
-      }
-
-      .team.else article .text {
-        font-size: 18px;
-        line-height: 32px;
       }
     </style>
 

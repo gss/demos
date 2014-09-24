@@ -3,7 +3,7 @@ html:not(.gss-ready) {
 }
 
 html {
-  background-color: white;
+  background-color: hsl(210, 10%, 95%);
   font-family: 'National Regular';
 }
 

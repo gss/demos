@@ -1,4 +1,9 @@
 
+## IDK
+
+- @v |(&"zone2", &"zone1")| in(&);
+  - scoping doesn't work, when stacked bind multiple instances..
+
 ## Compiler Bugs
 
 - Unhelpful errors when ruleset missing closing brace
@@ -22,7 +27,12 @@
 
 ## Engine Bugs
 
+- include ::window vars used in engine.values
+
+- reboot, better destroy method
+
 - Allow element to be modified w/o causing update pass
+  ---> set flag or something
 
 - @if statements with ::window[width] breaks things...
   - binding width to var still breaks, but not as bad
