@@ -115,7 +115,11 @@
         @h |-(& .heading)-| gap([article-gap]);
         @v |-(& .heading)-(& article)~-~| gap([md-sub] * 10);
 
-        @h |-(& article)-...-| in(&) gap([article-gap]) outer-gap([article-outer-gap]) {
+        @h |~-~(&"team")~-~| gap(0);
+        @v |~-~(&"team")~-~| gap(0);
+        &"team"[center-x] == &[center-x];
+
+        @h |-(& article)-...-| in(&"team") gap([article-gap]) outer-gap([article-outer-gap]) {
           width: == [md] * 4;
           top: == &:next[top];
 
