@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <!-- <section class="team if"> -->
-    <!-- <section class="team elseif"> -->
-    <section class="team else">
+    <!-- <section class="team if large"> -->
+    <!-- <section class="team elseif large"> -->
+    <section class="team else large">
 
       <h1 class="heading title">The Team</h1>
 
@@ -42,9 +42,9 @@
 
     </section>
 
-    <!-- <section class="team if"> -->
-    <!-- <section class="team elseif"> -->
-    <section class="team else">
+    <!-- <section class="team if small"> -->
+    <!-- <section class="team elseif small"> -->
+    <section class="team else small">
 
       <h1 class="heading title">The Team</h1>
 
@@ -127,13 +127,56 @@
         &"team"[center-x] == &[center-x];
 
         @h |-(& article)-...-| in(&"team") gap([article-gap]) outer-gap([article-outer-gap]) {
-          width: == [md] * 4;
           top: == &:next[top];
 
           (& img)[width] == &[width] - [md];
-          (& .title)[margin-top] == ([md-sub] * 6) - 8;
-          (& .subtitle)[margin-top] == ([md-sub] * 3) - 8;
-          (& .text)[margin-top] == ([md-sub] * 3) - 16;
+        }
+
+        &.large {
+          article {
+            width: == [md] * 4;
+
+            .title {
+              font-size: == 32;
+              margin-top: == ([md-sub] * 6) - 8;
+            }
+
+            .subtitle {
+              font-size: == 20;
+              margin-top: == ([md-sub] * 3) - 16;
+            }
+
+            .text {
+              font-size: == 18;
+              line-height: == 32;
+              margin-top: == ([md-sub] * 3) - 16;
+            }
+
+          }
+        }
+
+        &.small {
+          (& article)[width] == [md] * 3;
+
+          article {
+            width: == [md] * 3;
+
+            .title {
+              font-size: == 22;
+              margin-top: == ([md-sub] * 3) - 8;
+            }
+
+            .subtitle {
+              font-size: == 18;
+              margin-top: == ([md-sub] * 2) - 8;
+            }
+
+            .text {
+              font-size: == 16;
+              line-height: == 24;
+              margin-top: == ([md-sub] * 2) - 8;
+            }
+          }
         }
       }
     </style>
@@ -171,34 +214,6 @@
 
 
 
-      .team.if .heading {
-        font-size: 16px;
-      }
-
-      .team.if article .title {
-        font-size: 32px;
-      }
-
-      .team.if article .subtitle {
-        font-size: 16px;
-      }
-
-
-
-      .team.elseif .heading {
-        font-size: 16px;
-      }
-
-      .team.elseif article .title {
-        font-size: 32px;
-      }
-
-      .team.elseif article .subtitle {
-        font-size: 16px;
-      }
-
-
-
       .team.else {
         text-align: center;
       }
@@ -218,20 +233,6 @@
         position: absolute;
         left: 50%;
         top: 0;
-      }
-
-      .team.else article .title {
-        font-size: 34px;
-      }
-
-      .team.else article .subtitle {
-        font-size: 18px;
-        margin-top: 20px;
-      }
-
-      .team.else article .text {
-        font-size: 18px;
-        line-height: 32px;
       }
     </style>
 
