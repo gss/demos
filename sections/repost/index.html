@@ -38,6 +38,7 @@
 
     </section>
     
+    
     <section class="duality reposts v-aspect-1 variation-layout-1 v-zone-1">
       
       <article class="repost repost-1 wo-media quote">
@@ -75,6 +76,147 @@
           <div class="author">Francesca Carabin</div>
         </div>
         
+      </article>
+      
+    </section>
+    
+    
+    
+    <section class="duality-media reposts v-aspect-1 variation-layout-1 v-zone-1 smaller-text hide-author">
+      
+      <article class="repost repost-1 w-media wide-media article ">
+        <div class="media">
+          <div class="play-btn"></div>
+        </div>
+        <div class="text smaller">
+          <h2 class="title">
+            Thank God! I was getting so sic
+          </h2>
+          <p class="desc">
+            Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. eger posuere erat a ante venenatis dapibus posuere velit aliquet.
+          </p>
+          <p class="meta top">
+            from <a class="meta-source">twitter</a>
+          </p>
+        </div>
+        <div class="from">
+          <div class="avatar"></div>
+          <div class="author">Francesca Carabin</div>
+        </div>
+      </article>
+      
+      <article class="repost repost-2 w-media wide-media article smaller-text">
+        <div class="media">
+          <div class="play-btn"></div>
+        </div>
+        <div class="text ">
+          <h2 class="title">
+            Thank God! I was so sick of Facebook... Coolio
+          </h2>
+          <p class="desc">
+            Sed posuere consectetur est at lobortis. 
+          </p>
+          <p class="meta">
+            from <a class="meta-source">twitter</a>
+          </p>
+        </div>
+        <div class="from">
+          <div class="avatar"></div>
+          <div class="author">Francesca Carabin</div>
+        </div>
+      </article>
+      
+    </section>
+    
+    
+    <section class="duality-media reposts v-aspect-1 variation-layout-1 v-zone-2 smaller-text hide-author">
+      
+      <article class="repost repost-1 w-media wide-media article ">
+        <div class="media">
+          <div class="play-btn"></div>
+        </div>
+        <div class="text smaller">
+          <h2 class="title">
+            Thank God! I was getting so sic
+          </h2>
+          <p class="desc">
+            Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. eger posuere erat a ante venenatis dapibus posuere velit aliquet.
+          </p>
+          <p class="meta top">
+            from <a class="meta-source">twitter</a>
+          </p>
+        </div>
+        <div class="from">
+          <div class="avatar"></div>
+          <div class="author">Francesca Carabin</div>
+        </div>
+      </article>
+      
+      <article class="repost repost-2 w-media wide-media article smaller-text">
+        <div class="media">
+          <div class="play-btn"></div>
+        </div>
+        <div class="text ">
+          <h2 class="title">
+            Thank God! I was so sick of Facebook... Coolio
+          </h2>
+          <p class="desc">
+            Sed posuere consectetur est at lobortis. 
+          </p>
+          <p class="meta">
+            from <a class="meta-source">twitter</a>
+          </p>
+        </div>
+        <div class="from">
+          <div class="avatar"></div>
+          <div class="author">Francesca Carabin</div>
+        </div>
+      </article>
+      
+    </section>
+    
+    <section class="duality-media reposts v-aspect-1 variation-layout-1 v-zone-1 smaller-text hide-author">
+      
+      <article class="repost repost-1 w-media wide-media article ">
+        <div class="media">
+          <div class="play-btn"></div>
+        </div>
+        <div class="text smaller">
+          <h2 class="title">
+            Thank God! I was getting so sic
+          </h2>
+          <p class="desc">
+            Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. eger posuere erat a ante venenatis dapibus posuere velit aliquet.
+          </p>
+          <p class="meta top">
+            from <a class="meta-source">twitter</a>
+          </p>
+        </div>
+        <div class="from">
+          <div class="avatar"></div>
+          <div class="author">Francesca Carabin</div>
+        </div>
+      </article>
+      
+      <article class="repost repost-2 w-media wide-media article smaller-text">
+        <div class="media">
+          <div class="play-btn"></div>
+        </div>
+        <div class="text ">
+          <h2 class="title">
+            Thank God! I was so sick of Facebook... Coolio
+          </h2>
+          <p class="desc">
+            Sed posuere consectetur est at lobortis. 
+          </p>
+          <p class="meta">
+            from <a class="meta-source">twitter</a>
+          </p>
+        </div>
+        <div class="from">
+          <div class="avatar"></div>
+          <div class="author">Francesca Carabin</div>
+        </div>
       </article>
       
     </section>
@@ -479,11 +621,11 @@
     [md-gap] == 36 !require;
     [md-gap2] == 18 !require;
     
-    "h-area"[center-x] == ::window[center-x];
-    "h-area"[width] == 1368;
+
     
     @v |(section)... in(::window) !require {
-      @h |(&)| in("h-area");      
+      width: == 1368 !strong;
+      center-x: == ::window[center-x];
     }
     
     
@@ -555,6 +697,22 @@
       .repost .meta.top {
         top: 36px;
         bottom: initial;
+      }
+      
+      .smaller-text .repost .text {
+        padding:  72px 36px;
+      }
+      .smaller-text .repost .meta {
+        bottom: 24px;
+        left:  36px;
+        right: 36px;
+      }
+      .smaller-text .repost .meta.top {
+        top: 24px;
+      }
+      
+      .hide-author .author {
+        display: none;
       }
       
     </style>
@@ -655,7 +813,9 @@
       }
     
     </style>
-  
+    
+    
+
     <style type="text/gss">
     
       section.duality {      
@@ -763,6 +923,94 @@
       }
 
     </style>
+    
+    
+    <style type="text/gss">
+    
+      section.duality-media {      
+              
+        
+        @h |(& .repost-1)| in(&"zone1");
+        @v |(& .repost-1)| in(&"zone1");
+        
+        @h |(& .repost-2)| in(&"zone2");
+        @v |(& .repost-2)| in(&"zone2");
+        
+
+        
+        &.v-aspect-1 {
+        
+          @v |-(&"zone2")-| in(&) gap([md]);
+          @v |-(&"zone1")-| in(&) gap([md]);
+        
+          &.v-zone-1 {
+            @h | (&"zone1") <&[center-x]> (&"zone2") | in(&);
+          }
+          &.v-zone-2 {
+            @h | (&"zone2") <&[center-x]> (&"zone1") | in(&);
+          }
+          
+        }
+      
+        
+        &.variation-layout-1 {
+          
+          .repost.w-media {
+            
+            opacity: == 1; /* BUG: CSS Dumping */ 
+            
+            @h | (& .media) | in(&);
+            
+            
+          }
+          
+          
+          // equal media height
+          (& .media)[height] == &[--media-height] >= [md] * 5; 
+          
+          .repost-1 {
+            @v | 
+                (& .text)
+                < &[center-y] >
+                in(&);
+                
+            @h  <&[center-x] - [md] > (& .text) -[md]- |
+                in(&);
+                
+            @v |
+                ~[md]~
+                (& .media)
+                ~[md2]~
+               | in(&);
+
+            (& .from)[center-x] == (& .text)[center-x];
+            (& .from)[center-y] == (& .text)[bottom];
+          }
+          .repost-2 {
+            @v  < &[center-y] >
+                (& .text)
+                |
+                in(&);
+            @h  | -[md]- (& .text) <&[center-x]  + [md]>
+                in(&);
+            
+            @v |
+                ~[md2]~
+                (& .media)
+                ~[md]~
+               | in(&);
+            
+           (& .from)[center-x] == (& .text)[center-x];
+           (& .from)[center-y] == (& .text)[top];
+           
+          }
+          
+        }
+        
+      }
+
+    </style>
+    
     
     <style type="text/gss">
     
