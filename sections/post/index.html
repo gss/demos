@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="../_assets/assets/fonts/fonts.css" type="text/css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <!-- <section class="post media-left if"> -->
-    <!-- <section class="post media-left elseif"> -->
-    <section class="post media-left else">
+    <!-- <section class="featured-post media-left if"> -->
+    <!-- <section class="featured-post media-left elseif"> -->
+    <section class="featured-post media-left else">
       <div class="media"></div>
       <div class="content">
         <h1 class="title">Create on the go</h1>
@@ -24,9 +24,9 @@
       </div>
     </section>
 
-    <!-- <section class="post media-right if"> -->
-    <!-- <section class="post media-right elseif"> -->
-    <section class="post media-right else">
+    <!-- <section class="featured-post media-right if"> -->
+    <!-- <section class="featured-post media-right elseif"> -->
+    <section class="featured-post media-right else">
       <div class="media"></div>
       <div class="content">
         <h1 class="title">Create on the go</h1>
@@ -52,7 +52,7 @@
 
     <style type="text/gss">
 
-      .post {
+      .featured-post {
         @h |(& .media)| in(&"zone1");
         @v |(& .media)| in(&"zone1");
 
@@ -61,7 +61,7 @@
       }
 
       /*@if ? {*/
-      .post.if {
+      .featured-post.if {
         @h |(&"zone1")| in(&);
         &"zone1"[height] == ::window[height];
 
@@ -94,7 +94,7 @@
       }
 
       /*@elseif &[width] < ([large-screen-content-width] + [large-screen-content-padding]) {*/
-      .post.elseif {
+      .featured-post.elseif {
         &[height] == ::window[height];
 
 
@@ -138,7 +138,7 @@
       }
 
       /*@else {*/
-      .post.else {
+      .featured-post.else {
         (& .content)[center-y] == &"zone2"[center-y];
         @v |~-~(& .content)~-~| in(&"zone2") gap([md]);
 
@@ -164,14 +164,14 @@
         }
       }
 
-      .post.else.media-left {
+      .featured-post.else.media-left {
         @h |(&"zone1")(&"zone2")| in(&);
 
         @h |(& .content) in(&"zone2") !weak;
         @h (& .content)~| in(&"zone2") !strong;
       }
 
-      .post.else.media-right {
+      .featured-post.else.media-right {
         @h |(&"zone2")(&"zone1")| in(&);
 
         @h |~(& .content) in(&"zone2") !strong;
@@ -181,48 +181,48 @@
     </style>
 
     <style type="text/css">
-      .post {
+      .featured-post {
         color: hsl(0, 0%, 100%);
       }
 
-      .post {
+      .featured-post {
           background-color: hsl(20, 4%, 14%);
       }
 
-      .post .media {
+      .featured-post .media {
         background-image: url('image.jpg');
         background-size: cover;
         background-position: center;
       }
 
-      .post .title,
-      .post .subtitle {
+      .featured-post .title,
+      .featured-post .subtitle {
         letter-spacing: 0.16em;
         text-transform: uppercase;
       }
 
-      .post .title {
+      .featured-post .title {
         font-family: 'National Thin';
         font-size: 32px;
       }
 
-      .post .subtitle {
+      .featured-post .subtitle {
         font-family: 'National Regular';
         margin-top: 12px;
       }
 
-      .post .subtitle {
+      .featured-post .subtitle {
         color: hsl(30, 17%, 57%);
       }
 
-      .post .text {
+      .featured-post .text {
         font-family: 'National Light';
         letter-spacing: 0.06em;
         line-height: 28px;
         position: relative;
       }
 
-      .post .text .detail {
+      .featured-post .text .detail {
         background-color: hsl(30, 17%, 57%);
         position: absolute;
         left: 0;
@@ -230,42 +230,42 @@
       }
 
 
-      .post.if .content {
+      .featured-post.if .content {
         background-color: hsla(20, 4%, 14%, .8);
       }
 
-      .post.if .title {
+      .featured-post.if .title {
         text-align: center;
       }
 
-      .post.if .subtitle {
+      .featured-post.if .subtitle {
         font-size: 20px;
         text-align: center;
       }
 
-      .post.if .text {
+      .featured-post.if .text {
         font-size: 16px;
       }
 
 
-      .post.elseif {
+      .featured-post.elseif {
         overflow-x: scroll;
       }
 
-      .post.elseif .content {
+      .featured-post.elseif .content {
         background-color: hsl(20, 4%, 14%);
       }
 
-      .post.elseif .title {
+      .featured-post.elseif .title {
         text-align: center;
       }
 
-      .post.elseif .subtitle {
+      .featured-post.elseif .subtitle {
         font-size: 14px;
         text-align: center;
       }
 
-      .post.elseif .text {
+      .featured-post.elseif .text {
         font-size: 18px;
 
         -webkit-columns: 216px;
@@ -278,15 +278,15 @@
       }
 
 
-      .post.else .content {
+      .featured-post.else .content {
         background-color: hsl(20, 4%, 14%);
       }
 
-      .post.else .subtitle {
+      .featured-post.else .subtitle {
         font-size: 20px;
       }
 
-      .post.else .text {
+      .featured-post.else .text {
         font-size: 18px;
         margin-top: 12px;
       }
