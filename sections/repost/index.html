@@ -38,6 +38,31 @@
 
     </section>
     
+    <section class="singular-wide-thin reposts v-aspect-1 variation-layout-1 v-zone-1">
+      
+      <article class="repost repost-1 w-media wide-media article">
+        <div class="media">
+          <div class="play-btn"></div>
+        </div>
+        <div class="text">
+          <h2 class="title">
+            Thank God! I was getting so sick of Wordpress! #TGFM #221
+          </h2>
+          <p class="desc">
+            Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. 
+          </p>
+          <p class="meta top">
+            from <a class="meta-source">twitter</a>
+          </p>
+        </div>
+        <div class="from">
+          <div class="avatar"></div>
+          <div class="author">Francesca Carabin</div>
+        </div>
+        
+      </article>
+
+    </section>
     
     <section class="duality reposts v-aspect-1 variation-layout-1 v-zone-1">
       
@@ -80,7 +105,31 @@
       
     </section>
     
-    
+    <section class="singular-wide-thin reposts v-aspect-1 variation-layout-1 v-zone-2">
+      
+      <article class="repost repost-1 w-media wide-media article">
+        <div class="media">
+          <div class="play-btn"></div>
+        </div>
+        <div class="text">
+          <h2 class="title">
+            Thank God! I was getting so sick of Wordpress! #TGFM #221
+          </h2>
+          <p class="desc">
+            Sed posuere consectetur est at lobortis. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. 
+          </p>
+          <p class="meta top">
+            from <a class="meta-source">twitter</a>
+          </p>
+        </div>
+        <div class="from">
+          <div class="avatar"></div>
+          <div class="author">Francesca Carabin</div>
+        </div>
+        
+      </article>
+
+    </section>
     
     <section class="duality-media reposts v-aspect-1 variation-layout-1 v-zone-1 smaller-text hide-author">
       
@@ -815,6 +864,43 @@
     </style>
     
     
+    <style type="text/gss">
+    
+      section.singular-wide-thin {
+        
+        @h |(& .repost)| in(&);
+        @v |(& .repost)| in(&);
+        
+        @h |(&"zone1")| in(&) !require;        
+        @v |(&"zone1")| in(&) !require;
+        
+        &.v-zone-1 {
+          @h |-[md2]-(&"zone2")-[md2]-<&"zone1"[center-x]> in(&"zone1");
+        }
+        &.v-zone-2 {
+          @h <&"zone1"[center-x]>-[md2]-(&"zone2")-[md2]-| in(&"zone1");
+        }
+        @v |-[md]-(&"zone2")-[md]-| in(&"zone1");
+        
+        @h |(& .media)| in(&"zone1");
+        @v |(& .media)| in(&"zone1");
+        
+        @v |(& .text)| in(&"zone2");
+        @h |(& .text)| in(&"zone2");
+        
+        .repost {
+        
+          opacity: 1;
+          
+          (& .from)[center-y] == (& .text)[bottom];
+          (& .from)[right] - [md-2] == (& .text)[right];
+        }
+  
+      }
+    
+    </style>
+    
+    
 
     <style type="text/gss">
     
@@ -940,8 +1026,8 @@
         
         &.v-aspect-1 {
         
-          @v |-(&"zone2")-| in(&) gap([md]);
-          @v |-(&"zone1")-| in(&) gap([md]);
+          @v |-(&"zone2")-| in(&) gap([md2]);
+          @v |-(&"zone1")-| in(&) gap([md2]);
         
           &.v-zone-1 {
             @h | (&"zone1") <&[center-x]> (&"zone2") | in(&);
