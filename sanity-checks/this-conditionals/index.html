@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GSS</title>
+    <meta name="description" content="GSS demo of per-element responsiveness and source order independence.">
+    <script src="../bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <section class="sanity-check">
+      <h1 id="a">window < section</h1>
+      <h1 id="b">window >= section</h1>
+    </section>
+
+    <style type="text/gss">
+      .sanity-check {
+        background-color: hsl(202, 38%, 60%);
+      }
+    </style>
+
+    <style type="text/gss">
+      [md] == 72 !require;
+
+      .sanity-check {
+        width: == [md] * 8;
+        width: == &[height];
+
+        @if ::window[width] < &[width] {
+          #a[opacity] == 1;
+          #b[opacity] == 0;
+        }
+        @else {
+          #a[opacity] == 0;
+          #b[opacity] == 1;
+        }
+      }
+    </style>
+
+    <script>
+      window.engine = GSS(document);
+    </script>
+
+  </body>
+</html>
