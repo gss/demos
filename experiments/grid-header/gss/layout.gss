@@ -1,42 +1,54 @@
+
 header {
   width: == ::window[width];
   height: == ::window[height];
   top: == 0;
   left: == 0;
+  color: #fff;
+  font-family: sans-serif;
   .logo{
     width: == 46;
     height: == 46;
-    &[center] == ::window[center];
+    width: >= 26 !strong;
+    height: >= 26 !strong;
+    &[center-x] == ::window[center-x];
   }
   button{
     width: == &[intrinsic-width];
     height: == &[intrinsic-height];
-    &[center] == ::window[center];
+    &[center-x] == ::window[center-x];
   }
   h1{
     width: == &[intrinsic-width];
     height: == &[intrinsic-height];
-    &[center] == ::window[center];    
+    &[center-x] == ::window[center-x];
+    font-size: 2.3rem;
+    font-weight: normal;
   }
   h2{
     width: == &[intrinsic-width];
     height: == &[intrinsic-height];
-    &[center] == ::window[center];
+    &[center-x] == ::window[center-x];
+    font-size: 6rem;
+    font-weight: normal;
   }
+  [elem-gap] >= 100 !strong;
   @v |
-  -100-
+  -
   (& .logo)
-  -100-
+  -
   (& h1)
-  -100-
+  -
   (& h2)
-  -100-
+  -
   (& .cta-preorder)
-  -100-
+  -
   (& .cta-video)
-  -100-
+  -
   | 
-  in(&);
+  gap([elem-gap])
+  in(&)
+  !strong;
 }
 .background{
   width: == ::window[width];
@@ -45,5 +57,7 @@ header {
   top: == 0;
 }
 video{
-  width: 100%;
+  width: == ::window[width];
+  height: == ::window[height];
+  opacity: .4;
 }

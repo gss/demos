@@ -1,5 +1,6 @@
 html {
-  background-color: white;
+  background-color: #000;
+  font-size: 62.5%;
 }
 
 * {
@@ -8,16 +9,12 @@ html {
   padding: 0px;
   outline: none;
 }
-
-.box {
-  background-color: red;
-  -webkit-transition: all .5s;
-}
-
-.box.toggle {
-  background-color: blue;
-}
-
 svg.logo{
   fill: hsl(42, 84%, 69%);
+}
+button{
+  background: hsl(42, 84%, 69%);
+  color: #000;
+  padding: 12px;
+  border: none;
 }
