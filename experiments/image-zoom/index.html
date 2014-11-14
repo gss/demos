@@ -4,7 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GSS</title>
     <meta name="description" content="GSS demo of per-element responsiveness and source order independence.">
-    <link rel="stylesheet" type="text/css" href="texture.css">
+    <link rel="stylesheet" type="text/css" href="css/texture.css">
+    <link type="text/gss" href="gss/layout.gss">
     <script src="bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
 
   </head>
@@ -16,38 +17,12 @@
     </header>
     <div class="photo"><img src="Cirques.jpg" /> 1</div>
 
-    <style type="text/gss">
-  
-  header {
-     @v |
-        (&(==200))
-        gap(72)
-        in(::window) !strong;
-
-    width: == ::window[width];
-
-    nav[right] == &[right];
-
-    nav {
-        width: == &[intrinsic-width];        
-    }
-
-  }
-  
-      img {
-        width: == ::window[width];
-
-        center: == ::window[center];
-        &.toggle {
-          width: == 800;
-        }
-      }
-      
-    </style>
     
     <script>
       GSS(document);
     </script>
+    <script src="js/jquery-2.1.1.min.js"></script>  
+    <script src="js/script.js" type="text/javascript" charset="utf-8"></script>
     
   </body>
 </html>
