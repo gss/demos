@@ -9,9 +9,6 @@ html {
   padding: 0px;
   outline: none;
 }
-svg.logo{
-  fill: hsl(42, 84%, 69%);
-}
 button{
   background: hsl(42, 84%, 69%);
   color: #000;
@@ -20,7 +17,85 @@ button{
 }
 .cta .preorder{
 
+
 }
 .cta .video{
   
+}
+
+section.head-cta {
+  background-color: hsl(0,0%,0%);
+  overflow: hidden;
+}
+section.head-cta .overlay {
+  background-color: hsla(0,0%,0%,.83);
+}
+section.head-cta .bg.media {
+  /*-webkit-filter: blur(2px);*/
+  background-position: center;
+}
+section.head-cta .bg.overlay {
+  background-color: hsla(0,0%,0%,.5);
+}
+section.head-cta svg.logo {
+  fill: hsl(42, 84%, 69%);
+}
+section.head-cta .cta {
+  z-index: 10;
+}
+section.head-cta .title {
+  text-align: center;
+  color: #fcfbfd;
+  text-transform: uppercase;
+}
+section.head-cta .subtitle {
+  text-align: center;
+  color: #fcfbfd;
+  text-transform: uppercase;
+}
+section.head-cta button,
+section.head-cta .button {
+  text-transform: uppercase;
+  padding: 0 24px;
+  cursor: pointer;
+  line-height: 28px; 
+  font-size: 20px; 
+  padding: 24px; 
+}
+a.button {
+  text-decoration: none;
+}
+
+section.head-cta button .odometer {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+span.cta-hash {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+section.head-cta .cta, section.head-cta .play:hover {
+  background-color: hsl(42, 84%, 69%);
+  border: 2px solid hsl(42, 84%, 69%);
+  color: hsl(42, 84%, 8%);
+}
+
+section.head-cta .cta:hover, section.head-cta .play {
+  background-color: transparent;
+  border: 2px solid hsla(42, 84%, 69%, .59);
+  color: hsl(42, 84%, 69%);
+}
+
+section.head-cta .cta .number {
+  display: inline-block;
+  white-space: nowrap; /* Keep the pound sign on the same line as the number */
+}
+
+section.head-cta .cta,
+section.head-cta .play {
+  text-align: center;
 }
