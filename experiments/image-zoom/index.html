@@ -6,20 +6,40 @@
     <meta name="description" content="GSS demo of per-element responsiveness and source order independence.">
     <link rel="stylesheet" type="text/css" href="texture.css">
     <script src="bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
-    
+
   </head>
   <body>
-    <div class="box" onclick="this.classList.toggle('toggle')"></div>
-    
+    <header>
+     <nav>
+      This is the header
+      </nav>
+    </header>
+    <div class="photo"><img src="Cirques.jpg" /> 1</div>
+
     <style type="text/gss">
-      
-      .box {
-        width: == 100;
-        height: == 100;
-        center: == ::window[right];
+  
+  header {
+     @v |
+        (&(==200))
+        gap(72)
+        in(::window) !strong;
+
+    width: == ::window[width];
+
+    nav[right] == &[right];
+
+    nav {
+        width: == &[intrinsic-width];        
+    }
+
+  }
+  
+      img {
+        width: == ::window[width];
+
+        center: == ::window[center];
         &.toggle {
-          width: == 200;
-          height: == 50;
+          width: == 800;
         }
       }
       
