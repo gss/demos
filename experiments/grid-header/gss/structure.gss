@@ -61,3 +61,15 @@ video{
   height: == ::window[height];
   opacity: .4;
 }
+
+
+[width] == ::window[width];
+[height] == ::window[height];
+
+    @if [height] < 500 {
+
+      .head-cta {
+      opacity: .1;
+      }
+
+}
