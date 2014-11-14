@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GSS</title>
+    <meta name="description" content="GSS demo of per-element responsiveness and source order independence.">
+    <link rel="stylesheet" type="text/css" href="texture.css">
+    <script src="bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
+
+  </head>
+  <body>
+    
+<div id="container"></div>
+<div id="foo">foo</div>
+<div id="bar">bar</div>
+
+
+    <style type="text/gss">
+  
+    @h |-(#foo)-100-(#bar)-|  gap(30);
+      
+    </style>
+    
+    <script>
+      GSS(document);
+    </script>
+    
+  </body>
+</html>
