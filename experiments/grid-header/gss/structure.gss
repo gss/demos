@@ -6,6 +6,7 @@
   left: == 0;
   color: #fff;
   font-family: sans-serif;
+  opacity: 1;  
   .logo{
     width: == 46;
     height: == 46;
