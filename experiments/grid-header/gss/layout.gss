@@ -1,0 +1,49 @@
+header {
+  width: == ::window[width];
+  height: == ::window[height];
+  top: == 0;
+  left: == 0;
+  .logo{
+    width: == 46;
+    height: == 46;
+    &[center] == ::window[center];
+  }
+  button{
+    width: == &[intrinsic-width];
+    height: == &[intrinsic-height];
+    &[center] == ::window[center];
+  }
+  h1{
+    width: == &[intrinsic-width];
+    height: == &[intrinsic-height];
+    &[center] == ::window[center];    
+  }
+  h2{
+    width: == &[intrinsic-width];
+    height: == &[intrinsic-height];
+    &[center] == ::window[center];
+  }
+  @v |
+  -100-
+  (& .logo)
+  -100-
+  (& h1)
+  -100-
+  (& h2)
+  -100-
+  (& .cta-preorder)
+  -100-
+  (& .cta-video)
+  -100-
+  | 
+  in(&);
+}
+.background{
+  width: == ::window[width];
+  height: == ::window[height];
+  left: == 0;
+  top: == 0;
+}
+video{
+  width: 100%;
+}
