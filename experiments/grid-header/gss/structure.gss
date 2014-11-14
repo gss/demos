@@ -5,8 +5,6 @@
   top: == 0;
   left: == 0;
   color: #fff;
-  font-family: sans-serif;
-  opacity: 1;  
   .logo{
     width: == 46;
     height: == 46;
@@ -33,17 +31,17 @@
     font-size: 6rem;
     font-weight: normal;
   }
-  [elem-gap] >= 100 !strong;
+  [elem-gap] >= 25 !strong;
   @v |
-  -
+  -50-
   (& .logo)
-  -
+  -175-
   (& h1)
-  -
+  ~-~
   (& h2)
-  -
+  -40-
   (& .preorder)
-  -
+  ~-~
   (& .cta-video)
   -
   | 
@@ -67,10 +65,28 @@ video{
 [width] == ::window[width];
 [height] == ::window[height];
 
-    @if [height] < 500 {
+@if [width] < 500 {
 
-      .head-cta {
-      opacity: .1;
-      }
+  .head-cta {
+    .title{
+      font-size: 1.1rem;
+    }
+    .sub-title{
+      font-size: 2.6rem;
+    } 
+  }
+
+} @else {
+
+/* not clearing out the css from the above if statement so have to manually reset to large font size */ 
+
+  .head-cta {
+    .title{
+      font-size: 3.1rem;
+    }
+    .sub-title{
+      font-size: 4.6rem;
+    } 
+  }
 
 }

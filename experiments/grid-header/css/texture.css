@@ -1,6 +1,8 @@
 html {
   background-color: #000;
   font-size: 62.5%;
+  font-family: 'National Light';
+  letter-spacing: 0.16rem;
 }
 
 * {
@@ -14,13 +16,16 @@ button{
   color: #000;
   padding: 12px;
   border: none;
+  letter-spacing: 0.16rem;
 }
 .cta .preorder{
 
 
 }
-.cta .video{
-  
+.cta-video{
+  background: transparent;
+  color: hsl(42, 84%, 69%);
+  border: 2px solid hsl(42, 84%, 69%); 
 }
 
 section.head-cta {
@@ -56,24 +61,21 @@ section.head-cta .subtitle {
 section.head-cta button,
 section.head-cta .button {
   text-transform: uppercase;
-  padding: 0 24px;
   cursor: pointer;
   line-height: 28px; 
   font-size: 20px; 
-  padding: 24px; 
+  padding: 24px 34px; 
 }
 a.button {
   text-decoration: none;
 }
 
 section.head-cta button .odometer {
-  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
   font-size: 0.8em;
   font-weight: bold;
 }
 
 span.cta-hash {
-  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
   font-size: 0.8em;
   font-weight: bold;
 }
