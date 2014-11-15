@@ -8,6 +8,8 @@
   (section.head-cta(== &[intrinsic-height]))
   -0-
   (section.mobile-video(== &[intrinsic-height]))
+  -0-
+  (section.hello-world(== &[intrinsic-height]))
   in(::window) !strong;
     
 
@@ -122,11 +124,38 @@ section.mobile-video {
   .yellow-overlay{
     width: == ::window[width] !weak;
     height: == ::window[height] !require;
-    center: == ::window[center];
+
     background: hsl(42, 84%, 69%);
     opacity: .8;
   } 
 }
+
+// SECTION 3
+
+section.hello-world {
+  width: == ::window[width] !weak;
+  height: == &[intrinsic-height]; 
+
+  @v |-(& .hello-world)-| in(&);
+  
+  //@v |-(& .hello-world-head)-| in(&);
+
+  .hello-world-head {
+    width: == &[intrinsic-width];   
+    height: == &[intrinsic-height]; 
+    &[center-x] == ::window[center-x];
+    font-size: 7.6rem;
+    font-weight: normal;
+  }
+
+    .hello-world-body {
+    width: == &[intrinsic-width];   
+    height: == &[intrinsic-height]; 
+    &[center-x] == ::window[center-x];
+    font-size: 2.6rem;
+    font-weight: normal;    
+  }
+} 
 
 [width] == ::window[width];
 [height] == ::window[height];

@@ -127,7 +127,14 @@ section.head-cta .play {
 section.mobile-video {
   background: url('https://s3-us-west-2.amazonaws.com/the-grid-img/p/6454e439be75b094d7d5db81c54f22209508b029.jpg');
   background-size: cover;
-  background-size: 100% 100%;
 }
+
+/*section 2
+*/
+section.hello-world {
+  background: #fff;
+
+}
+
 
 
