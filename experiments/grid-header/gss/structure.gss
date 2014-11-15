@@ -2,6 +2,15 @@
 /* vars */
 [big-gap] == 60 !require;
 
+ @v |
+      -0-
+      (section.head-cta(== &[intrinsic-height]))
+      -0-
+      (section.mobile-video(== &[intrinsic-height]))
+      in(::window) !strong;
+    
+  
+
 .head-cta {
   width: == ::window[width];
   height: == ::window[height];
@@ -87,6 +96,15 @@
   center: == ::window[center];
 }
 
+section.mobile-video {
+  width: == ::window[width] !weak;
+  height: == ::window[height] !weak;
+  width: >= ::window[width] !require;
+  height: >= ::window[height] !require;  
+  &[width] == &[height] * 16/9 !require;
+  center: == ::window[center];
+}
+
 [width] == ::window[width];
 [height] == ::window[height];
 
@@ -109,10 +127,10 @@
     section.head-cta .button {
       font-size: 16px; 
     }
-  }
     #video-player {
       display: none;
     }
+  }
 } @else {
 
 /* not clearing out the css from the above @if statement 
@@ -137,9 +155,9 @@ so have to manually reset to pre condition settings for now */
     .video-poster {
       opacity: 0;
     }
-  }
     #video-player {
       display: block;
     }
+  }
 
 }
