@@ -99,9 +99,6 @@
 section.mobile-video {
   width: == ::window[width] !weak;
   height: == ::window[height] !weak;
-  width: >= ::window[width] !require;
-  height: >= ::window[height] !require;  
-  &[width] == &[height] * 16/9 !require;
   center: == ::window[center];
 }
 
