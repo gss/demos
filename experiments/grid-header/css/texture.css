@@ -28,6 +28,16 @@ button{
   border: 2px solid hsl(42, 84%, 69%); 
 }
 
+.video-poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0; 
+  display: block;
+  }`
+
+
 section.head-cta {
   background-color: hsl(0,0%,0%);
   overflow: hidden;
@@ -53,7 +63,7 @@ section.head-cta .title {
   color: #fcfbfd;
   text-transform: uppercase;
 }
-section.head-cta .subtitle {
+section.head-cta .sub-title {
   text-align: center;
   color: #fcfbfd;
   text-transform: uppercase;

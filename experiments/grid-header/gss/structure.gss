@@ -1,4 +1,7 @@
 
+/* vars */
+[big-gap] == 60 !require;
+
 .head-cta {
   width: == ::window[width];
   height: == ::window[height];
@@ -6,10 +9,10 @@
   left: == 0;
   color: #fff;
   .logo {
-    width: == 46;
-    height: == 46;
-    width: >= 26 !strong;
-    height: >= 26 !strong;
+    width: == 72;
+    height: == 72;
+     width: >= 46 !strong;
+     height: >= 46 !strong;
     &[center-x] == ::window[center-x];
   }
   button {
@@ -20,17 +23,21 @@
 
   // don't need to use title's i-width
   @h |-(& .title)-| in(::window) gap(&[--title-margin]);
-  [--title-margin] >= 36;
+  &[--title-margin] >= 36;
 
   .title {
     //width: == &[intrinsic-width];   
     height: == &[intrinsic-height]; 
     &[center-x] == ::window[center-x];
-    font-size: 2.3rem;
+    font-size: 7.6rem;
     font-weight: normal;
   }
-  .sub-title{
-    width: == &[intrinsic-width];
+  
+  &[--sub-title-margin] >= 36;
+
+  @h |-(& .sub-title)-| in(::window) gap(&[--sub-title-margin])
+  {
+    //width: == &[intrinsic-width];
     height: == &[intrinsic-height];
     &[center-x] == ::window[center-x];
     font-size: 6rem;
@@ -38,9 +45,9 @@
   }
   [elem-gap] >= 25 !strong;
   @v |
-  -50-
+  -70-
   (& .logo)
-  -175-
+  -155- 
   (& h1)
   ~-~
   (& h2)
@@ -67,9 +74,17 @@ video {
   height: >= ::window[height] !require;  
   &[width] == &[height] * 16/9 !require;
   center: == ::window[center];
-  opacity: .4;
+  opacity: .3;
 }
 
+.video-poster {
+  width: == ::window[width] !weak;
+  height: == ::window[height] !weak;
+  width: >= ::window[width] !require;
+  height: >= ::window[height] !require;  
+  &[width] == &[height] * 16/9 !require;
+  center: == ::window[center];
+}
 
 [width] == ::window[width];
 [height] == ::window[height];
@@ -83,19 +98,46 @@ video {
     .sub-title{
       font-size: 2.6rem;
     } 
+    .cta-video {
+      opacity: 0;
+    }
+    #video {
+      display: none;
+    }
+    .video-poster {
+      opacity: .3;
+    }
+
+    section.head-cta button,
+    section.head-cta .button {
+      font-size: 16px; 
+    }
+
   }
 
 } @else {
 
-/* not clearing out the css from the above if statement so have to manually reset to large font size */ 
+/* not clearing out the css from the above @if statement 
+so have to manually reset to pre condition settings for now */ 
 
   .head-cta {
     .title{
-      font-size: 3.1rem;
+      font-size: 2.4rem;
     }
     .sub-title{
-      font-size: 4.6rem;
+      font-size: 7.2rem;
+      font-family: 'National Thin';  
+      letter-spacing: 0.16em;          
+    }
+    section.head-cta button,
+    section.head-cta .button {
+      font-size: 20px; 
     } 
+    .cta-video {
+      opacity: 1;
+    }
+    #video {
+      display: block;
+    }
   }
-
 }
