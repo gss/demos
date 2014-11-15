@@ -67,6 +67,7 @@
   left: == 0;
   top: == 0;
 }
+
 video {
   width: == ::window[width] !weak;
   height: == ::window[height] !weak;
@@ -101,20 +102,17 @@ video {
     .cta-video {
       opacity: 0;
     }
-    #video {
-      display: none;
-    }
     .video-poster {
       opacity: .3;
     }
-
     section.head-cta button,
     section.head-cta .button {
       font-size: 16px; 
     }
-
   }
-
+    #video {
+      display: none;
+    }
 } @else {
 
 /* not clearing out the css from the above @if statement 
@@ -136,8 +134,8 @@ so have to manually reset to pre condition settings for now */
     .cta-video {
       opacity: 1;
     }
+  }
     #video {
       display: block;
     }
-  }
 }
