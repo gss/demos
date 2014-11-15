@@ -2,14 +2,15 @@
 /* vars */
 [big-gap] == 60 !require;
 
+// page layout
  @v |
-      -0-
-      (section.head-cta(== &[intrinsic-height]))
-      -0-
-      (section.mobile-video(== &[intrinsic-height]))
-      in(::window) !strong;
+  -0-
+  (section.head-cta(== &[intrinsic-height]))
+  -0-
+  (section.mobile-video(== &[intrinsic-height]))
+  in(::window) !strong;
     
-  
+
 
 .head-cta {
   width: == ::window[width];
@@ -64,7 +65,7 @@
   (& .preorder)
   ~-~
   (& .cta-video)
-  -
+  -100-
   | 
   gap([elem-gap])
   in(&)
@@ -96,10 +97,35 @@
   center: == ::window[center];
 }
 
+// SECTION 2
+
+.play {
+  [bg-z] >= 03;
+  width: == 100 !require;
+  height: == 100 !require;
+  //display: none;
+  center: == section.mobile-video[center];
+  border-radius: 50%;
+  background-color: transparent;
+
+  border: 5px solid hsl(42, 84%, 69%);
+}
+
 section.mobile-video {
   width: == ::window[width] !weak;
   height: == ::window[height] !weak;
   center: == ::window[center];
+  // freezes the browser unless there's a space between @v and | 
+  //@v|-(& #play)-| in(&);
+  @v |-(& #play)-| in(&);
+
+  .yellow-overlay{
+    width: == ::window[width] !weak;
+    height: == ::window[height] !require;
+    center: == ::window[center];
+    background: hsl(42, 84%, 69%);
+    opacity: .8;
+  } 
 }
 
 [width] == ::window[width];
@@ -128,6 +154,7 @@ section.mobile-video {
       display: none;
     }
   }
+  
 } @else {
 
 /* not clearing out the css from the above @if statement 
