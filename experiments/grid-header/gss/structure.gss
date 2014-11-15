@@ -108,21 +108,26 @@
   border-radius: 50%;
   background-color: transparent;
 
-  border: 5px solid hsl(42, 84%, 69%);
+  border: 4px solid black;
+}
+.arrow-left {
+  width: == 0;
+  height: == 0;
+  center-x: == .play[center-x]-8 !require;
+  center-y: == .play[center-y]-14 !require;
 }
 
 section.mobile-video {
   width: == ::window[width] !weak;
-  height: == ::window[height] !weak;
-  center: == ::window[center];
+  height: == ::window[width] !strong;
+  height: <= 600 !strong;
   // freezes the browser unless there's a space between @v and | 
   //@v|-(& #play)-| in(&);
   @v |-(& #play)-| in(&);
 
   .yellow-overlay{
     width: == ::window[width] !weak;
-    height: == ::window[height] !require;
-    center: == ::window[center];
+    height: == section.mobile-video[height] !require;
     background: hsl(42, 84%, 69%);
     opacity: .8;
   } 

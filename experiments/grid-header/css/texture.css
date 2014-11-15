@@ -16,7 +16,6 @@ section {
   position: absolute;
   left: 0;
   overflow: hidden;
-  height: 100%;
   width: 100%;
 }
 
@@ -46,6 +45,13 @@ button{
   display: block;
 }
 
+.arrow-left {
+  width: 0; 
+  height: 0; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent; 
+  border-left: 14px solid black;
+}
 
 section.head-cta {
   background-color: hsl(0,0%,0%);
@@ -125,9 +131,8 @@ section.head-cta .play {
 */
 
 section.mobile-video {
-  background: url('https://s3-us-west-2.amazonaws.com/the-grid-img/p/6454e439be75b094d7d5db81c54f22209508b029.jpg');
+  background: url('https://s3-us-west-2.amazonaws.com/the-grid-img/p/6454e439be75b094d7d5db81c54f22209508b029.jpg') center;
   background-size: cover;
-  background-size: 100% 100%;
 }
 
 
