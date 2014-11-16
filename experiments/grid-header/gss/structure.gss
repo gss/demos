@@ -123,6 +123,7 @@ section.mobile-video {
   width: == ::window[width] !weak;
   height: == ::window[width] !strong;
   height: <= 600 !strong;
+  
   // freezes the browser unless there's a space between @v and | 
   //@v|-(& #play)-| in(&);
   @v |-(& #play)-| in(&);
@@ -141,31 +142,29 @@ section.hello-world {
   width: == ::window[width];
   height: == ::window[height]; 
 
-  .hello-world-head {
-    width: == &[intrinsic-width];   
-    height: == &[intrinsic-height]; 
-    &[center-x] == ::window[center-x];
-  }
+  .content {
+    width: == 700 !weak;
+    height: == &[intrinsic-height] !require;
+    center-x: == ::window[center-x];
 
-    .hello-world-body {
-    height: == &[intrinsic-height]; 
-    &[center-x] == ::window[center-x];
-  
-  }
+//font-size now dynamic based on constraint
+    font-size: == &[width] /35;
+   }
 
-@v 
-  |
-  -
-  (& .hello-world-head)
-  -100-
-  (& .hello-world-body)
-  -
-  | 
-//  gap([200])
-  in(&) ;
+  @v  |
+      ~36~
+      (& .content)
+      -
+      |
+      in(&)
+      gap(50) !require;
 
-  @h |-(& .hello-world-body)-|  in(&) gap(50);
-    (& .hello-world-body)[width] <= 700;
+  @h  |~-~(& .content)~-~|
+      in(&)
+      gap(30) !strong;
+
+
+  (& .content)[center-x] == &[center-x];
 
 } 
 
@@ -194,8 +193,13 @@ section.hello-world {
     #video-player {
       display: none;
     }
-  }
-  
+  } 
+    // .hello-world-body {
+    //   font-size: 1.6rem;
+    //   line-height: 2.5rem;
+    // }
+
+
 } @else {
 
 /* not clearing out the css from the above @if statement 
