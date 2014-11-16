@@ -25,6 +25,7 @@ button{
   padding: 12px;
   border: none;
   letter-spacing: 0.16rem;
+  -webkit-transition: .7s ease-out;
 }
 .cta .preorder{
 
@@ -56,6 +57,7 @@ button{
 section.head-cta {
   background-color: hsl(0,0%,0%);
   overflow: hidden;
+  position: fixed !important; 
 }
 section.head-cta .overlay {
   background-color: hsla(0,0%,0%,.83);

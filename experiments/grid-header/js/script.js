@@ -17,6 +17,16 @@ $(document).ready(function() {
   moved =                 0, // amount your finger moved during touchmove
   isTouchDevice =         false; // set to true on touchstart
 
+  $(window).on('scroll',function(){
+    scrollHandler();
+  })
+  $(window).bind('mousemove',function(e){
+    var x = e.pageX-(WIN_W/2);
+    var y = e.pageY-(WIN_H/2);
+    $('.sub-title, .title, button').css({
+      '-webkit-transform': 'perspective(800px) rotateX('+y/43+'deg) rotateY('+x/73+'deg)'
+    })
+  })
  $(window).bind('touchstart',function(e){
     e.preventDefault(); 
     // isTouchDevice = true;
@@ -58,11 +68,11 @@ $(document).ready(function() {
     }
   }
   function scrollHandler(){
-    if(isTouchDevice){
-      scrollTop = Math.max(0,containerTop);
-    }else{
-      scrollTop = WIN.scrollTop();
-    }
+    scrollTop = WIN.scrollTop();
+    $('.head-cta').css({
+      '-webkit-transform': 'translateY('+ -scrollTop/3 + 'px)',
+      '-webkit-filter': 'blur('+scrollTop/100+'px)'
+    })
   }
 
   // Touch Scroll

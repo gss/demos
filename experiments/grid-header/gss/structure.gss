@@ -20,6 +20,7 @@
   top: == 0;
   left: == 0;
   color: #fff;
+  
   .logo {
     width: == 72;
     height: == 72;
@@ -149,6 +150,7 @@ section.hello-world {
 
 //font-size now dynamic based on constraint
     font-size: == &[width] /35;
+    font-size: >= 15;
    }
 
   @v  |
