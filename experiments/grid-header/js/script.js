@@ -17,14 +17,15 @@ $(document).ready(function() {
   moved =                 0, // amount your finger moved during touchmove
   isTouchDevice =         false; // set to true on touchstart
 
-  $(window).on('scroll',function(){
-    scrollHandler();
+  $(window).on('scroll',function(e){
+    scrollHandler(e);
   })
   $(window).bind('mousemove',function(e){
     var x = e.pageX-(WIN_W/2);
     var y = e.pageY-(WIN_H/2);
-    $('.sub-title, .title, button').css({
-      '-webkit-transform': 'perspective(800px) rotateX('+y/43+'deg) rotateY('+x/73+'deg)'
+    $('.head-cta').css({
+      '-webkit-transform-origin': '50% 50%',
+      '-webkit-transform': 'perspective(200px) rotateX('+y/-343+'deg) rotateY('+x/373+'deg)'
     })
   })
  $(window).bind('touchstart',function(e){
@@ -67,11 +68,17 @@ $(document).ready(function() {
     }else{
     }
   }
-  function scrollHandler(){
+  function scrollHandler(e){
+    if(!e){
+      e = 0;
+    }
     scrollTop = WIN.scrollTop();
+    var x = e.pageX-(WIN_W/2);
+    var y = e.pageY-(WIN_H/2);
     $('.head-cta').css({
-      '-webkit-transform': 'translateY('+ -scrollTop/3 + 'px)',
-      '-webkit-filter': 'blur('+scrollTop/100+'px)'
+      '-webkit-transform-origin': '50% 50%',
+      '-webkit-transform': 'perspective(200px) rotateX('+y/-343+'deg) rotateY('+x/373+'deg)',
+      '-webkit-filter': 'brightness('+(100-(scrollTop/5))+'%)'
     })
   }
 

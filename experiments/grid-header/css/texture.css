@@ -51,9 +51,17 @@ button{
   height: 0; 
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent; 
-  border-left: 14px solid black;
+  border-left: 14px solid hsl(37,45%,16%);
 }
 
+.headline{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  z-index:2;
+}
 section.head-cta {
   background-color: hsl(0,0%,0%);
   overflow: hidden;
@@ -74,6 +82,7 @@ section.head-cta svg.logo {
 }
 section.head-cta .cta {
   z-index: 10;
+
 }
 section.head-cta .title {
   text-align: center;
@@ -115,7 +124,7 @@ section.head-cta .cta, section.head-cta .play:hover {
 
 section.head-cta .cta:hover, section.head-cta .play {
   background-color: transparent;
-  border: 2px solid hsla(42, 84%, 69%, .59);
+  border: 2px solid hsla(42, 84%, 69%, .89);
   color: hsl(42, 84%, 69%);
 }
 
@@ -128,13 +137,18 @@ section.head-cta .cta,
 section.head-cta .play {
   text-align: center;
 }
-
 /*section 2
 */
 
 section.mobile-video {
   background: url('https://s3-us-west-2.amazonaws.com/the-grid-img/p/6454e439be75b094d7d5db81c54f22209508b029.jpg') center;
   background-size: cover;
+}
+section.mobile-video .cta-play{
+  font-size: 2rem;
+}
+a{
+  color: #000;
 }
 
 /*section 3
@@ -156,9 +170,7 @@ section.hello-world {
 
     }
     .hello-world-head {
-      font-size: 4rem;
-      font-weight: normal;     
-      padding: 2.4rem; 
+      font-weight: normal;      
       color: hsl(0,0%,25%);
     }
 

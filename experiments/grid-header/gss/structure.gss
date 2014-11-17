@@ -16,14 +16,14 @@
 
 .head-cta {
   width: == ::window[width];
-  height: == ::window[height];
+  height: == ::window[height]-80;
   top: == 0;
   left: == 0;
   color: #fff;
-  
+
   .logo {
-    width: == 72;
-    height: == 72;
+    width: == 52;
+    height: == 52;
      width: >= 46 !strong;
      height: >= 46 !strong;
     &[center-x] == ::window[center-x];
@@ -58,7 +58,7 @@
   }
   [elem-gap] >= 25 !strong;
   @v |
-  -70-
+  -90-
   (& .logo)
   -155- 
   (& h1)
@@ -91,7 +91,8 @@
   opacity: .3;
 }
 
-.video-poster {
+.video-poster,
+.vignette {
   width: == ::window[width] !weak;
   height: == ::window[height] !weak;
   width: >= ::window[width] !require;
@@ -111,7 +112,7 @@
   border-radius: 50%;
   background-color: transparent;
 
-  border: 4px solid black;
+  border: 4px solid hsl(37,45%,16%);
 }
 .arrow-left {
   width: == 0;
@@ -127,13 +128,23 @@ section.mobile-video {
   
   // freezes the browser unless there's a space between @v and | 
   //@v|-(& #play)-| in(&);
-  @v |-(& #play)-| in(&);
-
+  @v |
+  -200-
+  (& #play)
+  -50-
+  (& .cta-play)
+  -| in(&);
+  
   .yellow-overlay{
     width: == ::window[width] !weak;
     height: == section.mobile-video[height] !require;
     background: hsl(42, 84%, 69%);
     opacity: .8;
+  }
+  .cta-play{
+    text-align: center;
+    width: == ::window[width];
+    center-x: == .yellow-overlay[center-x] !require;
   } 
 }
 
@@ -141,16 +152,20 @@ section.mobile-video {
 
 section.hello-world {
   width: == ::window[width];
-  height: == ::window[height]; 
-
+  height: == 600;
   .content {
     width: == 700 !weak;
-    height: == &[intrinsic-height] !require;
     center-x: == ::window[center-x];
+    top: 0;
 
 //font-size now dynamic based on constraint
     font-size: == &[width] /35;
     font-size: >= 15;
+    .hello-world-head{
+      font-size: == section.hello-world[width] /30;
+      font-size: >= 25;
+      margin: == section.hello-world[width] /25;
+    }
    }
 
   @v  |
