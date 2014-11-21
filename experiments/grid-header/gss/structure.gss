@@ -113,7 +113,7 @@
   border-radius: 50%;
   background-color: transparent;
 
-  border: 4px solid hsl(37,45%,16%);
+  border: 4px solid #fff;
 }
 .arrow-left {
   width: == 0;
@@ -139,14 +139,21 @@ section.mobile-video {
   .yellow-overlay{
     width: == ::window[width] !weak;
     height: == section.mobile-video[height] !require;
-    background: hsl(42, 84%, 69%);
-    opacity: .8;
+    opacity: 1;
   }
   .cta-play{
     text-align: center;
     width: == ::window[width];
-    center-x: == .yellow-overlay[center-x] !require;
-  } 
+    center: == .yellow-overlay[center] !require;
+  }
+  @if [width] < 500 {
+    @v |
+    -40-
+    (& #play)
+    -30-
+    (& .cta-play)
+    -| in(&);
+  }
 }
 
 // SECTION 3

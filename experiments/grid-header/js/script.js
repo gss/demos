@@ -63,7 +63,7 @@ $(document).ready(function() {
   function pageResize (e) {
     WIN_H = WIN.height();
     WIN_W = WIN.width();
-    if(WIN_W < 500){
+    if(WIN_W < 5){
       smallScreen = true;
     }else{
       setTimeout(function(){

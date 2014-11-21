@@ -28,6 +28,8 @@ section {
   left: 0;
   overflow: hidden;
   width: 100%;
+  box-shadow: inset  0  18px 0px -8px #000, 
+              inset  0 -8px 18px -8px #000;
 }
 
 button{
@@ -68,7 +70,7 @@ button{
   height: 0; 
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent; 
-  border-left: 14px solid hsl(37,45%,16%);
+  border-left: 14px solid #fff;
 }
 
 .headline{
@@ -184,14 +186,14 @@ section.head-cta .play {
 
 section.mobile-video {
   -webkit-transition: top .3s ease-out;
-  background: url('https://s3-us-west-2.amazonaws.com/the-grid-img/p/6454e439be75b094d7d5db81c54f22209508b029.jpg') center;
+  background: url('../img/hero_cta.jpg') center;
   background-size: cover;
 }
 section.mobile-video .cta-play{
   font-size: 2rem;
 }
 a{
-  color: #000;
+  color: #fff;
 }
 
 /*section 3
