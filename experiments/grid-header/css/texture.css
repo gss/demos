@@ -171,6 +171,7 @@ section.head-cta .cta .cta-arrow{
   padding-top: 19px;
   background: hsl(42, 84%, 69%);
   color: #000 !important;
+  -webkit-transition: .3s ease-out;
 }
 section.head-cta .cta .number {
   display: inline-block;
