@@ -13,23 +13,25 @@
   in(::window) !strong;
     
 
-
+.head-cta-target {
+  height: == ::window[height]-80 !strong;
+}
 .head-cta {
   width: == ::window[width];
-  height: == ::window[height]-80;
+  height: == ::window[height];
   top: == 0;
   left: == 0;
   color: #fff;
-
+  box-shadow: inset 0 -18px 16px 6px black;
   .logo {
-    width: == 52;
-    height: == 52;
-     width: >= 46 !strong;
-     height: >= 46 !strong;
+    width: == 48;
+    height: == 48;
+     // width: >= 46 !strong;
+     // height: >= 46 !strong;
     &[center-x] == ::window[center-x];
   }
   button {
-    width: == &[intrinsic-width];
+    width: == 450;
     height: == &[intrinsic-height];
     &[center-x] == ::window[center-x];
   }
@@ -56,7 +58,7 @@
     font-size: 6rem;
     font-weight: normal;
   }
-  [elem-gap] >= 25 !strong;
+  [elem-gap] >= 20 !strong;
   @v |
   -90-
   (& .logo)
@@ -64,7 +66,7 @@
   (& h1)
   ~-~
   (& h2)
-  -40-
+  -30-
   (& .preorder)
   ~-~
   (& .cta-video)
@@ -91,8 +93,7 @@
   opacity: .3;
 }
 
-.video-poster,
-.vignette {
+.video-poster{
   width: == ::window[width] !weak;
   height: == ::window[height] !weak;
   width: >= ::window[width] !require;
@@ -124,7 +125,7 @@
 section.mobile-video {
   width: == ::window[width] !weak;
   height: == ::window[width] !strong;
-  height: <= 600 !strong;
+  height: <= 720 !strong;
   
   // freezes the browser unless there's a space between @v and | 
   //@v|-(& #play)-| in(&);
@@ -154,17 +155,17 @@ section.hello-world {
   width: == ::window[width];
   height: == 600;
   .content {
-    width: == 700 !weak;
+    width: == 800 !weak;
     center-x: == ::window[center-x];
     top: 0;
 
 //font-size now dynamic based on constraint
-    font-size: == &[width] /35;
-    font-size: >= 15;
+    font-size: == &[width] * .025;
+    font-size: >= 16;
     .hello-world-head{
-      font-size: == section.hello-world[width] /30;
+      font-size: == section.hello-world[width] * .025;
       font-size: >= 25;
-      margin: == section.hello-world[width] /25;
+      margin: == section.hello-world[width] * .02;
     }
    }
 
@@ -191,12 +192,28 @@ section.hello-world {
 @if [width] < 500 {
 
   .head-cta {
+    .logo {
+      width: == 40;
+      height: == 40;
+       // width: >= 46 !strong;
+       // height: >= 46 !strong;
+    }
+
     .title{
       font-size: 1.1rem;
     }
     .sub-title{
       font-size: 2.6rem;
     } 
+    button {
+      width: == 300;
+      height: == &[intrinsic-height];
+      padding: == 0;
+    }
+    .cta-container{
+      width: == 300;
+      padding: == 0;
+    }
     .cta-video {
       opacity: 0;
     }
@@ -205,16 +222,29 @@ section.hello-world {
     }
     section.head-cta button,
     section.head-cta .button {
-      font-size: 16px; 
+      font-size: 13px; 
     }
     #video-player {
       display: none;
     }
+    [elem-gap] >= 20 !strong;
+    @v |
+    -70-
+    (& .logo)
+    -105- 
+    (& h1)
+    ~-~
+    (& h2)
+    -30-
+    (& .preorder)
+    ~-~
+    (& .cta-video)
+    -100-
+    | 
+    gap([elem-gap])
+    in(&)
+    !strong;
   } 
-    // .hello-world-body {
-    //   font-size: 1.6rem;
-    //   line-height: 2.5rem;
-    // }
 
 
 } @else {
