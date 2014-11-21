@@ -41,10 +41,10 @@
   &[--title-margin] >= 36;
 
   .title {
-    //width: == &[intrinsic-width];   
+    width: == &[intrinsic-width];   
     height: == &[intrinsic-height]; 
     &[center-x] == ::window[center-x];
-    font-size: 7.6rem;
+    font-size: == 72;
     font-weight: normal;
   }
   
@@ -55,26 +55,10 @@
     //width: == &[intrinsic-width];
     height: == &[intrinsic-height];
     &[center-x] == ::window[center-x];
-    font-size: 6rem;
+    font-size: == 60;
     font-weight: normal;
   }
   [elem-gap] >= 20 !strong;
-  @v |
-  -90-
-  (& .logo)
-  -155- 
-  (& h1)
-  ~-~
-  (& h2)
-  -30-
-  (& .preorder)
-  ~-~
-  (& .cta-video)
-  -100-
-  | 
-  gap([elem-gap])
-  in(&)
-  !strong;
 }
 .background{  
   width: == ::window[width];
@@ -207,10 +191,10 @@ section.hello-world {
     }
 
     .title{
-      font-size: 1.1rem;
+      font-size: == 11;
     }
     .sub-title{
-      font-size: 2.6rem;
+      font-size: == 26;
     } 
     button {
       width: == 300;
@@ -229,7 +213,7 @@ section.hello-world {
     }
     section.head-cta button,
     section.head-cta .button {
-      font-size: 13px; 
+      font-size: == 13; 
     }
     #video-player {
       display: none;
@@ -239,6 +223,52 @@ section.hello-world {
     -70-
     (& .logo)
     -105- 
+    (& h2)
+    ~-~
+    (& h1)
+    -30-
+    (& .preorder)
+    ~-~
+    (& .cta-video)
+    -100-
+    | 
+    gap([elem-gap])
+    in(&)
+    !require;
+  } 
+
+
+} @else {
+
+/* not clearing out the css from the above @if statement 
+so have to manually reset to pre condition settings for now */ 
+
+  .head-cta {
+    .title{
+      font-size: == 24;
+    }
+    .sub-title{
+      font-size: == 72;
+      font-family: 'National Thin';  
+      letter-spacing: 0.16em;          
+    }
+    section.head-cta button,
+    section.head-cta .button {
+      font-size: == 20; 
+    } 
+    .cta-video {
+      opacity: 1;
+    }
+    .video-poster {
+      opacity: 0;
+    }
+    #video-player {
+      display: block;
+    }
+    @v |
+    -90-
+    (& .logo)
+    -155- 
     (& h1)
     ~-~
     (& h2)
@@ -251,36 +281,6 @@ section.hello-world {
     gap([elem-gap])
     in(&)
     !strong;
-  } 
-
-
-} @else {
-
-/* not clearing out the css from the above @if statement 
-so have to manually reset to pre condition settings for now */ 
-
-  .head-cta {
-    .title{
-      font-size: 2.4rem;
-    }
-    .sub-title{
-      font-size: 7.2rem;
-      font-family: 'National Thin';  
-      letter-spacing: 0.16em;          
-    }
-    section.head-cta button,
-    section.head-cta .button {
-      font-size: 20px; 
-    } 
-    .cta-video {
-      opacity: 1;
-    }
-    .video-poster {
-      opacity: 0;
-    }
-    #video-player {
-      display: block;
-    }
   }
 
 }
