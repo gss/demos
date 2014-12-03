@@ -8,24 +8,28 @@
   (section.hello-world(== &[intrinsic-height]))
   in(::window) !strong;
 
-
-// SECTION 3
+// <section id="hello-world" class="hello-world">
+//       <div class="content" id="content">
+//         <div class="hello-world-head">
 
 section.hello-world {
   width: == ::window[width];
-  height: == 600;
-  .content {
-    width: == 800 !weak;
-    center-x: == ::window[center-x];
-    top: 0;
+  height: == ::window[height];
 
-//font-size now dynamic based on constraint
-    font-size: == &[width] * .025;
-    font-size: >= 16;
+  .content {
+    width: == ::window[width] !weak;
+    height: == &[intrinsic-height];
+    center-x: == section.hello-world[center-x];
+    center-y: == section.hello-world[center-y];
+    top: 0;
+    
     .hello-world-head{
-      font-size: == section.hello-world[width] * .025;
-      font-size: >= 25;
-      margin: == section.hello-world[width] * .02;
+      font-size: == section.hello-world[width] * .14;
+      font-size: >= 60 !strong;
+      width: == &[intrinsic-width];
+      // center-y: == ::content[center-y];
+      // margin: == section.hello-world[width] * .1;
+
     }
    }
 
@@ -34,15 +38,14 @@ section.hello-world {
       (& .content)
       -
       |
-      in(&)
-      gap(50) !require;
+      in(&);
 
   @h  |~-~(& .content)~-~|
       in(&)
       gap(30) !strong;
 
 
-  (& .content)[center-x] == &[center-x];
+  // (& .content)[center-x] == &[center-x];
 
 } 
 
@@ -50,5 +53,15 @@ section.hello-world {
 [height] == ::window[height];
 
 @if [width] < 500 {
+  .content{
+      background-color: red;
+  }
+}
 
+// BUG - this is the work around for not resetting styles outside of a conditional. 
+// comment out the else below and background will stay red. 
+@else {
+  .content{
+      background-color: yellow;
+  }
 }
