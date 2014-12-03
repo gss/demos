@@ -1,0 +1,54 @@
+
+/* vars */
+[big-gap] == 60 !require;
+
+// page layout
+ @v |
+  -0-
+  (section.hello-world(== &[intrinsic-height]))
+  in(::window) !strong;
+
+
+// SECTION 3
+
+section.hello-world {
+  width: == ::window[width];
+  height: == 600;
+  .content {
+    width: == 800 !weak;
+    center-x: == ::window[center-x];
+    top: 0;
+
+//font-size now dynamic based on constraint
+    font-size: == &[width] * .025;
+    font-size: >= 16;
+    .hello-world-head{
+      font-size: == section.hello-world[width] * .025;
+      font-size: >= 25;
+      margin: == section.hello-world[width] * .02;
+    }
+   }
+
+  @v  |
+      ~36~
+      (& .content)
+      -
+      |
+      in(&)
+      gap(50) !require;
+
+  @h  |~-~(& .content)~-~|
+      in(&)
+      gap(30) !strong;
+
+
+  (& .content)[center-x] == &[center-x];
+
+} 
+
+[width] == ::window[width];
+[height] == ::window[height];
+
+@if [width] < 500 {
+
+}
