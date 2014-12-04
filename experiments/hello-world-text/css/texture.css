@@ -59,6 +59,9 @@ section.hello-world {
       font-weight: normal;      
       /*color: hsl(0,0%,25%);*/
     }
+    .hello-world-sub-head {
+      letter-spacing: .15em;
+    }
 
 
 

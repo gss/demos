@@ -29,7 +29,9 @@ section.hello-world {
       width: == &[intrinsic-width];
       // center-y: == ::content[center-y];
       // margin: == section.hello-world[width] * .1;
-
+    }
+    .hello-world-sub-head {
+      font-size: == section.hello-world[width] * .045;
     }
    }
 
