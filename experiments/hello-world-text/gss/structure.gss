@@ -32,6 +32,8 @@ section.hello-world {
     }
     .hello-world-sub-head {
       font-size: == section.hello-world[width] * .045;
+      font-size: >= 20 !strong;
+      font-size: <= 44 !strong;
     }
    }
 

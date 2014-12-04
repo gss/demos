@@ -53,6 +53,7 @@ section.hello-world {
       margin-top: 1em;*/
       /*line-height: 1em;*/
       background-color: yellow;
+      padding-bottom: 3%;
 
     }
     .hello-world-head {
@@ -60,7 +61,7 @@ section.hello-world {
       /*color: hsl(0,0%,25%);*/
     }
     .hello-world-sub-head {
-      letter-spacing: .15em;
+      letter-spacing: .18em;
     }
 
 
