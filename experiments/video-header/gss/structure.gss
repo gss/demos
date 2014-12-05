@@ -1,0 +1,80 @@
+
+/* vars */
+[big-gap] == 60 !require;
+
+// page layout
+ @v |
+  -0-
+  (section.video-header(== &[intrinsic-height]))
+  in(::window) !strong;
+
+// <section id="video-header" class="video-header">
+//       <div class="content" id="content">
+//         <div class="video-header-head">
+
+.video {
+  // height: 682px; 
+  // height: == ::window[height] !strong;
+  width: == ::window[width] !strong;
+  // width: >= 1000 !strong;
+  // center-x: == ::window[center-x];
+  // padding: == ::window[width] * .045;
+}
+
+section.video-header {
+  width: == ::window[width];
+  height: == ::window[height];
+
+  .content {
+    width: == ::window[width] !weak;
+    height: == &[intrinsic-height];
+    center-x: == section.video-header[center-x];
+    center-y: == section.video-header[center-y];
+    top: 0;
+    
+    .video-header-h1 {
+      font-size: == section.video-header[width] * .14;
+      font-size: >= 60 !strong;
+      width: == &[intrinsic-width];
+      // center-y: == ::content[center-y];
+      // margin: == section.video-header[width] * .1;
+    }
+    .video-header-h2 {
+      font-size: == section.video-header[width] * .045;
+      font-size: >= 20 !strong;
+      font-size: <= 44 !strong;
+    }
+   }
+
+  @v  |
+      ~36~
+      (& .content)
+      -
+      |
+      in(&);
+
+  @h  |~-~(& .content)~-~|
+      in(&)
+      gap(50) !weak;
+
+
+  // (& .content)[center-x] == &[center-x];
+
+} 
+
+[width] == ::window[width];
+[height] == ::window[height];
+
+@if [width] < 500 {
+  .content{
+      // background-color: red;
+  }
+}
+
+// BUG - this is the work around for not resetting styles outside of a conditional. 
+// comment out the else below and background will stay red. 
+@else {
+  .content{
+      // background-color: yellow;
+  }
+}
