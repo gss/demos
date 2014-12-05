@@ -78,3 +78,16 @@ section.video-header {
       // background-color: yellow;
   }
 }
+
+// @if #panel[width] >= 500 {
+//   @horizontal .item;  
+//   #button {
+//     font-size: == 18;
+//   }
+// }
+// @else {
+//   @vertical .item;
+//   #button {
+//     font-size: == 14;
+//   }
+// }
