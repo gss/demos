@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GSS</title>
+    <meta name="description" content="GSS demo of per-element responsiveness and source order independence.">
+    <link type="text/gss" href="gss/structure.gss">
+    <link rel="stylesheet" type="text/css" href="css/texture.css">
+    <script src="bower_components/gss/dist/gss.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="//s3-us-west-2.amazonaws.com/cdn.thegrid.io/fonts/National/National-Light.css"/><link rel="stylesheet" type="text/css" href="//s3-us-west-2.amazonaws.com/cdn.thegrid.io/fonts/National/National-Medium.css"/><link rel="stylesheet" type="text/css" href="//s3-us-west-2.amazonaws.com/cdn.thegrid.io/fonts/National/National-Thin.css"/><link rel="stylesheet" type="text/css" href="//s3-us-west-2.amazonaws.com/cdn.thegrid.io/cta/0.1.15/styles/css/odometer-theme-default.css"/><link rel="stylesheet" type="text/css" href="//s3-us-west-2.amazonaws.com/cdn.thegrid.io/cta/0.1.15/styles/css/odometer-theme-default.css"/><link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+  </head>
+  <body>
+
+    <section  class="video-bg" id="video-bg">
+      <div class="hand">
+        <video class="video" id="video" tabindex="0" autobuffer="" preload="" autoplay="" loop="" poster="http://www.theexperiment.io/img/hand.jpg">
+          <source src="http://www.theexperiment.io/img/HAND_V2.ogv" type="video/ogg">
+          <source src="http://www.theexperiment.io/img/HAND_V2.webm" type="video/webm">
+          <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src="http://www.theexperiment.io/img/HAND_V2.mp4">
+        </video>
+      </div>
+
+      <img src="img/exprmnt_small.svg" alt="" class="logo" id="logo-two">
+      
+      <div class="content" id="content">
+        <img src="img/exprmnt_logo2.svg" alt="" class="logo" id="logo-one">
+        
+
+      </div>
+    </section>
+
+    <div class="dot-grid" id="dog-grid">
+    </div>
+
+    <script>
+      window.engine = GSS(document);
+    </script>
+    <script src="js/jquery-2.1.1.min.js"></script> 
+    <script src="js/script.js" type="text/javascript" charset="utf-8"></script>
+    
+  </body>
+</html>

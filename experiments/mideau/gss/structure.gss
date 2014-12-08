@@ -1,0 +1,79 @@
+
+/* vars */
+[big-gap] == 60 !require;
+
+
+#video {
+  width: == ::window[width] +200!strong;
+}
+
+#content {
+  width: == ::window[width] - 450;
+  height: == 200 !strong;
+  center-x: == ::window[center-x];
+  center-y: == ::window[center-y];
+}
+
+@h |-20-(#logo-one)-20-| in(#content);
+
+#logo-one {
+  // center-x: == #content[center-x];
+  center-y: == #content[center-y] -10;
+}
+
+#logo-two {
+  center-y: == #content[center-y] -10; 
+}
+
+@h |-0-(#logo-two)-0-| in(#content);
+
+
+#video-bg {
+  width: == ::window[width];
+  height: == ::window[height];
+}
+
+
+
+
+@if ::window[width] < 1024 {
+  #content {
+    // width: == ::window[width] - 20;
+    border: none;
+  }
+  #logo-one {
+    display: none;
+  }
+  #logo-two {
+    display: block;
+    width: == ::window[width];
+    // background: url("img/TheE.png");
+  }
+
+  .hand {
+    background: url("http://www.theexperiment.io/img/hand.jpg") center center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .9;
+    background-size: cover; 
+    }
+  .video {
+    display: none; 
+    } 
+
+}
+
+@else{
+   #logo-two{
+    display: none;
+  }
+  .hand {
+    background: none;
+  }
+  .video {
+    display: block;
+  }
+}
+
