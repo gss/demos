@@ -1,0 +1,108 @@
+
+html {
+  background-color: #000;
+  font-size: 62.5%;
+  font-family: 'National Light';
+  letter-spacing: 0.16rem;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+section {
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  box-shadow: inset  0  8px 0px -8px #000, 
+              inset  0 -8px 8px -8px #000;
+}
+
+section .button {
+  border: 2px solid hsl(190, 99%, 49%);
+  background-color: hsl(190, 99%, 49%);
+  color: hsl(0, 0%, 0%);
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: none;
+
+  -webkit-transition: background-color .3s ease, color .3s ease;
+  transition: background-color .3s ease, color .3s ease;
+}
+
+section .button:hover {
+  background-color: hsla(190, 99%, 49%, .05);
+  color: hsl(190, 99%, 49%);
+  text-decoration: none;
+}
+
+/*flex-head
+*/
+section.flex-head {
+  position: relative;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  background-color: hsl(335, 98%, 46%);
+  color: #ddd;
+  text-align: center !important;
+}
+
+section.flex-head .content {
+  padding-bottom: 3%;
+}
+
+section.flex-head .primary {
+  height: 30px;
+}
+
+section.flex-head .headline {
+  font-weight: normal;    
+}
+
+section.flex-head.with-subtitle .subtitle {
+  display: block;
+}
+
+section.flex-head.without-subtitle .subtitle {
+  display: none;
+}
+
+section.flex-head.without-subtitle .headline {
+  font-weight: bolder;
+}
+
+section.flex-head.without-bgvideo .bg-video {
+  display: none;
+}
+
+section.flex-head.with-bgvideo .bg-video {
+  min-width:100%;  
+  min-height:100%;
+}
+
+section.flex-head.with-bgvideo .overlay {
+  min-width:100%;  
+  min-height:100%;
+  opacity: 0.8;
+}
+
+section.flex-head.with-bgvideo {
+  color: hsl(335, 98%, 46%);
+}
+
+section.flex-head.without-bgimage .bg-image {
+  display: none;
+}
+
+section.flex-head.with-bgimage .bg-image {
+  min-width:100%;  
+  min-height:100%;
+}
+
+

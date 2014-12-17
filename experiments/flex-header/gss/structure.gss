@@ -1,0 +1,93 @@
+
+/* vars */
+[big-gap] == 60 !require;
+[width] == ::window[width];
+[height] == ::window[height];
+
+
+section.flex-head {
+  width: == ::window[width];
+  height: == ::window[height] !strong;
+
+  .content {
+
+    width: == ::window[width];
+    height: == ::window[height];
+
+    (& .content)[center] == &[center];
+
+    @v |(& .headline)| in(&);
+    @h |(& .headline)| in(&);
+    @v |-100-(& .headline)| in(&);
+ 
+
+    .headline {
+      height: == &[intrinsic-height];
+    }
+
+    &.with-subtitle {
+
+      @h |(& .subtitle)| in(&);
+      @v |(& .subtitle)| in(&);
+      @v (& .headline)~10~(& .subtitle);
+
+      .headline{
+        font-size: == section.flex-head[width] * .10;
+        font-size: >= 24 !strong;
+        font-size: =< 52 !strong;
+      }
+      .subtitle {
+        font-size: == section.flex-head[width] * .015;
+        font-size: >= 34 !strong;
+      }
+    }
+
+    &.without-subtitle {
+
+      @v |-150-(& .headline)| in(&);
+
+      .headline{
+        font-size: == section.flex-head[width] * .13;
+        font-size: >= 28 !strong;
+        font-size: =< 62 !strong;
+      }
+    }
+
+    &.with-cta {
+
+      @h |(& .primary)| in(&);
+      @v |(& .primary)| in(&);      
+      @v (& .headline)~-~(& .primary) gap(40) !strong;
+      
+      (& .primary)[width] == &[width] / 6;
+      (& .primary)[height] == ::window[height] / 7;
+      (& .primary)[height] => ::window[height] / 7;
+      (& .primary)[center-x] == &[center-x];
+
+      font-size: >= 24 !strong;
+      font-size: =< 32 !strong;      
+
+    }
+
+    &.with-overlay {
+
+      @h |(& .overlay)| in(&);
+      @v |(& .overlay)| in(&);      
+      
+
+    }
+  
+  }
+} 
+
+@if [width] < 500 {
+  .content{
+      background-color: red;
+  }
+}
+
+// BUG - this is the work around for not resetting styles outside of a conditional. 
+// comment out the else below and background will stay red. 
+@else {
+
+}
