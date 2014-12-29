@@ -4,9 +4,11 @@ section.flex-head {
   width: == ::window[width] !require;
   top: == 0 !require;
   left: == 0 !require;
+  height: == ::window[height];
 
   @h |-(&"virtual")-| in(::window) gap(80);
   @v |-(&"virtual")-| in(::window) gap(80);
+
 
   @h |(#red)| in(&"virtual");
   @v |(#red)| in(&"virtual");
