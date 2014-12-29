@@ -53,9 +53,6 @@ section.flex-head {
   text-align: center !important;
 }
 
-section.flex-head .content {
-  padding-bottom: 3%;
-}
 
 section.flex-head .primary {
   height: 30px;
@@ -105,4 +102,16 @@ section.flex-head.with-bgimage .bg-image {
   min-height:100%;
 }
 
+#red {
+  background: black;
+  opacity: .6;
+}
 
+footer {
+  position: fixed;
+  bottom: 0px;
+  background: #ccc;
+  min-height: 100px;
+  width: 100%;
+
+}

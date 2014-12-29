@@ -11,9 +11,9 @@
   </head>
   <body>
 
-    <section id="flex-head" class="flex-head without-subtitle with-bgvideo with-cta with-overylay" >
+    <section id="flex-head" class="flex-head with-headline without-subtitle with-cta" >
       
-      <div class="content without-subtitle with-bgvideo with-cta with-overylay" id="content">
+
         <video class="bg-video" muted="muted" loop autoplay preload="auto">
          <source src="http://www.theexperiment.io/img/HAND_V2.webm" type="video/webm">
          <source src="http://www.theexperiment.io/img/HAND_V2.ogv" type="video/ogg"/>
@@ -21,6 +21,7 @@
         </video>
         <div class="overlay"> 
         </div>
+        <div id="red"></div>
         <div class="headline"> 
           This is our Headline
         </div>
@@ -33,13 +34,18 @@
   <!--       <div class="hello-world-body">   
           This is not another do-it-yourself website builder. The Grid harnesses the power of artificial intelligence to take everything you throw at it - videos, images, text, urls and more - and automatically shape them into a custom website unique to you. As your needs grow, it evolves with you, effortlessly adapting to your needs. Want to add e-commerce? Social feeds? A different layout? The Grid just takes care of it. This is not a website builder. This is your personal AI web developer. Its first masterpiece is the website you're looking at right now. Its next one could be yours.       
         </div> -->
-      </div>
+
     </section>
+
+    <footer class="footer">
+    <button id="with-sub-title">toggle sub-head</button>
+
+
+    </footer>
 
     <script>
       window.engine = GSS(document);
     </script>
-    <script src="js/jquery-2.1.1.min.js"></script> 
     <script src="js/script.js" type="text/javascript" charset="utf-8"></script>
     
   </body>

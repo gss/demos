@@ -1,93 +1,73 @@
 
-/* vars */
-[big-gap] == 60 !require;
-[width] == ::window[width];
-[height] == ::window[height];
-
-
 section.flex-head {
-  width: == ::window[width];
-  height: == ::window[height] !strong;
+  width: 100%;
+  width: == ::window[width] !require;
+  top: == 0 !require;
+  left: == 0 !require;
 
-  .content {
+  @h |-(&"virtual")-| in(::window) gap(80);
+  @v |-(&"virtual")-| in(::window) gap(80);
 
-    width: == ::window[width];
-    height: == ::window[height];
+  @h |(#red)| in(&"virtual");
+  @v |(#red)| in(&"virtual");
 
-    (& .content)[center] == &[center];
+  &.with-headline {
 
-    @v |(& .headline)| in(&);
-    @h |(& .headline)| in(&);
-    @v |-100-(& .headline)| in(&);
- 
+    @v |- (& .headline) in(&"virtual") gap(36);
+    @h |~-~(& .headline)~-~| in(&"virtual") gap(0);
+      //(& .headline)[center-y] == &"virtual"[center-y];
 
-    .headline {
-      height: == &[intrinsic-height];
-    }
-
-    &.with-subtitle {
-
-      @h |(& .subtitle)| in(&);
-      @v |(& .subtitle)| in(&);
-      @v (& .headline)~10~(& .subtitle);
-
-      .headline{
-        font-size: == section.flex-head[width] * .10;
-        font-size: >= 24 !strong;
-        font-size: =< 52 !strong;
-      }
-      .subtitle {
-        font-size: == section.flex-head[width] * .015;
-        font-size: >= 34 !strong;
-      }
-    }
-
-    &.without-subtitle {
-
-      @v |-150-(& .headline)| in(&);
-
-      .headline{
+    .headline{
         font-size: == section.flex-head[width] * .13;
-        font-size: >= 28 !strong;
-        font-size: =< 62 !strong;
-      }
+        font-size: >= 28;
+        font-size: =< 62;
+        height: == &[intrinsic-height];
     }
-
-    &.with-cta {
-
-      @h |(& .primary)| in(&);
-      @v |(& .primary)| in(&);      
-      @v (& .headline)~-~(& .primary) gap(40) !strong;
-      
-      (& .primary)[width] == &[width] / 6;
-      (& .primary)[height] == ::window[height] / 7;
-      (& .primary)[height] => ::window[height] / 7;
-      (& .primary)[center-x] == &[center-x];
-
-      font-size: >= 24 !strong;
-      font-size: =< 32 !strong;      
-
-    }
-
-    &.with-overlay {
-
-      @h |(& .overlay)| in(&);
-      @v |(& .overlay)| in(&);      
-      
-
-    }
-  
   }
-} 
 
-@if [width] < 500 {
-  .content{
-      background-color: red;
+  &.with-subtitle {
+
+    .subtitle {
+       font-size: == section.flex-head[width] * .015;
+       font-size: >= 34 !strong;
+       height: == &[intrinsic-height];    
+    }
+
+    @v (& .subtitle) in(&"virtual");
+    @h |~-~(& .subtitle)~-~| in(&"virtual") gap(0);
+
   }
-}
 
-// BUG - this is the work around for not resetting styles outside of a conditional. 
-// comment out the else below and background will stay red. 
-@else {
+  &.with-cta {
+      
+    (& .primary)[width] == ::window[width] / 6;
+    (& .primary)[height] => ::window[height] / 8;
+    (& .primary)[center-x] == &[center-x];
+
+    font-size: >= 24 !strong;
+    font-size: =< 32 !strong;  
+
+    @v (& .primary) in(&"virtual");
+
+  }
+
+  &.with-headline.with-subtitle {
+      @v (& .headline)~-~(& .subtitle) gap(20);
+  }
+
+  &.with-headline.without-subtitle.with-cta {  
+      
+     @v (& .headline)~-~(& .primary) gap(20);
+
+    .headline{
+        font-size: == section.flex-head[width] * .10 !strong;
+        font-size: =< 72;
+        //height: == &[intrinsic-height];
+    }     
+  }
+
+  &.with-headline.with-subtitle.with-cta {
+       @v (& .subtitle)~-~(& .primary) gap(50);
+  }
 
 }
