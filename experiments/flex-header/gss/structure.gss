@@ -20,7 +20,7 @@ section.flex-head {
       //(& .headline)[center-y] == &"virtual"[center-y];
 
     .headline{
-        font-size: == section.flex-head[width] * .13;
+        font-size: == section.flex-head[width] * .3;
         font-size: >= 28;
         font-size: =< 62;
         height: == &[intrinsic-height];
@@ -43,7 +43,8 @@ section.flex-head {
   &.with-cta {
       
     (& .primary)[width] == ::window[width] / 6;
-    (& .primary)[height] => ::window[height] / 8;
+    (& .primary)[width] >= 200;
+    (& .primary)[height] >= 55;
     (& .primary)[center-x] == &[center-x];
 
     font-size: >= 24 !strong;
@@ -51,6 +52,14 @@ section.flex-head {
 
     @v (& .primary) in(&"virtual");
 
+  }
+
+  &.with-body-text {
+    (& .body-text)[width] == ::window[width] / 2;
+    (& .body-text)[width] >= 300;
+    (& .body-text)[height] >= 155;
+    (& .body-text)[center-x] == &[center-x];
+    @v (& .body-text) in(&"virtual");    
   }
 
   &.with-headline.with-subtitle {
@@ -62,14 +71,16 @@ section.flex-head {
      @v (& .headline)~-~(& .primary) gap(20);
 
     .headline{
-        font-size: == section.flex-head[width] * .10 !strong;
+        font-size: == section.flex-head[width] * .05 !strong;
         font-size: =< 72;
-        //height: == &[intrinsic-height];
     }     
   }
 
   &.with-headline.with-subtitle.with-cta {
        @v (& .subtitle)~-~(& .primary) gap(50);
+  }
+  &.with-headline.with-subtitle.with-cta.with-body-text {
+       @v (& .primary)~-~(& .body-text) gap(50);
   }
 
 }
