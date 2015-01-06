@@ -1,4 +1,4 @@
-
+[base] == 8 !strong;
 section.flex-head {
   width: 100%;
   width: == ::window[width] !require;
@@ -6,8 +6,8 @@ section.flex-head {
   left: == 0 !require;
   height: == ::window[height];
 
-  @h |-(&"virtual")-| in(::window) gap(80);
-  @v |-(&"virtual")-| in(::window) gap(80);
+  @h |-(&"virtual")-| in(::window) gap([base]*10);
+  @v |-(&"virtual")-| in(::window) gap([base]*10);
 
 
   @h |(#red)| in(&"virtual");
@@ -15,14 +15,14 @@ section.flex-head {
 
   &.with-headline {
 
-    @v |- (& .headline) in(&"virtual") gap(36);
+    @v |- (& .headline) in(&"virtual") gap([base]*4);
     @h |~-~(& .headline)~-~| in(&"virtual") gap(0);
       //(& .headline)[center-y] == &"virtual"[center-y];
 
     .headline{
-        font-size: == section.flex-head[width] * .3;
+        font-size: == section.flex-head[width] * .4;
         font-size: >= 28;
-        font-size: =< 62;
+        font-size: =< 72;
         height: == &[intrinsic-height];
     }
   }
@@ -31,7 +31,7 @@ section.flex-head {
 
     .subtitle {
        font-size: == section.flex-head[width] * .015;
-       font-size: >= 34 !strong;
+       font-size: >= 24 !strong;
        height: == &[intrinsic-height];    
     }
 
@@ -59,28 +59,37 @@ section.flex-head {
     (& .body-text)[width] >= 300;
     (& .body-text)[height] >= 155;
     (& .body-text)[center-x] == &[center-x];
+
     @v (& .body-text) in(&"virtual");    
   }
 
   &.with-headline.with-subtitle {
-      @v (& .headline)~-~(& .subtitle) gap(20);
+      @v (& .headline)~-~(& .subtitle) gap([base]);
   }
 
   &.with-headline.without-subtitle.with-cta {  
       
-     @v (& .headline)~-~(& .primary) gap(20);
+     @v (& .headline)~-~(& .primary) gap([base]*2);
 
     .headline{
-        font-size: == section.flex-head[width] * .05 !strong;
-        font-size: =< 72;
+      font-size: == section.flex-head[width] * .05 !strong;
+      font-size: =< 62;
     }     
   }
 
   &.with-headline.with-subtitle.with-cta {
-       @v (& .subtitle)~-~(& .primary) gap(50);
+       @v (& .subtitle)~-~(& .primary) gap([base]*4);
   }
   &.with-headline.with-subtitle.with-cta.with-body-text {
-       @v (& .primary)~-~(& .body-text) gap(50);
+       @v (& .primary)~-~(& .body-text) gap([base]*3);
   }
-
+  &.with-headline.without-subtitle.with-cta.with-body-text {
+       @v (& .primary)-(& .body-text) gap([base]*3);
+  }
+  &.with-headline.without-subtitle.without-cta.with-body-text {
+       @v (& .headline)~-~(& .body-text) gap([base]*3);
+  }
+  &.with-headline.with-subtitle.without-cta.with-body-text {
+       @v (& .subtitle)~-~(& .body-text) gap([base]*3);
+  }
 }
